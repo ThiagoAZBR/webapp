@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from transacoes.views import receita, despesa, transferencia, sucesso
+from transacao.views import receita, despesa, transferencia, sucesso
 
 
 urlpatterns = [   
