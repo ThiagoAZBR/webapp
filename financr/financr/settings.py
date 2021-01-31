@@ -31,10 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'faleconosco',
     'users',
     'social_django',
-    'contasbanco',
-    'transacao',
+    # 'contasbanco',
+    # 'transacao',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
