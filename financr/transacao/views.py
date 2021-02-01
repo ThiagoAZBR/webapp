@@ -1,18 +1,117 @@
 from django.shortcuts import render
-from .forms import Criar_transacao_Form
+from .forms import Criar_transacao_Form, Criar_transferencia_Form
+from contasbanco.models import Contas_bancarias
+from transacao.models import Transacao
+from django.contrib.auth.models import User
+from decimal import Decimal
 
 def receita(request):
-    form = Criar_transacao_Form()
-    return render(request, "testando.html", {'form': form})
-
+    if request.method =="GET":
+        form = Criar_transacao_Form()
+        return render(request, "testando.html", {'form': form})
+        
+    elif request.method == "POST":
+        usuario = request.user
+        classe_transacao=(Transacao(classe_transacao=1, user_id=usuario))
+        form = Criar_transacao_Form(request.POST, instance=classe_transacao)
+        
+        if form.is_valid():
+            form.save()
+            
+            receita = Decimal(form['valor'].data)    
+            id_banco = form['conta'].data
+            usuario_id = request.user.id
+            
+            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+            novo_saldo = (conta_bancaria[0].saldo + receita)
+            
+            # transacao = Contas_bancarias(1, usuario_id, conta_bancaria[0].nome_banco, conta_bancaria[0].saldo + receita)
+            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+            transacao.save()            
+            
+            return render(request, "sucesso.html")
+        
+        return render(request, "testando.html", {'form': form})
 
 def despesa(request):
-    return render(request, "despesa.html")
-
+    if request.method =="GET":
+        form = Criar_transacao_Form()
+        return render(request, "testando.html", {'form': form})
+        
+    elif request.method == "POST":
+        usuario = request.user
+        classe_transacao=(Transacao(classe_transacao=2, user_id=usuario))
+        form = Criar_transacao_Form(request.POST, instance=classe_transacao)
+        
+        if form.is_valid():
+            form.save(commit=False)
+            
+            despesa = Decimal(form['valor'].data)    
+            id_banco = form['conta'].data
+            usuario_id = request.user.id
+            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+            novo_saldo = (conta_bancaria[0].saldo - despesa)
+            
+            if novo_saldo < 0:
+                form.add_error('valor','O valor da despesa é maior que o saldo disponível em conta.')
+                return render(request, "testando.html", {'form': form})
+                       
+            form.save()
+            
+            # transacao = Contas_bancarias(1, usuario_id, conta_bancaria[0].nome_banco, conta_bancaria[0].saldo + despesa)
+            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+            transacao.save()            
+            
+            return render(request, "sucesso.html")
+        
+        return render(request, "testando.html", {'form': form})
+    
 
 def transferencia(request):
-    return render(request, "transferencia.html")
-
+    if request.method =="GET":
+        form = Criar_transferencia_Form()
+        return render(request, "testando.html", {'form': form})
+        
+    elif request.method == "POST":
+        
+        usuario = request.user
+        classe_transacao=(Transacao(classe_transacao=2, user_id=usuario))
+        form = Criar_transferencia_Form(request.POST, instance=classe_transacao)
+        
+        if form.is_valid():
+            form.save(commit=False)
+            
+            transferencia = Decimal(form['valor'].data)    
+            id_banco_origem = form['conta'].data
+            id_banco_destino = form['conta_destino'].data
+            usuario_id = request.user.id
+            conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
+            conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
+            novo_saldo_origem = (conta_bancaria_origem[0].saldo - transferencia)
+            novo_saldo_destino = (conta_bancaria_origem[0].saldo + transferencia)
+            
+            if novo_saldo_origem < 0:
+                form.add_error('valor','O valor da transferencia é maior que o saldo disponível em conta.')
+            
+            if form['conta'].data == form['conta_destino'].data:
+                form.add_error('conta_destino','O banco destino não pode ser igual ao banco de origem.')
+                       
+            if form.errors:
+                return render(request, "testando.html", {'form': form})
+            form.save()
+            
+            # transacao = Contas_bancarias(1, usuario_id, conta_bancaria_origem[0].nome_banco, conta_bancaria_origem[0].saldo + transferencia)
+            transacao_saida = Contas_bancarias(id= conta_bancaria_origem[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_origem[0].nome_banco, saldo= novo_saldo_origem)
+            
+            transacao_entrada = Contas_bancarias(id= conta_bancaria_destino[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_destino[0].nome_banco, saldo= novo_saldo_destino)
+            transacao_saida.save()
+            transacao_entrada.save()            
+            
+            return render(request, "sucesso.html")
+        
+        return render(request, "testando.html", {'form': form})
+    
 
 def sucesso(request):
+    print("Deu boas!")
     return render(request, "sucesso.html")
