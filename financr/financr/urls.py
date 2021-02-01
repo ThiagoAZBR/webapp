@@ -19,4 +19,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r"^", include("users.urls")),
     url(r"^admin/", admin.site.urls),
+    url(r"^", include("faleconosco.urls")),
+    url(r"^", include("transacao.urls")),
+    url(r"^", include("contasbanco.urls")),
 ]

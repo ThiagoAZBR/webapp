@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'faleconosco',
     'users',
     'social_django',
     'contasbanco',
