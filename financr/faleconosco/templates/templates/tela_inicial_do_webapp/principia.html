@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "pt-br">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "{% static 'financr/css_da_home_do_webapp/estilo.css' %}">
+
+    <!-- Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Roboto Muito Fino -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+
+    <title>Início</title>
+</head>
+<body>
+
+    <div class="global">
+
+        <div class="formatacao_cabecalho">
+            <div class = "cabecalho">
+
+                <div class="div_nome_app">
+
+                    <h4 id = 'nome_do_app'>- Financr -</h4>
+
+                </div>
+
+                <div class="div_usuario">
+
+                    <img src = "{% static 'financr/img/imagens_para_home_do_webapp/icone-usuario.png' %}" alt = "ícone de Usuario" id = 'icone_usuario'>
+
+                </div>
+
+                <div class="fundo_opaco"></div>
+                
+            </div>
+        </div>
+
+        <div class = "opcoes_icone_usuario">
+
+            <nav style = 'list-style: none;' id = 'nav_opcoes_icone_usuario'>
+
+                <li id = 'dados'> Usuario </li>
+                <li id = 'configuracoes'> Configurações </li>
+                <li id = 'sair'> Sair </li>
+
+            </nav>
+
+        </div>
+
+
+    </div>
+
+</body>
+</html>
