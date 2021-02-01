@@ -1,13 +1,13 @@
 from django.shortcuts import render
 
-def nova_conta(Request):
+def nova_conta(request):
     return render(request, "nova_conta.html")
 
 
-def contas(Request):
+def contas(request):
     return render(request, "contas.html")
 
 
-def sucesso(Request):
+def sucesso(request):
     return render(request, "sucesso.html")
     
