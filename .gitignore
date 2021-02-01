@@ -2,3 +2,6 @@ venv
 *.pyc
 __pycache__
 **/__pycache__
+
+
+venv_thiago_2

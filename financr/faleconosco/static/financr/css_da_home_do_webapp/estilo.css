@@ -1,0 +1,110 @@
+/*
+===========================================================================================
+
+Sumário No Final da Página 
+
+11 - Cabeçalho Com As Opçoes Home, Metas, Transações, Configuração
+
+===========================================================================================
+*/
+
+html, body {
+
+    margin: 0;
+    font-size: 62.5%;
+
+}
+
+.formatacao_cabecalho {
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cabecalho {
+
+    display: flex;
+    flex-direction: row;
+    opacity: 1;
+    color: black;
+    width: 90%;
+    height: 10vh;
+
+    margin: auto;
+
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.fundo_opaco {
+
+    background-color: gray;
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10vh;
+    width: 100%;
+    z-index: -10;
+
+}
+
+#nome_do_app {
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 4rem;
+
+
+}
+
+.div_usuario {
+
+    width: 200px;
+
+}
+
+#icone_usuario {
+
+    height: 6vh;
+    width: 60px;
+
+}
+
+#icone_usuario:hover {
+
+    opacity: 0.5;
+
+}
+
+.opcoes_icone_usuario {
+
+    position: absolute;
+    top: 13vh;
+    right: 6.5vw;
+    border: black solid 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    padding: 5px;
+
+
+}
+
+#nav_opcoes_icone_usuario {
+
+    font-size: 2.4rem;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#nav_opcoes_icone_usuario li:hover {
+
+    opacity: 0.7;
+
+}
