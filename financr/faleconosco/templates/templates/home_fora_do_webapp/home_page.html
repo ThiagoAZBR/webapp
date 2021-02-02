@@ -187,14 +187,15 @@
                 <div class="imagem" >
                     <img class="img" src="{% static 'financr/img/imagens_para_a_home_fora_do_webapp/Captura de tela 2020-12-13 153143.png' %}" alt="grafico">
                 </div>
-                <form action="http://www.google.com.br" class="dados_cadastrais" id = 'a_cadastro'>
+                <form action= {% url 'register' %} class="dados_cadastrais" id = 'a_cadastro' method= "POST">
+                    {% csrf_token %}
                     <h1 class="h1">Crie sua conta e venha fazer<br>parte da revolução nas<br>finanças pessoais!</h1>
                     <div class="dados">
-                        <input class="email" type="email" placeholder=" E-mail:">
-                        <input class="nome" type="text" placeholder=" Nome de Usuário:">
-                        <input class="senha" type="password" placeholder=" Senha:">
-                        <input class="repitasenha" type="password" placeholder=" Repita a senha:">
-                    </div>
+                        <input class="email" type="email" placeholder=" E-mail:" id='email' name='email'>
+                        <input class="nome" type="text" placeholder=" Nome de Usuário:" id='username' name='username'>
+                        <input class="senha" type="password" placeholder=" Senha:" id='password1' name='password1'>
+                        <input class="repitasenha" type="password" placeholder=" Repita a senha:" name='password2'>
+                    </div>  
                     <div class="check" >
                         <input type="checkbox">
                         <label>Li e concordo com os termos do Financr.</label>
@@ -206,17 +207,18 @@
                 </form>
             </div>
             <div class="contato" id="fale_conosco">
-                <form class="formulario" action="http://www.google.com.br">
+                <form method="POST" class="formulario" action= {% url 'faleconosco' %}>
+                    {% csrf_token %}
                     <div class="colunaesquerda">
                         <h1 class="h1">Fale Conosco</h1>
 
-                        <input class="camponome" type="text" placeholder=" Nome completo">
-                        <input class="campoemail" type="email" placeholder=" Endereço Email">
-                        <input class="mensagem" type="text" placeholder=" Digite aqui sua mensagem.">
+                        <input class="camponome" type="text" placeholder=" Nome completo" name='nome'>
+                        <input class="campoemail" type="email" placeholder=" Endereço Email" name='email'>
+                        <input class="mensagem" type="text" placeholder=" Digite aqui sua mensagem." name='mensagem'>
                         <div class="enviar">
 
                             <p class="captcha">CaptCha</p>
-                            <input class="submit" type="submit" value="Enviar mensagem">
+                            <button class="submit" type="submit" value="Enviar mensagem">Enviar mensagem</button>
                         </div>
                     </div>
                 </form>

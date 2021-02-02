@@ -1,7 +1,7 @@
 from django.views.generic.edit import CreateView
 from .models import Faleconosco
 from django.urls import reverse_lazy
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 
 class Formulario(CreateView):
     model = Faleconosco
@@ -11,19 +11,18 @@ class Formulario(CreateView):
 
 
 def fale_conosco(request):
-    print('')
-    print(request.method)
-    print('')
+
     if request.method == "POST":
-        nome_completo = request.POST.get('nome_completo')
+        nome_completo = request.POST.get('nome')
         email = request.POST.get('email')
         mensagem = request.POST.get('mensagem')
         
-        print(nome_completo, email, mensagem)
+        a =Faleconosco(None, nome_completo, email, mensagem)
+        a.save()
         
-        return render(request, reverse('home'))
+        return render(request, 'templates/home_fora_do_webapp/home_page.html')
 
-    return render(request, reverse('home'))
+    return render(request, 'templates/home_fora_do_webapp/home_page.html')
     
     
     

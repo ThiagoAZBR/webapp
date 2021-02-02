@@ -7,6 +7,7 @@ def dashboard(request):
     return render(request, "users/dashboard.html")
  
 def register(request):
+    print(request.POST) 
     if request.method == "GET":
         return render(
             request, "users/register.html",
@@ -14,6 +15,7 @@ def register(request):
         )
     elif request.method == "POST":
         form = CustomUserCreationForm(request.POST)
+            
         if form.is_valid():
             user = form.save(commit=False)
             user.backend = "django.contrib.auth.backends.ModelBackend"
@@ -21,4 +23,7 @@ def register(request):
             login(request, user)
             return redirect(reverse("dashboard"))
         else:
+            print('')
+            print(form.non_field_errors)
+            print(form.errors)
             return render(request, "users/error.html", {'form':form})

@@ -114,3 +114,4 @@ def transferencia(request):
 def sucesso(request):
     print("Deu boas!")
     return render(request, "sucesso.html")
+    
