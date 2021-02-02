@@ -17,7 +17,6 @@ def receita(request):
         
         if form.is_valid():
             form.save()
-            
             receita = Decimal(form['valor'].data)    
             id_banco = form['conta'].data
             usuario_id = request.user.id
@@ -29,7 +28,7 @@ def receita(request):
             transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
             transacao.save()            
             
-            return render(request, "sucesso.html")
+            return render(request, "users/dashboard.html")
         
         return render(request, "testando.html", {'form': form})
 
@@ -62,7 +61,7 @@ def despesa(request):
             transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
             transacao.save()            
             
-            return render(request, "sucesso.html")
+            return render(request, "users/dashboard.html")
         
         return render(request, "testando.html", {'form': form})
     
@@ -75,7 +74,7 @@ def transferencia(request):
     elif request.method == "POST":
         
         usuario = request.user
-        classe_transacao=(Transacao(classe_transacao=2, user_id=usuario))
+        classe_transacao=(Transacao(classe_transacao=3, user_id=usuario))
         form = Criar_transferencia_Form(request.POST, instance=classe_transacao)
         
         if form.is_valid():
@@ -88,7 +87,7 @@ def transferencia(request):
             conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
             conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
             novo_saldo_origem = (conta_bancaria_origem[0].saldo - transferencia)
-            novo_saldo_destino = (conta_bancaria_origem[0].saldo + transferencia)
+            novo_saldo_destino = (conta_bancaria_destino[0].saldo + transferencia)
             
             if novo_saldo_origem < 0:
                 form.add_error('valor','O valor da transferencia é maior que o saldo disponível em conta.')
@@ -107,7 +106,7 @@ def transferencia(request):
             transacao_saida.save()
             transacao_entrada.save()            
             
-            return render(request, "sucesso.html")
+            return render(request, "users/dashboard.html")
         
         return render(request, "testando.html", {'form': form})
     
