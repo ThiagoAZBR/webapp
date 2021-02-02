@@ -50,8 +50,40 @@
 
         </div>
 
+        <!-- Telas Maiores  -->
+
+        <div class = "telas_e_expansao">
+
+
+            <div class="tela_saldo">
+
+                <div id = "fundo"></div>
+                <h1 id = 'txt_saldo'> SALDO </h1>
+
+            </div>
+
+            <div class = "tela_graficos">
+
+                <div id = "fundo"></div>
+                <img src="{% static 'financr\img\imagens_para_home_do_webapp\grafico.png' %}" alt="Ícone de um gráfico" id = 'img_grafico'>
+
+            </div>
+
+            <div class = "tela_criar_conta">
+
+                <div id = "fundo"></div>
+                <img src="{% static 'financr\img\imagens_para_home_do_webapp\criar_conta.png' %}" alt = "Ícone de Criar Conta" id = 'img_criar_conta'>
+
+            </div>
+
+
+
+
+        </div>
 
     </div>
 
+
+    <script src = "{% static 'financr/arquivos_js/js_da_home_do_webapp/script.js' %}"></script>
 </body>
 </html>

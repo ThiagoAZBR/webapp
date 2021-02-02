@@ -164,8 +164,16 @@ body {
 
 
 
+.formulario_login {
 
-#txt_email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.formulario_login #txt_email {
 
     height: 30px;
     width: 80%;
@@ -178,7 +186,7 @@ body {
 
 }
 
-#txt_senha {
+.formulario_login #txt_senha {
 
     height: 30px;
     width: 80%;
@@ -212,6 +220,10 @@ body {
     transition: 200ms;
 
 }
+
+
+
+
 /* ##################################################################################################### */
 
 /* Edição Do Bloco 1, logo abaixo da barra topo */
