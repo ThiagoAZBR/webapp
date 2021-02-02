@@ -1,0 +1,9 @@
+{% block content %}
+    <h2>Teste</h2>
+    <form method="POST"  class="teste">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.non_field_errors }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
