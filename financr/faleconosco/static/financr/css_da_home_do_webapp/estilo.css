@@ -28,7 +28,7 @@ html, body {
     display: flex;
     flex-direction: row;
     opacity: 1;
-    color: black;
+    color: white;
     width: 90%;
     height: 14vh;
 
@@ -42,8 +42,8 @@ html, body {
 
 .fundo_opaco {
 
-    background-color: gray;
-    opacity: 0.1;
+    background-color: #333335;
+    opacity: 1;
     position: absolute;
     top: 0;
     left: 0;
@@ -70,7 +70,7 @@ html, body {
 #icone_usuario {
 
     height: 9vh;
-    width: 60px;
+    width: 80px;
 
 }
 
@@ -157,8 +157,6 @@ html, body {
 
 #fundo {
 
-    background-color: gray;
-    opacity: 0.1;
     position: absolute;
     width: 18vw;
     height: 27vh;
@@ -291,11 +289,11 @@ html, body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
-    background-color:gray;
-    opacity: 0.1;
-    color: #777;
-}
+/* .btn-white {
+    background-color: black;
+    opacity: 0.9;
+    color: #333335;
+} */
 
 .btn::after {
     content: "";
@@ -310,7 +308,6 @@ html, body {
 }
 
 .btn-white::after {
-    background-color: gray;
     opacity: 0.9;
 }
 
