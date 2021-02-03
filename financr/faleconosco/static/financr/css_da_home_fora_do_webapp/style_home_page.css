@@ -176,7 +176,7 @@ body {
 
 }
 
-.formulario_login #txt_email {
+#txt_email {
 
     height: 30px;
     width: 80%;
@@ -189,7 +189,7 @@ body {
 
 }
 
-.formulario_login #txt_senha {
+#txt_senha {
 
     height: 30px;
     width: 80%;

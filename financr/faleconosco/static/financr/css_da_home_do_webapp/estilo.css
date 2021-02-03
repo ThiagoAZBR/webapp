@@ -28,7 +28,7 @@ html, body {
     display: flex;
     flex-direction: row;
     opacity: 1;
-    color: black;
+    color: white;
     width: 90%;
     height: 14vh;
 
@@ -42,8 +42,7 @@ html, body {
 
 .fundo_opaco {
 
-    background-color: gray;
-    opacity: 0.1;
+    background-color: #333335;
     position: absolute;
     top: 0;
     left: 0;
@@ -70,7 +69,7 @@ html, body {
 #icone_usuario {
 
     height: 9vh;
-    width: 60px;
+    width: 80px;
 
 }
 
@@ -150,8 +149,6 @@ html, body {
     text-align: center;
     grid-column: 1/1;
     grid-row: 1/1;
-    min-width: 13vw;
-    min-height: 20vh;
 
 }
 
@@ -163,25 +160,64 @@ html, body {
     width: 18vw;
     height: 27vh;
     border-radius: 10%;
+    z-index: -20;
 
-    min-width: 13vw;
-    min-height: 20vh;
 
 }
 
 #img_saldo {
 
-    width: 12vw;
-    height: 23vh;
+    width: 63%;
+    height: 84%;
 
 }
 
 .tela_saldo.on {
 
     height: 80vh;
-    width: 100vw;
+    width: 55vw;
+    min-width: 55vw;
 
 }
+
+.tela_saldo.on img {
+
+    display: none;
+
+}
+
+.tela_saldo.on #fundo {
+
+
+    display: none;
+
+}
+
+
+
+
+.tela_graficos.on {
+
+    height: 80vh;
+    width: 55vw;
+    min-width: 55vw;
+
+}
+
+.tela_graficos.on img {
+
+    display: none;
+
+}
+
+.tela_graficos.on #fundo {
+
+
+    display: none;
+
+}
+
+
 
 
 
@@ -196,24 +232,20 @@ html, body {
     text-align: center;
     grid-column: 2/2;
     grid-row: 1/1;
-    min-width: 13vw;
-    min-height: 20vh;
 
 }
 
 #img_grafico {
 
-    width: 12vw;
-    height: 23vh;
+    width: 63%;
+    height: 84%;
     
-    min-width: 10vw;
-    min-height: 18vh;
 
 }
 
 
 
-.tela_criar_conta {
+.tela_criar {
 
     display: flex;
     width: 18vw;
@@ -223,19 +255,14 @@ html, body {
     text-align: center;
     grid-column: 3/3;
     grid-row: 1/1;
-    min-width: 13vw;
-    min-height: 20vh;
 
 }
 
 #img_criar_conta {
 
     margin-left: 2.8vw;
-    width: 12vw;
-    height: 23vh;
-    min-width: 10vw;
-    min-height: 18vh;
-
+    width: 63%;
+    height: 84%;
 }
 
 
@@ -250,17 +277,13 @@ html, body {
     text-align: center;
     grid-column: 4/4;
     grid-row: 1/1;
-    min-width: 13vw;
-    min-height: 20vh;
 
 }
 
 #img_transferencia {
 
-    width: 12vw;
-    height: 23vh;
-    min-width: 10vw;
-    min-height: 18vh;
+    width: 63%;
+    height: 84%;
 
 }
 
@@ -275,63 +298,10 @@ html, body {
 
 }
 
-.btn:link,
-.btn:visited {
-    transition: all .2s;
-    position: absolute;
-}
+.telas_e_expansao div:hover {
 
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
+    -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
+    transition: all 0.3s;
 
-.btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.btn-white {
-    background-color:gray;
-    opacity: 0.1;
-    color: #777;
-}
-
-.btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .3s;
-}
-
-.btn-white::after {
-    background-color: gray;
-    opacity: 0.9;
-}
-
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-
-.btn-animated {
-    animation: moveInBottom 5s ease-out;
-    animation-fill-mode: backwards;
-}
-
-@keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
 }
