@@ -43,6 +43,10 @@ html, body {
 .fundo_opaco {
 
     background-color: #333335;
+<<<<<<< HEAD
+=======
+    opacity: 1;
+>>>>>>> 77b0369fbb11306fb44f7b3c74496e1034f2a31a
     position: absolute;
     top: 0;
     left: 0;
@@ -154,8 +158,6 @@ html, body {
 
 #fundo {
 
-    background-color: gray;
-    opacity: 0.1;
     position: absolute;
     width: 18vw;
     height: 27vh;
@@ -304,4 +306,54 @@ html, body {
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     transition: all 0.3s;
 
+<<<<<<< HEAD
+=======
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* .btn-white {
+    background-color: black;
+    opacity: 0.9;
+    color: #333335;
+} */
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .3s;
+}
+
+.btn-white::after {
+    opacity: 0.9;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+>>>>>>> 77b0369fbb11306fb44f7b3c74496e1034f2a31a
 }
