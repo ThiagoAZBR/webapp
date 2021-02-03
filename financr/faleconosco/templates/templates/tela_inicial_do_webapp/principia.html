@@ -29,7 +29,7 @@
 
                 <div class="div_usuario">
 
-                    <img src = "{% static 'financr/img/imagens_para_home_do_webapp/icone-usuario.png' %}" alt = "ícone de Usuario" id = 'icone_usuario'>
+                    <img src = "{% static 'financr/img/imagens_para_home_do_webapp/settings-interface.png' %}" alt = "ícone de Usuario" id = 'icone_usuario'>
 
                 </div>
 
@@ -57,22 +57,30 @@
 
             <div class="tela_saldo">
 
-                <div id = "fundo"></div>
-                <h1 id = 'txt_saldo'> SALDO </h1>
+                <div id = "fundo" class="btn btn-white btn-				 animate"></div>
+                <!-- <h1 id = 'txt_saldo'> SALDO </h1> -->
+                <img src = "{% static 'financr\img\imagens_para_home_do_webapp\transferencia.png' %}" alt = "Uma seta girando ao redor de um símbolo de dinheiro específico para a moeda do real" id = 'img_saldo'>
 
             </div>
 
             <div class = "tela_graficos">
 
-                <div id = "fundo"></div>
-                <img src="{% static 'financr\img\imagens_para_home_do_webapp\grafico.png' %}" alt="Ícone de um gráfico" id = 'img_grafico'>
+                <div id = "fundo" class="btn btn-white btn-				 animate"></div>
+                <img src="{% static 'financr\img\imagens_para_home_do_webapp\grafico.png' %}" alt="Ícone de um gráfico onde tem uma seta subindo por cima de várias colunas de diversos tamanhos" id = 'img_grafico'>
 
             </div>
 
             <div class = "tela_criar_conta">
 
-                <div id = "fundo"></div>
-                <img src="{% static 'financr\img\imagens_para_home_do_webapp\criar_conta.png' %}" alt = "Ícone de Criar Conta" id = 'img_criar_conta'>
+                <div id = "fundo" class="btn btn-white btn-				 animate"></div>
+                <img src="{% static 'financr\img\imagens_para_home_do_webapp\criar_conta.png' %}" alt = "Ícone de Criar Conta, uma figura de aparência humana com um símbolo de mais/adicionar" id = 'img_criar_conta'>
+
+            </div>
+
+            <div class = "tela_transferencias">
+
+                <div id = "fundo" class="btn btn-white btn-				 animate"></div>
+                <img src = "{% static 'financr\img\imagens_para_home_do_webapp\transferir.png' %}" alt = "Ícone que representa uma transferência, uma seta para a direita(lado 1) e outra para esquerda (lado 2)" id = 'img_transferencia'>
 
             </div>
 

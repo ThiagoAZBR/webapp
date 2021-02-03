@@ -30,7 +30,7 @@ html, body {
     opacity: 1;
     color: black;
     width: 90%;
-    height: 10vh;
+    height: 14vh;
 
     margin: auto;
 
@@ -47,7 +47,7 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 10vh;
+    height: 14vh;
     width: 100%;
     z-index: -10;
 
@@ -69,7 +69,7 @@ html, body {
 
 #icone_usuario {
 
-    height: 6vh;
+    height: 9vh;
     width: 60px;
 
 }
@@ -86,12 +86,13 @@ html, body {
 
     display: block;
     position: absolute;
-    top: 13vh;
-    right: 6.5vw;
+    top: 16.5vh;
+    right: 7vw;
     border: black solid 1px;
     border-left-width: 0;
     border-right-width: 0;
     padding: 5px;
+    border-radius: 5%;
 
 }
 
@@ -120,15 +121,18 @@ html, body {
 
 .telas_e_expansao {
 
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+
     align-items: center;
     width: 100%;
-    height: 90vh;
+    height: 86vh;
     justify-content: space-evenly;
     font-size: 2.5rem;
     font-family: 'Roboto', sans-serif;
     text-align: center;
+    justify-items: center;
 
 }
 
@@ -138,12 +142,17 @@ html, body {
 
 .tela_saldo {
 
-    width: 20vw;
-    height: 30vh;
+    display: flex;
+    width: 18vw;
+    height: 27vh;
     align-items: center;
     justify-content: center;
     text-align: center;
-    display: flex;
+    grid-column: 1/1;
+    grid-row: 1/1;
+    min-width: 13vw;
+    min-height: 20vh;
+
 }
 
 #fundo {
@@ -151,15 +160,25 @@ html, body {
     background-color: gray;
     opacity: 0.1;
     position: absolute;
-    width: 20vw;
-    height: 30vh;
+    width: 18vw;
+    height: 27vh;
     border-radius: 10%;
+
+    min-width: 13vw;
+    min-height: 20vh;
+
+}
+
+#img_saldo {
+
+    width: 12vw;
+    height: 23vh;
 
 }
 
 .tela_saldo.on {
 
-    height: 90vh;
+    height: 80vh;
     width: 100vw;
 
 }
@@ -169,37 +188,150 @@ html, body {
 
 .tela_graficos {
 
-    width: 20vw;
-    height: 30vh;
+    display: flex;
+    width: 18vw;
+    height: 27vh;
     align-items: center;
     justify-content: center;
     text-align: center;
-    display: flex;
+    grid-column: 2/2;
+    grid-row: 1/1;
+    min-width: 13vw;
+    min-height: 20vh;
+
 }
 
 #img_grafico {
 
     width: 12vw;
     height: 23vh;
+    
+    min-width: 10vw;
+    min-height: 18vh;
 
 }
 
 
+
 .tela_criar_conta {
 
-    width: 20vw;
-    height: 30vh;
+    display: flex;
+    width: 18vw;
+    height: 27vh;
     align-items: center;
     justify-content: center;
     text-align: center;
-    display: flex;
+    grid-column: 3/3;
+    grid-row: 1/1;
+    min-width: 13vw;
+    min-height: 20vh;
 
 }
 
 #img_criar_conta {
 
-    margin-left: 3vw;
+    margin-left: 2.8vw;
     width: 12vw;
     height: 23vh;
+    min-width: 10vw;
+    min-height: 18vh;
 
+}
+
+
+
+.tela_transferencias {
+    
+    display: flex;
+    width: 18vw;
+    height: 27vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-column: 4/4;
+    grid-row: 1/1;
+    min-width: 13vw;
+    min-height: 20vh;
+
+}
+
+#img_transferencia {
+
+    width: 12vw;
+    height: 23vh;
+    min-width: 10vw;
+    min-height: 18vh;
+
+}
+
+@media (min-width: 100vw) {
+
+    .opcoes_icone_usuario img {
+
+        height: 18vh;
+        width: 10vw;
+
+    }
+
+}
+
+.btn:link,
+.btn:visited {
+    transition: all .2s;
+    position: absolute;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color:gray;
+    opacity: 0.1;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .3s;
+}
+
+.btn-white::after {
+    background-color: gray;
+    opacity: 0.9;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
