@@ -160,6 +160,7 @@ tela_graficos.addEventListener('click', function() {
             console.log('Lista off Aqui')
 
         })
+        
 
     }
 
@@ -184,5 +185,19 @@ tela_graficos.addEventListener('click', function() {
     })
 
     })
+
+})
+
+
+revelar = true
+
+let dados_usuario = document.querySelector('#dados')
+let conf_usuario = document.querySelector('.conf_usuario')
+
+dados_usuario.addEventListener('click', () => {
+
+    conf_usuario.classList.toggle('on', revelar)
+
+    revelar = !revelar
 
 })

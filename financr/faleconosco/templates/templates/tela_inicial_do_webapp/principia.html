@@ -50,6 +50,13 @@
 
         </div>
 
+        <div class = "conf_usuario">
+
+            <h4> < Olá, {{ user.username|default:'Guest' }} > </h4>
+            <h4> < Seu Email: > <br>< Email Não inserido > </h4>
+
+        </div>
+
         <!-- Telas Maiores  -->
 
         <div class = "telas_e_expansao">
@@ -58,8 +65,8 @@
             <div class="tela_saldo">
 
                 <div id = "fundo"></div>
-                <!-- <h1 id = 'txt_saldo'> SALDO </h1> -->
                 <img src = "{% static 'financr\img\imagens_para_home_do_webapp\transferencia.png' %}" alt = "Uma seta girando ao redor de um símbolo de dinheiro específico para a moeda do real" id = 'img_saldo'>
+                <h4 id = 'txt_saldo'>SALDO</h4>
 
             </div>
 
@@ -67,6 +74,7 @@
 
                 <div id = "fundo"></div>
                 <img src="{% static 'financr\img\imagens_para_home_do_webapp\grafico.png' %}" alt="Ícone de um gráfico onde tem uma seta subindo por cima de várias colunas de diversos tamanhos" id = 'img_grafico'>
+                <h4 id = 'txt_grafico'>GRÁFICO</h4>
 
             </div>
 

@@ -1,0 +1,131 @@
+
+html, body {
+
+    margin: 0;
+    font-size: 62.5%;
+    
+
+}
+
+.formatacao_cabecalho {
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cabecalho {
+
+    display: flex;
+    flex-direction: row;
+    opacity: 1;
+    color: white;
+    width: 90%;
+    height: 14vh;
+
+    margin: auto;
+
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.fundo_opaco {
+
+    background-color: #333335;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 14vh;
+    width: 100%;
+    z-index: -10;
+
+}
+
+
+#nome_do_app {
+
+    font-family: 'Open Sans', sans-serif;
+    font-size: 4rem;
+
+
+}
+
+
+.div_usuario {
+
+    width: 200px;
+
+}
+
+#icone_usuario {
+
+    height: 10.5vh;
+    width: 72px;
+
+}
+
+#icone_usuario:hover {
+
+    opacity: 0.5;
+
+}
+
+
+.opcoes_icone_usuario.on {
+
+    display: block;
+    position: absolute;
+    top: 16.5vh;
+    right: 7vw;
+    border: black solid 1px;
+    border-left-width: 0;
+    border-right-width: 0;
+    padding: 5px;
+    border-radius: 5%;
+
+}
+
+.opcoes_icone_usuario.on nav {
+
+    font-size: 2.4rem;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.opcoes_icone_usuario.on nav li:hover {
+
+    opacity: 0.7;
+
+}
+
+.opcoes_icone_usuario {
+
+    display: none;
+
+}
+
+.conf_usuario {
+
+    display: none;
+    
+}
+
+.conf_usuario.on{
+
+    display: block;
+    position: absolute;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    top: 15.3vh;
+    right: 18vw;
+
+    width: 20vw;
+    text-align: center;
+
+}

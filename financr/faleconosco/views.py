@@ -19,3 +19,6 @@ class HomePageView(TemplateView):
 
 class AppScreenView(TemplateView):
     template_name = './templates/tela_inicial_do_webapp/principia.html'
+
+class TransactionScreenView(TemplateView):
+    template_name = './templates/tela_de_transacoes/arkhe.html'

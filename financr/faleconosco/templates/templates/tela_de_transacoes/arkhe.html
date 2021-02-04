@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financr</title>
+    <link rel="stylesheet" href="{% static 'financr/css_transacoes/style.css' %}">
+
+    <!-- Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Roboto Muito Fino -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+
+    <div class="global">
+
+        <div class="formatacao_cabecalho">
+            <div class = "cabecalho">
+
+                <div class="div_nome_app">
+
+                    <h4 id = 'nome_do_app'>- Financr -</h4>
+
+                </div>
+
+                <div class="div_usuario">
+
+                    <img src = "{% static 'financr/img/imagens_para_transacoes/settings-interface.png' %}" alt = "ícone de Usuario" id = 'icone_usuario'>
+
+                </div>
+
+                <div class = "fundo_opaco"></div>
+                
+            </div>
+        </div>
+
+        <div class = "opcoes_icone_usuario">
+
+            <nav style = 'list-style: none;' id = 'nav_opcoes_icone_usuario'>
+
+                <li id = 'dados'> Usuario </li>
+                <li id = 'configuracoes'> Configurações </li>
+                <li id = 'sair'> Sair </li>
+
+            </nav>
+
+
+
+        </div>
+
+            <div class = "conf_usuario">
+
+                <h4> < Olá, {{ user.username|default:'Guest' }} > </h4>
+                <h4> < Seu Email: > <br>< Email Não inserido > </h4>
+    
+            </div>
+
+
+    </div>
+
+    <script src = "{% static 'financr/arquivos_js/js_transacoes/roteiro.js' %}"></script>
+    
+</body>
+</html>
