@@ -13,12 +13,27 @@ let tela_transferencias = document.querySelector('.tela_transferencias')
 let divs_expansao = document.querySelectorAll('.telas_e_expansao div')
 let maximo = divs_expansao.length
 
+// Transformar de None para Block, ou Block para None
+
 icone_usuario.addEventListener('click', () => {
 
     opcoes_icone_usuario.classList.toggle('on', mostrar)
 
     mostrar = !mostrar
     
+
+})
+
+revelar = true
+
+let dados_usuario = document.querySelector('#dados')
+let conf_usuario = document.querySelector('.conf_usuario')
+
+dados_usuario.addEventListener('click', () => {
+
+    conf_usuario.classList.toggle('on', revelar)
+
+    revelar = !revelar
 
 })
 
@@ -59,6 +74,45 @@ tela_graficos.addEventListener('click', () => {
 
 })
 
+tela_criar_conta.addEventListener('click', () => {
+
+    for (var i = 0;; i++) {
+
+        console.log(i)
+        if (i >= maximo) break;
+
+        divs_expansao[i].classList.remove('on')
+
+    }
+
+    tela_criar_conta.classList.toggle('on', expandir)
+
+    expandir = !expandir
+
+
+
+})
+
+tela_transferencias.addEventListener('click', () => {
+
+    for (var i = 0;; i++) {
+
+        console.log(i)
+        if (i >= maximo) break;
+
+        divs_expansao[i].classList.remove('on')
+
+    }
+
+    tela_transferencias.classList.toggle('on', expandir)
+
+    expandir = !expandir
+
+
+})
+
+
+
 
 
 
@@ -69,6 +123,8 @@ let tela_total = document.querySelector('.telas_e_expansao')
 
 let lista_on = []
 let lista_off = []
+
+//  Controlar o tamanho das outras telas ao clicar e expandir
 
 tela_saldo.addEventListener('click', function() {
 
@@ -189,15 +245,130 @@ tela_graficos.addEventListener('click', function() {
 })
 
 
-revelar = true
 
-let dados_usuario = document.querySelector('#dados')
-let conf_usuario = document.querySelector('.conf_usuario')
 
-dados_usuario.addEventListener('click', () => {
+//                                                         ----     C R I A R  C O N T A   -----
 
-    conf_usuario.classList.toggle('on', revelar)
 
-    revelar = !revelar
+
+tela_criar_conta.addEventListener('click', function() {
+
+    divs_expansao.forEach(function (item) {
+
+        if (item.className.indexOf('on') != -1) {
+
+            lista_on.push(item)
+            
+        }
+
+        else {
+
+            lista_off.push(item)
+            console.log('Entrou')
+
+        }
+
+        console.log(lista_off)
+        console.log(lista_on)
+
+
+    if (tela_criar_conta.className.indexOf('on') != -1) {
+
+        lista_off.forEach(function (tela) {
+
+            tela.style.width = '200px'
+            tela.style.height = '17vh'
+            console.log('Lista off Aqui')
+
+        })
+        
+
+    }
+
+    else {
+
+        lista_off.forEach(function (tela_off) {
+
+            tela_off.style.width = '18vw'
+            tela_off.style.height = '27vh'
+
+
+        })
+
+    }
+
+
+
+    lista_on.forEach(function (tela_on) {
+
+        console.log('Lista on Aqui')
+
+    })
+
+    })
+
+})
+
+
+
+//                                                         ----     T R A N S F E R E N C I A S   -----
+
+
+
+tela_transferencias.addEventListener('click', function() {
+
+    divs_expansao.forEach(function (item) {
+
+        if (item.className.indexOf('on') != -1) {
+
+            lista_on.push(item)
+            
+        }
+
+        else {
+
+            lista_off.push(item)
+            console.log('Entrou')
+
+        }
+
+        console.log(lista_off)
+        console.log(lista_on)
+
+
+    if (tela_transferencias.className.indexOf('on') != -1) {
+
+        lista_off.forEach(function (tela) {
+
+            tela.style.width = '200px'
+            tela.style.height = '17vh'
+            console.log('Lista off Aqui')
+
+        })
+        
+
+    }
+
+    else {
+
+        lista_off.forEach(function (tela_off) {
+
+            tela_off.style.width = '18vw'
+            tela_off.style.height = '27vh'
+
+
+        })
+
+    }
+
+
+
+    lista_on.forEach(function (tela_on) {
+
+        console.log('Lista on Aqui')
+
+    })
+
+    })
 
 })

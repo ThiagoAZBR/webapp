@@ -20,46 +20,101 @@
 
     <div class="global">
 
-        <div class="formatacao_cabecalho">
-            <div class = "cabecalho">
+        <div class="receita">
 
-                <div class="div_nome_app">
+            <div class="cabecalho">
 
-                    <h4 id = 'nome_do_app'>- Financr -</h4>
+                <h1>Nova Receita</h1>
+                <div class="xiz">
 
-                </div>
-
-                <div class="div_usuario">
-
-                    <img src = "{% static 'financr/img/imagens_para_transacoes/settings-interface.png' %}" alt = "ícone de Usuario" id = 'icone_usuario'>
+                    <div id = 'one' > </div>
+                    <div id = 'two' > </div>
 
                 </div>
 
-                <div class = "fundo_opaco"></div>
-                
             </div>
+
+            <form action = "" method="post" class = 'formulario_receita'>
+
+                <div class="div_titulo_description">
+                    <h4 id = 'titulo_description'>
+                        Descrição
+                    </h4>
+                </div>
+
+                <div class = "description">
+
+                    <input type="text" name="descricao" id="txt_description">
+
+                </div>
+
+                <div class="div_titulo_valor_e_data">
+                    <h4 id = 'titulo_valor_e_data'>
+                        Valor
+                    </h4>
+
+                    <h4 id = 'titulo2_valor_e_data'>
+                        Data
+                    </h4>
+                </div>
+
+                <div class = "valor_e_data">
+
+                    <input type="text" name = "valor" id = "txt_value">
+                    <input type="date" name = "data_transacao" id = "data_transacao">
+
+                </div>
+
+                <div class="div_titulo_conta_e_categoria">
+                    <h4 id = 'titulo_conta_e_categoria'>
+                        Conta
+                    </h4>
+
+                    <h4 id = 'titulo2_conta_e_categoria'>
+                        Categoria
+                    </h4>
+                </div>
+
+                <div class = "conta_e_categoria">
+
+                    <select name = "conta" id = "select_conta"></select>
+                    <select name = "categoria_transacao" id = "select_categoria"></select>
+
+                </div>
+
+                <div class="div_titulo_tipo">
+                    <h4 id = 'titulo_tipo'>
+                        Tipo De Receita
+                    </h4>
+                </div>
+
+                <div class="tipo_de_receita">
+
+                    <input type="checkbox" name = "tipo_transacao1" id = "check1" >
+                    <input type="checkbox" name = "tipo_transacao2" id = "check2" >
+                    <input type="checkbox" name = "tipo_transacao3" id = "check3" >
+
+                    <h4 id = 'pontual'> Pontual </h4>
+                    <h4 id = 'fixa'> Fixa</h4>
+                    <h4 id = 'parcelada'> Parcelada</h4>
+                    
+                </div>
+
+
+
+            </form>
+
         </div>
 
-        <div class = "opcoes_icone_usuario">
 
-            <nav style = 'list-style: none;' id = 'nav_opcoes_icone_usuario'>
-
-                <li id = 'dados'> Usuario </li>
-                <li id = 'configuracoes'> Configurações </li>
-                <li id = 'sair'> Sair </li>
-
-            </nav>
-
-
+        <div class="despesa">
 
         </div>
 
-            <div class = "conf_usuario">
 
-                <h4> < Olá, {{ user.username|default:'Guest' }} > </h4>
-                <h4> < Seu Email: > <br>< Email Não inserido > </h4>
-    
-            </div>
+        <div class="transferencia">
+
+        </div>
 
 
     </div>

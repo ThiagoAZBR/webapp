@@ -3,14 +3,35 @@ html, body {
 
     margin: 0;
     font-size: 62.5%;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
     
+    
+}
+
+.global {
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
 }
 
-.formatacao_cabecalho {
+.receita {
 
-    justify-content: center;
-    align-items: center;
+    background: #AAFFA9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #11FFBD, #AAFFA9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #11FFBD, #AAFFA9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    border: 0.2rem black solid;
+    border-radius: 1%;
+    height: 80vh;
+    width: 25vw;
+
 
 }
 
@@ -18,114 +39,270 @@ html, body {
 
     display: flex;
     flex-direction: row;
-    opacity: 1;
-    color: white;
+    font-size: 1.3rem;
     width: 90%;
-    height: 14vh;
-
-    margin: auto;
-
-    text-align: center;
     align-items: center;
     justify-content: space-between;
-
-}
-
-.fundo_opaco {
-
-    background-color: #333335;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 14vh;
-    width: 100%;
-    z-index: -10;
-
-}
-
-
-#nome_do_app {
-
+    justify-items: center;
+    justify-self: center;
+    margin: auto;
     font-family: 'Open Sans', sans-serif;
-    font-size: 4rem;
-
-
-}
-
-
-.div_usuario {
-
-    width: 200px;
-
-}
-
-#icone_usuario {
-
-    height: 10.5vh;
-    width: 72px;
-
-}
-
-#icone_usuario:hover {
-
-    opacity: 0.5;
+    color: black;
 
 }
 
 
-.opcoes_icone_usuario.on {
+.xiz {
 
-    display: block;
-    position: absolute;
-    top: 16.5vh;
-    right: 7vw;
-    border: black solid 1px;
-    border-left-width: 0;
-    border-right-width: 0;
-    padding: 5px;
-    border-radius: 5%;
+    width: 40px;
+    height: 0px;
+    align-items: center;
+    justify-content: center;
 
 }
 
-.opcoes_icone_usuario.on nav {
+#one,
+#two {
 
-    font-size: 2.4rem;
-    height: 20vh;
+    background-color: black;
+    height: 3px;
+    width: 90%;
+
+
+}
+
+.xiz #one {
+
+    transform: rotate(45deg) translate(-1px, 1px);
+
+}
+
+.xiz #two {
+
+    transform: rotate(-45deg) translate(1px, -5px);
+
+}
+
+.formulario_receita {
+
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    align-content: space-around;
 
 }
 
-.opcoes_icone_usuario.on nav li:hover {
+.div_titulo_description {
 
-    opacity: 0.7;
+    width: 90%;
+    margin: auto;
+    font-size: 1.8rem;
+    height: 6vh;
+    color: #333335;
+    font-family: 'Roboto', sans-serif;
 
 }
 
-.opcoes_icone_usuario {
+.description {
 
-    display: none;
-
-}
-
-.conf_usuario {
-
-    display: none;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 2vh;
     
 }
 
-.conf_usuario.on{
+.description input {
+    
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.6rem;
+    width: 70%;
+    font-family: 'Roboto', sans-serif;
 
-    display: block;
-    position: absolute;
+}
+
+.div_titulo_valor_e_data {
+
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
     font-size: 1.8rem;
     font-family: 'Roboto', sans-serif;
-    top: 15.3vh;
-    right: 18vw;
+    color: #333335;
 
-    width: 20vw;
-    text-align: center;
+}
+
+
+#titulo2_valor_e_data {
+
+    margin-left: 215px;
+
+}
+
+.div_titulo_conta_e_categoria {
+
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    color: #333335;
+
+}
+
+#titulo2_conta_e_categoria {
+
+    margin-left: 215px;
+
+}
+
+.valor_e_data {
+
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 4vh;
+    
+}
+
+.valor_e_data input {
+    
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.6rem;
+    width: 9vw;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.conta_e_categoria {
+
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 3vh;
+
+}
+
+.conta_e_categoria select {
+    
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.6rem;
+    width: 9vw;
+
+}
+
+.div_titulo_tipo {
+
+    display: flex;
+    width: 90%;
+    margin: auto;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    color: #333335;
+
+}
+
+.tipo_de_receita {
+
+    display: grid;
+    grid-template-columns: 2vw 6vw;
+    grid-template-rows: 3vh 3vh 3vh;
+    width: 90%;
+    align-items: start;
+    margin: auto;
+
+}
+
+.tipo_de_receita input {
+
+    grid-column: 1/1;
+    background-color: transparent;
+
+}
+
+#check1 {
+
+    grid-row: 1/1;
+
+}
+
+#check2 {
+
+    grid-row: 2/2;
+
+}
+
+#check3 {
+
+    grid-row: 3/3;
+
+}
+
+.tipo_de_receita h4 {
+
+    grid-row: 2/2;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    margin: 1px;
+
+}
+
+#pontual {
+
+    grid-row: 1/1;
+
+}
+
+#fixa {
+
+    grid-row: 2/2;
+
+}
+
+#parcelada {
+
+    grid-row: 3/3;
+
+}
+
+
+::-moz-placeholder {  /* Firefox 19+ */
+
+    font-size: 1.6rem;
+}
+
+
+
+.despesas {
+
+    background: #e43a15;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #e65245, #e43a15);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #e65245, #e43a15); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+}
+
+.transferencias {
+
+    background: #00d2ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 
 }

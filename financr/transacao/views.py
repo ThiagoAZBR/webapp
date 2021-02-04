@@ -115,3 +115,10 @@ def transferencia(request):
 def sucesso(request):
     print("Deu boas!")
     return render(request, "sucesso.html")
+
+
+
+from django.views.generic import TemplateView
+
+class TransactionScreenView(TemplateView):
+    template_name = './templates/tela_de_transacoes/arkhe.html'
