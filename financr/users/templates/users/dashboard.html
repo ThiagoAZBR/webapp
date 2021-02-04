@@ -9,6 +9,7 @@ Hello, {{ user.username|default:'Guest' }}!
         <a href="{% url 'nova_receita' %}">Nova Receita</a>
         <a href="{% url 'nova_despesa' %}">Nova Despesa</a>
         <a href="{% url 'transferencia' %}">Nova Transferência</a>
+        <a href="{% url 'criar_conta' %}">Criar conta bancária</a>
     {% else %}
         <a href="{% url 'login' %}">Login</a>
     {% endif %}

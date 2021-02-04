@@ -1,0 +1,10 @@
+
+<p>Olá, {{ user.username }}! </p>
+<p>Bancos:</p>
+
+<ul>
+    {% for banco in lista_contas_banco %}
+        <li>{{ banco.nome_banco }} - R${{ banco.saldo}} </li>
+        <p></p>
+    {% endfor %}
+</ul>

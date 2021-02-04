@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from .forms import Criar_transacao_Form, Criar_transferencia_Form
 from contasbanco.models import Contas_bancarias
-from transacao.models import Transacao
+from transacao.models import Transacao, Categoria_transacao
 from django.contrib.auth.models import User
 from decimal import Decimal
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='/accounts/login/')
 def receita(request):
     if request.method =="GET":
+        usuario = request.user
         form = Criar_transacao_Form()
+        form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id)
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
@@ -32,9 +38,14 @@ def receita(request):
         
         return render(request, "testando.html", {'form': form})
 
+
+@login_required(login_url='/accounts/login/')
 def despesa(request):
     if request.method =="GET":
+        usuario = request.user
         form = Criar_transacao_Form()
+        form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id)
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
@@ -65,10 +76,17 @@ def despesa(request):
         
         return render(request, "testando.html", {'form': form})
     
-
+    
+@login_required(login_url='/accounts/login/')
 def transferencia(request):
     if request.method =="GET":
-        form = Criar_transferencia_Form()
+        usuario = request.user
+        classe_transacao=(Transacao(descricao="Transferência para conta própria"))
+        form = Criar_transferencia_Form(instance=classe_transacao)
+        form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
+        form.fields["conta_destino"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id)
+        
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":

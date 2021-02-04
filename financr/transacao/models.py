@@ -8,7 +8,7 @@ from decimal import Decimal
 
 class Categoria_transacao(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    categoria = models.CharField(max_length=20, blank=False, null=False, unique=True)
+    categoria = models.CharField(max_length=20, blank=False, null=False)
     ativo = models.BooleanField(max_length=1, default=1)
 
     def __str__(self):
@@ -51,4 +51,4 @@ class Transacao(models.Model):
 
 class Transferencia(Transacao):
     conta_destino = models.ForeignKey(Contas_bancarias, on_delete=models.RESTRICT, blank=False, null=False)
-    descricao = "Transferência para conta própria"
+    
