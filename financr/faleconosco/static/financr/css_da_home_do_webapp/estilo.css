@@ -47,7 +47,13 @@ html, body {
     left: 0;
     height: 14vh;
     width: 100%;
-    z-index: -10;
+    z-index: 1;
+
+}
+
+.div_nome_app {
+
+    z-index: 2;
 
 }
 
@@ -56,12 +62,12 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     font-size: 4rem;
 
-
 }
 
 .div_usuario {
 
     width: 200px;
+    z-index: 2;
 
 }
 
@@ -320,15 +326,12 @@ html, body {
 
 .tela_criar.on {
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-width: 100%;
-    height: 100vh;
-    min-height: 100vh;
-    background-color: white;
-    z-index: 10;
+
+    height: 80vh;
+    min-height: 80vh;
+    width: 55vw;
+    min-width: 55vw;
+
 
 
 }
@@ -363,24 +366,29 @@ html, body {
 
 }
 
+.tela_transferencias .div_tipos_transacao {
+
+    display: none;
+    width: 90%;
+    height: 100%;
+
+}
+
+
 #img_transferencia {
 
     width: 63%;
     height: 84%;
+    margin-left: 40px;
 
 }
 
 .tela_transferencias.on {
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-width: 100%;
-    height: 100vh;
-    min-height: 100vh;
-    background-color: white;
-    z-index: 10;
+    height: 80vh;
+    min-height: 80vh;
+    width: 55vw;
+    min-width: 55vw;
 
 
 }
@@ -391,11 +399,36 @@ html, body {
 
 }
 
-.tela_transferencias.on img {
+.tela_transferencias.on #img_transferencia {
 
-    display: none;
+    display: none;  
 
 }
+
+.tela_transferencias.on .div_tipos_transacao {
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 90%;
+    min-width: 90%;
+
+    min-height: 100%;
+    height: 100%;
+
+}
+
+.tela_transferencias.on .div_tipos_transacao img {
+
+    height: 22%;
+    width: 10vw;
+    z-index: 10;
+
+}
+
 
 
 

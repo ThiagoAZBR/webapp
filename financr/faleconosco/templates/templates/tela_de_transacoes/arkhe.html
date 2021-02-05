@@ -25,12 +25,13 @@
             <div class="cabecalho">
 
                 <h1>Nova Receita</h1>
-                <div class="xiz">
 
+                <a href="app">
+                <div class="xiz">
                     <div id = 'one' > </div>
                     <div id = 'two' > </div>
-
                 </div>
+                </a>
 
             </div>
 
@@ -91,24 +92,69 @@
                 <div class="tipo_de_receita">
 
                     <div class="div_check1">
-                        <input type="checkbox" name = "tipo_transacao1" id = "check1" >
+                        <input type="checkbox" name = "tipo_transacao1" id = "check1" value = "pontual" >
                         <h4 id = 'pontual'> Pontual </h4>
                     </div>
 
                     <div class="div_check2">
-                        <input type="checkbox" name = "tipo_transacao2" id = "check2" >
+                        <input type="checkbox" name = "tipo_transacao2" id = "check2" value = "fixa" >
                         <h4 id = 'fixa'> Fixa</h4>
                     </div>
 
                     <div class="div_check3">
-                        <input type="checkbox" name = "tipo_transacao3" id = "check3" >
+                        <input type="checkbox" name = "tipo_transacao3" id = "check3" value = "parcelada" >
                         <h4 id = 'parcelada'> Parcelada</h4>
                     </div>
 
-
-
-
                     
+                </div>
+
+                <div class="div_tipo_pontual">
+
+                    <div class="div_observacao">
+
+                        <h4> Observação </h4>
+                        <input type="text" name = "observacoes" id = "txt_observacao">
+            
+                    </div>
+
+                </div>
+
+                <div class="div_tipo_fixa">
+
+                    <div class="div_regularidade">
+
+                        <h4 id = 'txt_regularidade'> Regularidade </h4>
+                        <select name="" id = "select_regularidade">
+                            <option value="mensal"> Mensal </option>
+                            <option value="semanal"> Semanal </option>
+                            <option value="diario"> Diário </option>
+                            <option value="anual"> Anual </option>
+                        </select>
+
+                    </div>
+
+                    <div class="div_observacao">
+
+                        <h4> Observação </h4>
+                        <input type="text" name = "observacoes" id = "txt_observacao">
+            
+                    </div>
+
+
+                </div>
+
+
+                <div class="div_salvar_sair">
+
+                    <div class="div_botoes">
+
+                        <input type="button" value = "Adicionar" id = 'adicionar'>
+
+                        <input type = "reset" value = "Resetar" id = 'resetar'>
+
+                    </div>
+
                 </div>
 
 
@@ -116,18 +162,7 @@
             </form>
 
         </div>
-
-
-        <div class="despesa">
-
-        </div>
-
-
-        <div class="transferencia">
-
-        </div>
-
-
+        
     </div>
 
     <script src = "{% static 'financr/arquivos_js/js_transacoes/roteiro.js' %}"></script>

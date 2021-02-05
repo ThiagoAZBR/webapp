@@ -44,10 +44,3 @@ def app_home(request):
         return render(request, './templates/tela_inicial_do_webapp/principia.html')
     
 
-def home_page(request):
-    if request.method == "GET":
-        form = 12
-        return render(request, './templates/home_fora_do_webapp/home_page.html', {"form": CustomUserCreationForm})
-    
-    else:
-        return render(request, './templates/home_fora_do_webapp/home_page.html', {"form": CustomUserCreationForm})
