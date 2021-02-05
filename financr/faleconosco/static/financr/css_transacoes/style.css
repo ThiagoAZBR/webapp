@@ -1,0 +1,300 @@
+
+html, body {
+
+    margin: 0;
+    font-size: 62.5%;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    
+    
+}
+
+.global {
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.receita {
+
+    background: #AAFFA9;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #11FFBD, #AAFFA9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #11FFBD, #AAFFA9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    border: 0.2rem black solid;
+    border-radius: 1%;
+    height: 92vh;
+    min-height: 92vh;
+    width: 25vw;
+
+
+}
+
+.cabecalho {
+
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: center;
+    justify-self: center;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+
+}
+
+
+.xiz {
+
+    width: 40px;
+    height: 0px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#one,
+#two {
+
+    background-color: black;
+    height: 3px;
+    width: 90%;
+
+
+}
+
+.xiz #one {
+
+    transform: rotate(45deg) translate(-1px, 1px);
+
+}
+
+.xiz #two {
+
+    transform: rotate(-45deg) translate(1px, -5px);
+
+}
+
+.formulario_receita {
+
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+
+}
+
+.div_titulo_description {
+
+    width: 90%;
+    margin: auto;
+    font-size: 1.4rem;
+    height: 6vh;
+    color: #333335;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 1vh;
+
+}
+
+.description {
+
+    width: 90%;
+    margin: auto;
+    margin-bottom: 0.5vh;
+    
+}
+
+.description input {
+    
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+    width: 70%;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.div_titulo_valor_e_data {
+
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    color: #333335;
+    height: 44px;
+
+}
+
+
+#titulo2_valor_e_data {
+
+    margin-left: 10.4vw;
+
+}
+
+.div_titulo_conta_e_categoria {
+
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    color: #333335;
+    height: 41px;
+
+}
+
+#titulo2_conta_e_categoria {
+
+    margin-left: 10vw;
+
+}
+
+.valor_e_data {
+
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5vh;
+    
+}
+
+.valor_e_data input {
+    
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+    width: 9vw;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.conta_e_categoria {
+
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5vh;
+
+}
+
+.conta_e_categoria select {
+    
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+    width: 9vw;
+
+}
+
+.div_titulo_tipo {
+
+    display: flex;
+    width: 90%;
+    margin: auto;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    color: #333335;
+
+}
+
+.tipo_de_receita {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 3vh;
+    width: 90%;
+    align-items: start;
+    margin: auto;
+
+}
+
+.tipo_de_receita input {
+
+    grid-row: 1/1;
+    background-color: transparent;
+
+}
+
+.tipo_de_receita h4 {
+
+    grid-row: 1/1;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    margin: 1px;
+
+}
+
+.div_check1 {
+
+    grid-column: 1/1;
+    display: flex;
+    flex-direction: row;
+}
+
+.div_check2 {
+
+    grid-column: 2/2;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.div_check3 {
+
+    grid-column: 3/3;
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+
+::-moz-placeholder {  /* Firefox 19+ */
+
+    font-size: 1.2rem;
+}
+
+
+
+.despesas {
+
+    background: #e43a15;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #e65245, #e43a15);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #e65245, #e43a15); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+}
+
+.transferencias {
+
+    background: #00d2ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+}
