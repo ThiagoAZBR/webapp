@@ -1,0 +1,136 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financr</title>
+    <link rel="stylesheet" href="{% static 'financr/css_transacoes/style.css' %}">
+
+    <!-- Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Roboto Muito Fino -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+
+    <div class="global">
+
+        <div class="receita">
+
+            <div class="cabecalho">
+
+                <h1>Nova Receita</h1>
+                <div class="xiz">
+
+                    <div id = 'one' > </div>
+                    <div id = 'two' > </div>
+
+                </div>
+
+            </div>
+
+            <form action = "" method="post" class = 'formulario_receita'>
+
+                <div class="div_titulo_description">
+                    <h4 id = 'titulo_description'>
+                        Descrição
+                    </h4>
+                </div>
+
+                <div class = "description">
+
+                    <input type="text" name="descricao" id="txt_description">
+
+                </div>
+
+                <div class="div_titulo_valor_e_data">
+                    <h4 id = 'titulo_valor_e_data'>
+                        Valor
+                    </h4>
+
+                    <h4 id = 'titulo2_valor_e_data'>
+                        Data
+                    </h4>
+                </div>
+
+                <div class = "valor_e_data">
+
+                    <input type="text" name = "valor" id = "txt_value">
+                    <input type="date" name = "data_transacao" id = "data_transacao">
+
+                </div>
+
+                <div class="div_titulo_conta_e_categoria">
+                    <h4 id = 'titulo_conta_e_categoria'>
+                        Conta
+                    </h4>
+
+                    <h4 id = 'titulo2_conta_e_categoria'>
+                        Categoria
+                    </h4>
+                </div>
+
+                <div class = "conta_e_categoria">
+
+                    <select name = "conta" id = "select_conta"></select>
+                    <select name = "categoria_transacao" id = "select_categoria"></select>
+
+                </div>
+
+                <div class="div_titulo_tipo">
+                    <h4 id = 'titulo_tipo'>
+                        Tipo De Receita
+                    </h4>
+                </div>
+
+                <div class="tipo_de_receita">
+
+                    <div class="div_check1">
+                        <input type="checkbox" name = "tipo_transacao1" id = "check1" >
+                        <h4 id = 'pontual'> Pontual </h4>
+                    </div>
+
+                    <div class="div_check2">
+                        <input type="checkbox" name = "tipo_transacao2" id = "check2" >
+                        <h4 id = 'fixa'> Fixa</h4>
+                    </div>
+
+                    <div class="div_check3">
+                        <input type="checkbox" name = "tipo_transacao3" id = "check3" >
+                        <h4 id = 'parcelada'> Parcelada</h4>
+                    </div>
+
+
+
+
+                    
+                </div>
+
+
+
+            </form>
+
+        </div>
+
+
+        <div class="despesa">
+
+        </div>
+
+
+        <div class="transferencia">
+
+        </div>
+
+
+    </div>
+
+    <script src = "{% static 'financr/arquivos_js/js_transacoes/roteiro.js' %}"></script>
+    
+</body>
+</html>
