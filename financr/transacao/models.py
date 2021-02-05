@@ -7,12 +7,22 @@ from decimal import Decimal
 
 
 class Categoria_transacao(models.Model):
+    CLASSE_TRANSACAO_CHOICES = (
+    (1, "Receita"),
+    (2, "Despesa"),
+    )
+    
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     categoria = models.CharField(max_length=20, blank=False, null=False)
+    classe_transacao = models.IntegerField(choices=CLASSE_TRANSACAO_CHOICES, blank=False, null=False, default=1)
     ativo = models.BooleanField(max_length=1, default=1)
+
 
     def __str__(self):
         return self.categoria
+    
+    class Meta:
+        unique_together = ["user_id", "categoria"]
 
 
 class Transacao(models.Model):
@@ -47,7 +57,6 @@ class Transacao(models.Model):
     num_parcelas = models.IntegerField(blank=False, null=False, default=1)
     observacoes = models.CharField(max_length=500, blank=False, null=False)
     data_criacao = models.DateField(auto_now=True, blank=False, null=False)
-
 
 class Transferencia(Transacao):
     conta_destino = models.ForeignKey(Contas_bancarias, on_delete=models.RESTRICT, blank=False, null=False)

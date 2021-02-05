@@ -21,4 +21,4 @@ class Criar_transferencia_Form(forms.ModelForm):
 class Criar_categoria_Form(forms.ModelForm):
     class Meta:
         model = Categoria_transacao
-        fields = ('categoria',)
+        fields = ('categoria','classe_transacao')

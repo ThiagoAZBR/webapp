@@ -90,7 +90,7 @@
         </div>
         
         <div class = "tela_de_login_invisivel">
-            <div class="formatacao_login">
+            <div class="form_login">
                 <div class = 'aba_de_login'>
                         <div class = 'titulo_e_x_de_fechar'>
 
@@ -98,15 +98,15 @@
                         <h3 id = 'titulo_aba' >E N T R A R</h3>
 
                         </div>
-                    
-                    <input id = 'txt_email' type = 'text' placeholder = " Email">
-                    <input id = 'txt_senha' type = 'text' placeholder = " Senha">
-                    <h4 id = 'entrar'>Login</h4>
-
+                        <form class = 'form_login' action = "accounts/login" method="post">
+                            {% csrf_token %}
+                            <input id = 'txt_email' type = 'text' placeholder = " Usuário" name='username'>
+                            <input id = 'txt_senha' type = 'password' placeholder = " Senha" name='password'>
+                            <input type="submit" id = 'entrar' value = " Login">
+                        </form>
                 </div>
             </div>
         </div>
-
 
         
 
