@@ -132,7 +132,7 @@ def transferencia(request):
 
 @login_required(login_url='/accounts/login/')
 def categoria(request):
-    if request.method =="GET":
+    if request.method =="GET":  
         usuario = request.user
         form = Criar_categoria_Form()
         return render(request, "testando.html", {'form': form})
@@ -155,6 +155,7 @@ def categoria(request):
             return render(request, "fracasso.html", {'form': form})
         
         return render(request, "fracasso.html", {'form': form})
+
 
 
 def sucesso(request):
