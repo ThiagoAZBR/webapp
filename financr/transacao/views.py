@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import Criar_transacao_Form, Criar_transferencia_Form
+from .forms import Criar_transacao_Form, Criar_transferencia_Form, Criar_categoria_Form
 from contasbanco.models import Contas_bancarias
 from transacao.models import Transacao, Categoria_transacao
 from django.contrib.auth.models import User
@@ -13,7 +13,7 @@ def receita(request):
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
-        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=2)
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
@@ -45,7 +45,7 @@ def despesa(request):
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
-        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=1)
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
@@ -128,6 +128,34 @@ def transferencia(request):
         
         return render(request, "testando.html", {'form': form})
     
+
+
+@login_required(login_url='/accounts/login/')
+def categoria(request):
+    if request.method =="GET":
+        usuario = request.user
+        form = Criar_categoria_Form()
+        return render(request, "testando.html", {'form': form})
+        
+    elif request.method == "POST":
+        usuario = request.user
+        classe_categoria=(Categoria_transacao(user_id=usuario))
+        form = Criar_categoria_Form(request.POST, instance=classe_categoria)
+        
+        if form.is_valid():
+            try:
+                form.save()
+                return render(request, "users/dashboard.html", {'form': form})
+            
+            except:
+                form.add_error('categoria','Esta categoria já existe.')
+                return render(request, "testando.html", {'form': form})
+            
+        else:
+            return render(request, "fracasso.html", {'form': form})
+        
+        return render(request, "fracasso.html", {'form': form})
+
 
 def sucesso(request):
     print("Deu boas!")

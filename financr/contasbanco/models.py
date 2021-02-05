@@ -12,3 +12,5 @@ class Contas_bancarias(models.Model):
         return self.nome_banco
     
     
+    class Meta:
+        unique_together = ["user_id", "nome_banco"]

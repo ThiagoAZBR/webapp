@@ -16,8 +16,17 @@ def criar_conta(request):
         form = Criar_ContaBanco_Form(request.POST, instance=classe_criar_conta)
         
         if form.is_valid():
-            form.save()
-            return render(request, 'users/dashboard.html', {'form': form})
+            filtro_bancos = Contas_bancarias.objects.filter(user_id=usuario.id)
+            nome_banco_novo = form['nome_banco'].data
+            
+            try:
+                form.save()
+                return render(request, 'users/dashboard.html', {'form': form})
+            
+            except:
+                form.add_error('nome_banco','Este Banco já existe.')
+                return render(request, 'criar_conta.html', {'form': form})
+            
         else:    
             return render(request, 'criar_conta.html', {'form': form})
     
