@@ -29,7 +29,8 @@ html, body {
     
     border: 0.2rem black solid;
     border-radius: 1%;
-    height: 80vh;
+    height: 92vh;
+    min-height: 92vh;
     width: 25vw;
 
 
@@ -39,7 +40,7 @@ html, body {
 
     display: flex;
     flex-direction: row;
-    font-size: 1.3rem;
+    font-size: 1rem;
     width: 90%;
     align-items: center;
     justify-content: space-between;
@@ -95,10 +96,11 @@ html, body {
 
     width: 90%;
     margin: auto;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     height: 6vh;
     color: #333335;
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 1vh;
 
 }
 
@@ -106,7 +108,7 @@ html, body {
 
     width: 90%;
     margin: auto;
-    margin-bottom: 2vh;
+    margin-bottom: 0.5vh;
     
 }
 
@@ -117,7 +119,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     width: 70%;
     font-family: 'Roboto', sans-serif;
 
@@ -129,16 +131,17 @@ html, body {
     flex-direction: row;
     width: 90%;
     margin: auto;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
     color: #333335;
+    height: 44px;
 
 }
 
 
 #titulo2_valor_e_data {
 
-    margin-left: 215px;
+    margin-left: 10.4vw;
 
 }
 
@@ -148,15 +151,16 @@ html, body {
     flex-direction: row;
     width: 90%;
     margin: auto;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
     color: #333335;
+    height: 41px;
 
 }
 
 #titulo2_conta_e_categoria {
 
-    margin-left: 215px;
+    margin-left: 10vw;
 
 }
 
@@ -167,7 +171,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 4vh;
+    margin-bottom: 0.5vh;
     
 }
 
@@ -178,7 +182,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     width: 9vw;
     font-family: 'Roboto', sans-serif;
 
@@ -191,7 +195,7 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 3vh;
+    margin-bottom: 0.5vh;
 
 }
 
@@ -202,7 +206,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     width: 9vw;
 
 }
@@ -212,7 +216,7 @@ html, body {
     display: flex;
     width: 90%;
     margin: auto;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
     color: #333335;
 
@@ -221,8 +225,8 @@ html, body {
 .tipo_de_receita {
 
     display: grid;
-    grid-template-columns: 2vw 6vw;
-    grid-template-rows: 3vh 3vh 3vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 3vh;
     width: 90%;
     align-items: start;
     margin: auto;
@@ -231,60 +235,48 @@ html, body {
 
 .tipo_de_receita input {
 
-    grid-column: 1/1;
-    background-color: transparent;
-
-}
-
-#check1 {
-
     grid-row: 1/1;
-
-}
-
-#check2 {
-
-    grid-row: 2/2;
-
-}
-
-#check3 {
-
-    grid-row: 3/3;
+    background-color: transparent;
 
 }
 
 .tipo_de_receita h4 {
 
-    grid-row: 2/2;
+    grid-row: 1/1;
     font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
     margin: 1px;
 
 }
 
-#pontual {
+.div_check1 {
 
-    grid-row: 1/1;
+    grid-column: 1/1;
+    display: flex;
+    flex-direction: row;
+}
+
+.div_check2 {
+
+    grid-column: 2/2;
+    display: flex;
+    flex-direction: row;
 
 }
 
-#fixa {
+.div_check3 {
 
-    grid-row: 2/2;
-
-}
-
-#parcelada {
-
-    grid-row: 3/3;
+    grid-column: 3/3;
+    display: flex;
+    flex-direction: row;
 
 }
+
 
 
 ::-moz-placeholder {  /* Firefox 19+ */
 
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 
 
