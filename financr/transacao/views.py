@@ -5,6 +5,9 @@ from transacao.models import Transacao, Categoria_transacao
 from django.contrib.auth.models import User
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
+from datetime import *
+from django.utils import formats
+
 
 
 @login_required(login_url='/accounts/login/')
@@ -22,18 +25,75 @@ def receita(request):
         form = Criar_transacao_Form(request.POST, instance=classe_transacao)
         
         if form.is_valid():
-            form.save()
+            
+            tipo_transacao = int(form['tipo_transacao'].data)
             receita = Decimal(form['valor'].data)    
             id_banco = form['conta'].data
             usuario_id = request.user.id
+
+            if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
+                
+                form.save()
+                
+                conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                novo_saldo = (conta_bancaria[0].saldo + receita)
+                
+                transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                transacao.save()            
             
-            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
-            novo_saldo = (conta_bancaria[0].saldo + receita)
+            elif tipo_transacao == 2: #TRANSAÇÃO FIXA
+                regularidade = int(form['regularidade'].data)
+                
+                if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+                    intervalo_transacao = timedelta(days=1)
+                    data_atual = datetime.today()
+                    data_atual_formatada = data_atual.strftime("%Y-%m-%d")
+                    data_transacao_str = form['data_transacao'].data
+                    data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
+                    
+                    
+                    while data_atual > data_transacao_data:
+                        print(data_atual)
+                        print(data_transacao_data)
+                        
+                        form.save()
+                        
+                        conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                        novo_saldo = (conta_bancaria[0].saldo + receita)
+                        
+                        print(conta_bancaria[0].saldo, receita)
+                        print(novo_saldo)
+                        
+                        transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                        transacao.save()
+                        data_transacao_data += intervalo_transacao
+
+                elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+                    intervalo_transacao = timedelta(weeks=1)
+                
+                elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+                    intervalo_transacao = timedelta(months=1)
+                
+                else:
+                    form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
+                    return render(request, "testando.html", {'form': form})
+                
+                return render(request, "users/dashboard.html")
             
-            # transacao = Contas_bancarias(1, usuario_id, conta_bancaria[0].nome_banco, conta_bancaria[0].saldo + receita)
-            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
-            transacao.save()            
-            
+                form.save()
+                receita = Decimal(form['valor'].data)    
+                id_banco = form['conta'].data
+                usuario_id = request.user.id
+                
+                conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                novo_saldo = (conta_bancaria[0].saldo + receita)
+                
+                transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                transacao.save()  
+           
+            elif tipo_transacao == 3:  #TRANSAÇÃO PARCELADA
+               pass 
+                
             return render(request, "users/dashboard.html")
         
         return render(request, "testando.html", {'form': form})
@@ -162,3 +222,6 @@ def sucesso(request):
     print("Deu boas!")
     return render(request, "sucesso.html")
     
+
+def atualizar_saldo():
+    pass

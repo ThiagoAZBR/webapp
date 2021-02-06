@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'users',
     'social_django',
     'contasbanco',
-    'transacao',
+    'transacao.apps.TransacaoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
