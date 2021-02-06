@@ -42,6 +42,7 @@ class Transacao(models.Model):
     (1, "Diário"),
     (2, "Semanal"),
     (3, "Mensal"),
+    (4, " "),
     )
 
 
@@ -53,11 +54,14 @@ class Transacao(models.Model):
     conta = models.ForeignKey(Contas_bancarias, on_delete=models.RESTRICT, blank=False, null=False)
     categoria_transacao = models.ForeignKey(Categoria_transacao, on_delete=models.RESTRICT, blank=False, null=False)
     tipo_transacao = models.IntegerField(choices=TIPO_TRANSACAO_CHOICES, default=1, null=False, blank=False)
-    regularidade = models.IntegerField(choices=REGULARIDADE_CHOICES, default=3, null=False, blank=False)
+    regularidade = models.IntegerField(choices=REGULARIDADE_CHOICES, default=4, null=False, blank=True)
     num_parcelas = models.IntegerField(blank=False, null=False, default=1)
     observacoes = models.CharField(max_length=500, blank=False, null=False)
     data_criacao = models.DateField(auto_now=True, blank=False, null=False)
-
+    transacao_efetivada = models.BooleanField(max_length=1, default=0)
+    transacao_fixa = models.BooleanField(max_length=1, default=0)
+    
+    
 class Transferencia(Transacao):
     conta_destino = models.ForeignKey(Contas_bancarias, on_delete=models.RESTRICT, blank=False, null=False)
     
