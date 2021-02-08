@@ -162,7 +162,12 @@ def sucesso(request):
     return render(request, "sucesso.html")
     
 
+#       ----     Views Do App Aquiiiii !!!!!!!!!!!!!!!!!!!!!!!!!!!!    ----
 
-from django.views.generic import TemplateView
-class TransactionScreenView(TemplateView):
-    template_name = './templates/tela_de_transacoes/arkhe.html'
+
+# from django.views.generic import TemplateView
+# class TransactionScreenView(TemplateView):
+#     template_name = './templates/tela_de_transacoes/arkhe.html'
+
+# class TransactionScreen2View(TemplateView):
+#     template_name = './templates/tela_de_transacoes/despesa.html'

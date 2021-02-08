@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from faleconosco.views import Formulario, fale_conosco, app_home
+from faleconosco.views import Formulario, fale_conosco, app_home, HomePageView
 from django.urls import path
 
 urlpatterns = [   
