@@ -7,7 +7,6 @@ urlpatterns = [
     url(r'^faleconosco/', fale_conosco, name="faleconosco"),
     url(r'^app', app_home, name = 'app_home'),
 
-    # path("", HomePageView.as_view(), name="home"),
-    # path('app', AppScreenView.as_view(), name = 'app-screen')
+    path("", HomePageView.as_view(), name="home"),    
 
 ]
