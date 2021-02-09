@@ -27,9 +27,9 @@ html, body {
     display: flex;
     flex-direction: row;
     opacity: 1;
-    color: white;
+    color: black;
     width: 90%;
-    height: 14vh;
+    height: 12vh;
 
     margin: auto;
 
@@ -39,17 +39,6 @@ html, body {
 
 }
 
-.fundo_opaco {
-
-    background-color: #333335;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 14vh;
-    width: 100%;
-    z-index: 1;
-
-}
 
 .div_nome_app {
 

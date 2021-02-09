@@ -173,4 +173,4 @@ class TransactionScreen2View(TemplateView):
     template_name = './templates/tela_de_transacoes/despesa.html'
 
 class TransactionScreen3View(TemplateView):
-    template_name = './template/tela_de_transacoes/transferir.html'
+    template_name = './templates/tela_de_transacoes/transferir.html'

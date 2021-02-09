@@ -33,9 +33,155 @@
 
             </div>
 
+            <form action="" method="post">
+                <div class="from_account">
+
+                    <h4>Da Conta</h4>
+                    <select name="" id = "select_from_account"></select>
+
+                </div>
+
+                <div class="to_account">
+
+                    <h4>Para a Conta</h4>
+                    <select name="" id = "select_to_account"></select>
+
+                </div>
+
+                <div class="div_titulo_valor_e_data">
+                    <h4 id = 'titulo_valor_e_data'>
+                        Valor
+                    </h4>
+
+                    <h4 id = 'titulo2_valor_e_data'>
+                        Data
+                    </h4>
+                </div>
+
+                <div class = "valor_e_data">
+
+                    <input type="number" step="0.01" name = "valor" id = "txt_value">
+                    <input type="date" name = "data_transacao" id = "data_transacao">
+
+                </div>
+
+                
+                <div class="div_titulo_tipo">
+                    <h4 id = 'titulo_tipo'>
+                        Tipo De Receita
+                    </h4>
+                </div>
+
+                <div class="tipo_de_receita">
+
+                    <div class="div_check1">
+                        <input type="checkbox" name = "tipo_transacao1" id = "check1" value = "pontual" >
+                        <h4 id = 'pontual'> Pontual </h4>
+                    </div>
+
+                    <div class="div_check2">
+                        <input type="checkbox" name = "tipo_transacao2" id = "check2" value = "fixa" >
+                        <h4 id = 'fixa'> Fixa</h4>
+                    </div>
+
+                    <div class="div_check3">
+                        <input type="checkbox" name = "tipo_transacao3" id = "check3" value = "parcelada" >
+                        <h4 id = 'parcelada'> Parcelada</h4>
+                    </div>
+
+                    
+                </div>
+
+                <div class="div_tipo_pontual">
+
+                    <div class="div_observacao">
+
+                        <h4 id = 'h4_observacao'> Observação </h4>
+                        <input type="text" name = "observacoes" id = "txt_observacao">
+            
+                    </div>
+
+                </div>
+
+                <div class="div_tipo_fixa">
+
+                    <div class="div_regularidade">
+
+                        <h4 id = 'txt_regularidade'> Regularidade </h4>
+                        <select name="" id = "select_regularidade">
+                            <option value="mensal"> Mensal </option>
+                            <option value="semanal"> Semanal </option>
+                            <option value="diario"> Diário </option>
+                            <option value="anual"> Anual </option>
+                        </select>
+
+                    </div>
+
+                    <div class="div_observacao">
+
+                        <h4 id = 'h4_observacao' > Observação </h4>
+                        <input type="text" name = "observacoes" id = "txt_observacao">
+            
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="div_tipo_parcelada">
+
+                    <div class="div_regularidade_parcelas">
+
+                        <div class="div_regularidade">
+
+                            <h4 id = 'txt_regularidade'> Regularidade </h4>
+                            <select name="" id = "select_regularidade">
+                                <option value="mensal"> Mensal </option>
+                                <option value="semanal"> Semanal </option>
+                                <option value="diario"> Diário </option>
+                                <option value="anual"> Anual </option>
+                            </select>
+
+                        </div>
+
+                        <div class="div_numero_de_parcelas">
+
+                            <h4 id = 'txt_numero_parcelas'> Número De Parcelas </h4>
+                            <input type = "number" name = "" id = "input_numero_de_parcelas">
+
+                        </div>
+
+                    </div>
+
+                    <div class="div_observacao">
+
+                        <h4 id = 'h4_observacao'> Observação </h4>
+                        <input type="text" name = "observacoes" id = "txt_observacao">
+            
+                    </div>
+
+                </div>
+
+
+                <div class="div_salvar_sair">
+
+                    <div class="div_botoes">
+
+                        <input type="button" value = "Adicionar" id = 'adicionar'>
+
+                        <input type = "reset" value = "Resetar" id = 'resetar'>
+
+                    </div>
+
+                </div>
+            </form>
+
         </div>
 
     </div>
     
+    <script src = "{% static 'financr/arquivos_js/js_transacoes/roteiro.js' %}" ></script>
+
 </body>
 </html>
