@@ -11,7 +11,10 @@ class CreateUserForm(UserCreationForm):
 
             'username': forms.TextInput(attrs={'placeholder' : ' Nome de Usuário:'}),
             'email' : forms.EmailInput(attrs={'placeholder' : ' E-mail:'}),
-            'password1' : forms.PasswordInput(attrs={'placeholder' : ' Senha:'}),
-            'password2' : forms.PasswordInput(attrs={'placeholder' : ' Repita a Senha:'}),
 
         }
+
+    def __init__(self, *args, **kwargs):
+        super(CreateUserForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].widget = forms.PasswordInput(attrs={'placeholder': ' Senha:'})
+        self.fields['password2'].widget = forms.PasswordInput(attrs={'placeholder': ' Repita a Senha:'})
