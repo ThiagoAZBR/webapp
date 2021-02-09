@@ -184,7 +184,7 @@ html, body {
     margin: auto;
     font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
-    color: #333335;
+    color: black;
 
 }
 
@@ -253,7 +253,7 @@ html, body {
     display: flex;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
-    color: #333335;
+    color: black;
 
 }
 
@@ -288,7 +288,7 @@ html, body {
 
     font-size: 1.4rem;
     font-family: 'Roboto', sans-serif;
-    color: #333335;
+    color: black;
     display: flex;
     flex-direction: column;
 
@@ -342,7 +342,7 @@ html, body {
     font-size: 1.3rem;
     width: 9vw;
     font-family: 'Roboto', sans-serif;
-    color: #333335;
+    color: black;
 
 }
 
