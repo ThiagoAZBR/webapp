@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from users.views import dashboard, register
+from users.views import register, dashboard
  
 urlpatterns = [
     url(r"^accounts/", include("django.contrib.auth.urls")),

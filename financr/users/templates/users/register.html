@@ -3,15 +3,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Register</h2>
+<div class="cabecalho_registro">
+    <h2>Cadastrar</h2>
+</div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.errors }}
-    {{ form.non_field_errors }}
-    {{form}}
-    <input type="submit" value="Register">
-</form>
-
-<a href="{% url 'login' %}">Back to login</a>
+<div class="div_formulario_registro">
+    <form id="form_registro" method="post">
+        {% csrf_token %}
+        {{ form.errors }}
+        {{ form.non_field_errors }}
+        {{form}}
+        <input type="submit" value="Cadastrar">
+    </form>
+</div>
+<div class="links_pagina_registro">
+    <a href="{% url 'login' %}">Voltar para Login</a>
+</div>
 {% endblock %}

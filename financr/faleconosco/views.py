@@ -47,7 +47,15 @@ def app_home(request):
 def home_page(request):
     if request.method == "GET":
         form = 12
-        return render(request, './templates/home_fora_do_webapp/home_page.html', {"form": CustomUserCreationForm})
+        return render(request, './templates/home_fora_do_webapp/home_page.html')
     
     else:
-        return render(request, './templates/home_fora_do_webapp/home_page.html', {"form": CustomUserCreationForm})
+        return render(request, './templates/home_fora_do_webapp/home_page.html')
+
+
+def index(request):
+    if request.method == "GET":
+        return render(request, './templates/home_fora_do_webapp/index.html')
+    
+    else:
+        return render(request, './templates/home_fora_do_webapp/index.html')

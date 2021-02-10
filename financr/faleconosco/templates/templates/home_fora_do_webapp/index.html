@@ -1,0 +1,256 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principia</title>
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'financr/css_da_home_fora_do_webapp/style_home_page.css' %}">
+    <link rel="stylesheet" href = "{% static 'financr/css_da_home_fora_do_webapp/index.css' %}">
+
+    <link rel="preconnect" href = "https://fonts.gstatic.com">
+
+    <!-- Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Pt Sans  +-  -->
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet"> 
+
+    <!-- Hind Siliguri      boa-->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap" rel="stylesheet">
+    
+    <!-- Noto Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+
+    <!-- Roboto Muito Fino -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+
+
+</head>
+<body>
+    
+    <div class = 'global'>
+
+        <div class = 'barra_topo'>
+
+            <div class = "div_icone">
+
+
+
+            </div>
+
+
+            <div class = 'textos_barra_topo'>
+                
+                <div class = "menu-section">
+
+                    <div class = "menu_hamburguer">
+                        <div class = 'one'></div>
+                        <div class = 'two'></div>
+                        <div class = "three"></div>
+                    </div>
+
+                    <nav class = 'nav_opcoes_menu' style = 'list-style: none;'>
+                        <li id = 'botaologin'>
+                            <a style="font-family: 'Gill Sans', 'Gill Sans MT', 
+                            'Calibri', 'Trebuchet MS', sans-serif;
+                            font-size: 23px;
+                            border: 1px solid black;
+                            border-radius: 5px;
+                            padding: 8px; padding-left: 35px;
+                            padding-right: 35px;
+                            width: 105px; text-decoration: none; 
+                            background-color: black; 
+                            color: white;" href="{% url 'login' %}">Login</a>
+                        </li>
+        
+                        <li id = 'barra'> 
+                            <h4 id = 'barra'>|</h4>
+                        </li> 
+        
+                        <li>     
+                            <a href = "#a_cadastro" style="text-decoration:none;"> <h4 id = 'txt_cadastre_se'>Cadastre-se</h4> </a>
+                        </li>
+        
+                        <li id = 'barra'> 
+                            <h4 id = 'barra'>|</h4> 
+                        </li>
+        
+                        <li>     
+                            <a href = '#fale_conosco' style="text-decoration:none;"> <h4 id = 'txt_fale_conosco'>Fale Conosco</h4> </a>
+                        </li>
+        
+                        <li id = 'barra'> 
+                            <h4 id = 'barra'>|</h4>
+                        </li>
+        
+                        <li >
+                            <a href = "#sobre_o_app" style="text-decoration:none;"> <h4 id = 'txt_sobre'>Sobre</h4> </a>
+                        </li>
+        
+                    </nav>
+                
+                </div>
+
+            </div>
+
+        </div>
+        
+        <!-- <div class = "tela_de_login_invisivel">
+            <div class="form_login">
+                <div class = 'aba_de_login'>
+                        <div class = 'titulo_e_x_de_fechar'>
+
+                        <img id = 'x_fechar' src = 'https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png'>
+                        <h3 id = 'titulo_aba' >E N T R A R</h3>
+
+                        </div>
+                        <form class = 'form_login' action = "accounts/login" method="post">
+                            {% csrf_token %}
+                            <input id = 'txt_email' type = 'text' placeholder = " Usuário" name='username'>
+                            <input id = 'txt_senha' type = 'password' placeholder = " Senha" name='password'>
+                            <input type="submit" id = 'entrar' value = " Login">
+                        </form>
+                </div>
+            </div>
+        </div> -->
+
+        
+
+        <div class = 'bloco_1'>
+            <!-- Criar A Parte Em que os Txt's Vão Aparecer Junto Com as Imagens -->
+            
+            <div id = "div_tela_porquinho">
+                
+                <h4 id = 'txt_porquinho' class = 'txt_selected'> - Financr - </h4>
+                <h3 id = 'txt_logar_porquinho' class = 'option_selected'> Procurando Sempre Melhorar<br> o Acesso a Informação</h3>
+
+                <img id = 'img_porquinho' class = "selected" src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/porco_editado3.png' %}">
+            </div>
+
+            <div id = "div_tela_esquerda">
+                <img id = 'img_laptop'  src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/psk-slayer-unsplash.png' %}">
+                <!-- photo by Psk Slayer on Unsplash -->
+                
+                <h4 id = 'txt_laptop_da_esquerda'>Quer Saber Mais?</h4>
+                <h3 id = 'txt_registrar_laptop_da_esquerda'> Registre - se</h3>
+            </div>
+
+            <div id = "div_tela_meio">
+                <img id = 'img_laptop_2' src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/windows-bN-fhA-TRCI-unsplash(1).jpg' %}">
+                
+                <h4 id = 'txt_laptop_central'>Esse é o nosso projeto para o TCC do Entra21.<br>Turma de Python.<br>Feito para Finanças Pessoais</h4>
+                <h3 id = 'txt_sobre_laptop_central'>Conheça - nos</h3>
+            </div>
+
+            <div id="div_tela_direita">
+                <img id = 'img_laptop_3' src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/windows-nYObhCK1dmA-unsplash.jpg' %}">
+                
+                <h4 id = 'txt_laptop_da_direita'> Nos Temos Email de Contato<br>Caso Queira Deixar Uma Crítica/Sugestão </h4>
+                <h3 id = 'txt_contato_laptop_da_direita'>Contate - nos </h3>
+            </div>
+
+        </div>
+
+<!--                                           Ultima Alteração                                                 -->
+
+        <div id = "sobre_o_app">
+
+            <div class="cabecalho_funcionalidades">
+                <h1 class="h1">Inteligência Financeira no seu ritmo, na sua maneira!</h1>
+            </div>
+            <div class="funcionalidades">
+                <div class="mostra1">
+                    <img class="imagem" src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/undraw_finance_0bdk.png' %}" alt="grafico">
+                    <p class="p">Registre e acompanhe a<br>evolução das suas finanças</p>
+                </div>
+                <div class="mostra2">
+                    <img class="imagem" src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/undraw_predictive_analytics_kf9n.png' %}" alt="grafico">
+                    <p class="p">Realize projeções dos seus<br>investimentos e despesas</p>
+                </div>
+                <div class="mostra3">
+                    <img class="imagem" src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/undraw_goals_w8tw.png' %}" alt="grafico">
+                    <p class="p">Estabeleça metas, as<br>acompanhe e faça seu<br>dinheiro valer mais!</p>
+                </div>
+            </div>
+        </div>
+            <div class = "funcionalidades2" id = 'sobre_2'>
+                <img class = "imagem" src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/laptop.PNG' %}">
+                <div class="escrita">
+                    <div class="seguranca">
+                        <h1 class="h1">SEGURANÇA</h1>
+                        <p class="p">Nenhuma informação como CPF,<br>conta bancária ou número de cartão<br>é necessária. Seus
+                        dados são salvos de forma anônima em nossa base!</p>
+                    </div>
+        
+                    <div class="intuitivo">
+                        <h1 class="h1">INTUITIVO</h1>
+                        <p class="p">O sistema foi desenhado para ser<br>intuitivo e tornar sua experiência cada vez mais natural. Com poucos<br>
+                            cliques você consegue fazer um controle incrível do seu dinheiro!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cadastro" id="cadastre-se">
+                <div class="imagem" >
+                    <img class="img" src="{% static 'financr/img/imagens_para_a_home_fora_do_webapp/Captura de tela 2020-12-13 153143.png' %}" alt="grafico">
+                </div>
+                <form action= {% url 'register' %} class="dados_cadastrais" id = 'a_cadastro' method= "POST">
+                    {% csrf_token %}
+                    <h1 class="h1">Crie sua conta e venha fazer<br>parte da revolução nas<br>finanças pessoais!</h1>
+                    <div class="dados">
+                        <input class="email" type="email" placeholder=" E-mail:" id='email' name='email'>
+                        <input class="nome" type="text" placeholder=" Nome de Usuário:" id='username' name='username'>
+                        <input class="senha" type="password" placeholder=" Senha:" id='password1' name='password1'>
+                        <input class="repitasenha" type="password" placeholder=" Repita a senha:" name='password2'>
+                    </div>  
+                    <div class="check" >
+                        <input type="checkbox">
+                        <label>Li e concordo com os termos do Financr.</label>
+                    </div>
+                    <div class="enviar">
+                        <p class="captcha">CaptCha</p>
+                        <input class="submit" type="submit" value="Criar conta">
+                    </div>
+                </form>
+            </div>
+            <div class="contato" id="fale_conosco">
+                <form method="POST" class="formulario" action= {% url 'faleconosco' %}>
+                    {% csrf_token %}
+                    <div class="colunaesquerda">
+                        <h1 class="h1">Fale Conosco</h1>
+
+                        <input class="camponome" type="text" placeholder=" Nome completo" name='nome'>
+                        <input class="campoemail" type="email" placeholder=" Endereço Email" name='email'>
+                        <input class="mensagem" type="text" placeholder=" Digite aqui sua mensagem." name='mensagem'>
+                        <div class="enviar">
+
+                            <p class="captcha">CaptCha</p>
+                            <button class="submit" type="submit" value="Enviar mensagem">Enviar mensagem</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="imagem">
+                <img class="img" src = "{% static 'financr/img/imagens_para_a_home_fora_do_webapp/Captura de tela 2020-12-13 175144.png' %}" alt="laptop">
+            </div>
+        
+
+
+
+
+    </div>
+
+    <script src = "{% static 'financr/arquivos_js/js_da_home_fora_do_webapp/menu.js' %}"></script>
+    <script src = "{% static 'financr/arquivos_js/js_da_home_fora_do_webapp/script_home_page.js' %}"></script>
+    <script src = "{% static 'financr/arquivos_js/js_da_home_fora_do_webapp/mostra_login.js' %}"></script>
+
+</body>
+    <div class = "rodape">
+        <footer class="footer">
+            <p class="p">&#169 2020 Financr LTDA. Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+        </div>
+</html>

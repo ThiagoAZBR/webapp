@@ -1,15 +1,58 @@
-<!--users/templates/base.html-->
+<!-- users/templates/base.html -->
+{% load static %}
 
-<style>
-    label, input {
-        display: block;
-    }
-    span.helptext {
-        display: none;
-    }
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{%block title%} {% endblock %}</title>
+    <link href="{% static 'css/users.css' %}" rel='stylesheet'>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+        var a = "{{contas}}";
+        console.log(a);
 
-<h1>Welcome to Awesome Website</h1>
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
+        function drawChart(){
+            const container = document.querySelector('#grafico')
+            const data = new google.visualization.arrayToDataTable([
+            ['Categoria' , 'Gasto'], 
+            ['Alimentação', 2000],
+            ['Combustivel', 1000],
+            ['Aluguel', 2300],
+            ['Internet', 90],
+            ['Energia', 190]
+            ])
+            
+            const options = {
+                title: 'Gastos',
+                height:800,
+                weight:800,
+            }
+
+            const chart = new google.visualization.PieChart(container)
+            chart.draw(data, options)
+        }
+    </script>
+    <style>
+        label, input {
+            display: block;
+        }
+        span.helptext {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="barra_logo">    
+    <h1 class="nome_barra">FINANCR</h1>
+</div>
 {% block content %}
 {% endblock %}
+</div>    
+</body>
+<div class="rodape_base">    
+    <p>© 2021 Financr LTDA. Todos os direitos reservados</p>
+</div>
+</html>

@@ -6,4 +6,4 @@ class Faleconosco(models.Model):
     mensagem = models.CharField(max_length = 4000)
 
     def __str__(self):
-        return self.nomeb
+        return self.nome
