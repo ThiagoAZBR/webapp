@@ -12,12 +12,19 @@ let tela_transferencias = document.querySelector('.tela_transferencias')
 
 let divs_expansao = document.querySelectorAll('.telas_e_expansao div')
 let maximo = divs_expansao.length
-
+let dados_usuario = document.querySelector('#dados')
+let conf_usuario = document.querySelector('.conf_usuario')
 // Transformar de None para Block, ou Block para None
 
 icone_usuario.addEventListener('click', () => {
 
     opcoes_icone_usuario.classList.toggle('on', mostrar)
+    
+    if (conf_usuario.className.indexOf('on') != -1) {
+
+        conf_usuario.classList.remove('on')
+
+    }
 
     mostrar = !mostrar
     
@@ -26,8 +33,7 @@ icone_usuario.addEventListener('click', () => {
 
 revelar = true
 
-let dados_usuario = document.querySelector('#dados')
-let conf_usuario = document.querySelector('.conf_usuario')
+
 
 dados_usuario.addEventListener('click', () => {
 
