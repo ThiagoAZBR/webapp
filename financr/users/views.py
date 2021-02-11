@@ -52,7 +52,6 @@ def FunctionHomePage(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('templates/home_fora_do_webapp/home_page.html')
 
     context = {'form':form}
     return render(request, 'templates/home_fora_do_webapp/home_page.html', context) 
