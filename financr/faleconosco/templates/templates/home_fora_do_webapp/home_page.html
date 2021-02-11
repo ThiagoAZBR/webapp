@@ -207,7 +207,7 @@
                 </form>
             </div>
             <div class="contato" id="fale_conosco">
-                <form method="POST" class="formulario">
+                <form method="POST" class="formulario" action = "{% url 'faleconosco' %}">
                     {% csrf_token %}
                     <div class="colunaesquerda">
                         <h1 class="h1">Fale Conosco</h1>
