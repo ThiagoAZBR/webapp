@@ -35,19 +35,6 @@ def LoginPage(request):
     
 
 def FunctionHomePage(request):
-    form = CreateUserForm()
-
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            
-            return redirect('templates/home_fora_do_webapp/home_page.html')
-    
-    else:
-        context={'form':form}
-        return render(request, 'templates/home_fora_do_webapp/home_page.html', context)
-
 
     if request.method == 'POST':
         username = request.POST.get('username_login')
@@ -58,3 +45,14 @@ def FunctionHomePage(request):
         if user is not None:
             login(request, user)
             return redirect('app_home')
+            
+    form = CreateUserForm()
+
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('templates/home_fora_do_webapp/home_page.html')
+
+    context = {'form':form}
+    return render(request, 'templates/home_fora_do_webapp/home_page.html', context) 

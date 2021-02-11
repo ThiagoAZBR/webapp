@@ -49,3 +49,7 @@ logar.addEventListener('click', function() {
     document.body.style.overflow = 'initial'
 
 })
+
+window.onload = function(){
+    window.scrollTo(0,0)
+}

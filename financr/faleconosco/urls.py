@@ -6,7 +6,7 @@ from users.views import FunctionHomePage
 
 
 urlpatterns = [
-    path("", FunctionHomePage, name = 'principia'),
+    path("", FunctionHomePage, name = 'home'),
     url(r'^app', app_home, name = 'app_home'),
 
 ]
