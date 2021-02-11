@@ -1,15 +1,30 @@
-<!--users/templates/base.html-->
+<!-- users/templates/base.html -->
+{% load static %}
 
-<style>
-    label, input {
-        display: block;
-    }
-    span.helptext {
-        display: none;
-    }
-</style>
-
-<h1>Welcome to Awesome Website</h1>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{%block title%} {% endblock %}</title>
+    <link href="{% static 'css/users.css' %}" rel='stylesheet'>
+    <style>
+        label, input {
+            display: block;
+        }
+        span.helptext {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="barra_logo">    
+    <h1 class="nome_barra">FINANCR</h1>
+</div>    
 {% block content %}
 {% endblock %}
+</body>
+<footer>
+    <div class="rodape_base">    
+        <p>© 2021 Financr LTDA. Todos os direitos reservados</p>
+    </div>    
+</footer>
+</html>

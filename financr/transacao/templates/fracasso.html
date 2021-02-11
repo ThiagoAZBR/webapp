@@ -1,1 +1,18 @@
-<p>Fracasso</p>
+{% extends 'base_transacao.html' %}
+
+{% block title %} FINANCR {% endblock %}
+{% block content %}
+<div class="cabecalho_transferencia">
+    <h2>Efetuar Operação</h2>
+</div>
+<div class="div_formulario_transferencia">
+    <form id="form_transferencia" method="POST"  class="teste">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.non_field_errors }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</div>
+<br>
+<a style="text-decoration: none;" class="link_pagina_principal" href="{% url 'dashboard' %}">Página Principal</a>
+{% endblock %}

@@ -53,5 +53,30 @@ def FunctionHomePage(request):
         if form.is_valid():
             form.save()
 
+            
+        #     conta_inicial = Contas_bancarias(None, user.id , "Carteira", 0)
+        #     conta_inicial.save()
+            
+        #     categorias_despesa = ['Mercado', 'Restaurante', 'Lazer', 'Combustível', 'Cartão de Crédito',]
+        #     categorias_receita = ['Salário', 'Vendas', 'Aluguel_terceiro', 'investimentos']
+        #     categoria_transferência = "Transferência"
+            
+        #     for categoria in categorias_receita:
+        #         categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria, ativo=1, classe_transacao=1)
+        #         categoria_inicial.save() 
+                
+        #     for categoria in categorias_despesa:
+        #         categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria, ativo=1, classe_transacao=2)
+        #         categoria_inicial.save()
+                
+        #     #Categoria Transferência    
+        #     categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria_transferência, ativo=1, classe_transacao=3)
+        #     categoria_inicial.save()
+               
+        #     return redirect(reverse("dashboard"))
+        # else:
+        #     return render(request, "users/error.html", {'form':form})
+        #     pass
+
     context = {'form':form}
     return render(request, 'templates/home_fora_do_webapp/home_page.html', context) 

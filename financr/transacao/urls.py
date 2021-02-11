@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from transacao.views import receita, despesa, transferencia, sucesso, categoria, TransactionScreenView, TransactionScreen2View, TransactionScreen3View
+from transacao.views import TransactionScreenView, TransactionScreen2View, TransactionScreen3View
+from transacao.views import receita, despesa, transferencia, sucesso, categoria, atualizar_saldos_transacoes
 from django.urls import path
 
 urlpatterns = [   

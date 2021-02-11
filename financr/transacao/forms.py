@@ -15,7 +15,7 @@ class Criar_transferencia_Form(forms.ModelForm):
     class Meta:
         model = Transferencia
         fields = ('descricao', 'valor','data_transacao','conta','categoria_transacao','tipo_transacao','regularidade','num_parcelas','observacoes','conta_destino')
-
+        
 
 
 class Criar_categoria_Form(forms.ModelForm):
