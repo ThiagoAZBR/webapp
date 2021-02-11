@@ -10,6 +10,7 @@ html, body {
     
 }
 
+
 .global {
 
     height: 60vh;
@@ -21,7 +22,7 @@ html, body {
 
 }
 
-.criar-conta {
+.excluir_conta {
 
     border: black 0.4px solid;
     border-radius: 1%;
@@ -31,6 +32,7 @@ html, body {
     margin: auto;
     margin-top: 23vh;
     background-color: white;
+
 }
 
 
@@ -88,78 +90,55 @@ html, body {
 
 }
 
-.formulario-conta {
+.conta_a_excluir {
 
+    width: 90%;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    align-content: space-around;
 
 }
 
-.div_titulo_nome_da_conta {
+#titulo_de_selecionar_conta {
 
-    width: 90%;
-    margin: auto;
-    font-size: 1.6rem;
-    height: 6vh;
-    color: #333335;
+    font-size: 1.9rem;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 1vh;
+    color: #333335;
 
 }
 
-.nome_da_conta {
+#select_conta {
 
-    width: 90%;
-    margin: auto;
-    margin-bottom: 0.5vh;
-
-}
-
-.nome_da_conta input {
-
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    color: #333335;
+    background-color: transparent;
     border: 1px black solid;
     border-right-width: 0;
     border-top-width: 0;
     border-left-width: 0;
-    background-color: transparent;
-    font-size: 1.9rem;
-    width: 98%;
-    font-family: 'Roboto', sans-serif;
+    width: 100%;
 
 }
 
-.saldo_inicial {
+
+.div_avisos {
 
     width: 90%;
     margin: auto;
+    text-align: center;
+    margin-top: 4vh;
 
 }
 
-#titulo_saldo {
+#txt_avisos {
 
     font-size: 1.6rem;
-    color: #333335;
     font-family: 'Roboto', sans-serif;
+    color: black;
+    letter-spacing: 0.2rem;
 
 }
-
-#input_saldo {
-
-    border: 1px black solid;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-left-width: 0;
-    background-color: transparent;
-    font-size: 1.9rem;
-    width: 98%;
-    font-family: 'Roboto', sans-serif;
-
-}
-
-
-
-
 
 
 .div_salvar_sair {
@@ -186,7 +165,7 @@ html, body {
 
 #adicionar {
 
-    background-color: #00d2ff;
+    background-color: #e43a15;
     color: white;
     border: 0;
     border-radius: 10%;
@@ -196,7 +175,7 @@ html, body {
 
 #resetar {
 
-    background-color: #e43a15;
+    background-color: #00d2ff;
     color: white;
     border: 0;
     border-radius: 10%;
