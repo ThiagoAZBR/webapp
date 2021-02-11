@@ -1,0 +1,153 @@
+html, body {
+
+    margin: 0;
+    font-size: 62.5%;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    
+    
+}
+
+.global {
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.criar-conta {
+
+    border: 0.2rem black solid;
+    border-radius: 1%;
+    height: 92vh;
+    min-height: 92vh;
+    width: 30vw;
+
+}
+
+
+.cabecalho {
+
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: center;
+    justify-self: center;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+
+}
+
+
+.xiz {
+
+    width: 40px;
+    height: 0px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+#one,
+#two {
+
+    background-color: black;
+    height: 3px;
+    width: 90%;
+
+
+}
+
+.xiz #one {
+
+    transform: rotate(45deg) translate(-1px, 1px);
+
+}
+
+.xiz #two {
+
+    transform: rotate(-45deg) translate(1px, -5px);
+
+}
+
+.formulario-conta {
+
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+
+}
+
+.div_titulo_nome_da_conta {
+
+    width: 90%;
+    margin: auto;
+    font-size: 1.6rem;
+    height: 6vh;
+    color: #333335;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 1.7vh;
+
+}
+
+.nome_da_conta {
+
+    width: 90%;
+    margin: auto;
+    margin-bottom: 0.5vh;
+
+}
+
+.nome_da_conta input {
+
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.7rem;
+    width: 98%;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.saldo_inicial {
+
+    width: 90%;
+    margin: auto;
+
+}
+
+#titulo_saldo {
+
+    font-size: 1.6rem;
+    color: #333335;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#input_saldo {
+
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.7rem;
+    width: 98%;
+    font-family: 'Roboto', sans-serif;
+
+}

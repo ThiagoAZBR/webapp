@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financr</title>
+
+    <link rel="stylesheet" href="{% static 'financr/css_da_tela_criar_conta/style_criar.css' %}">
+
+    <!-- Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Roboto Muito Fino -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    
+
+    <div class="global">
+
+        <div class="criar-conta">
+
+            <div class="cabecalho">
+
+                <h1>Nova Receita</h1>
+
+                <a href="app">
+                <div class="xiz">
+                    <div id = 'one' > </div>
+                    <div id = 'two' > </div>
+                </div>
+                </a>
+
+            </div>
+
+            <form method="post" class = 'formulario-conta'>
+
+                <div class="div_titulo_nome_da_conta">
+                    <h4 id = 'titulo_nome_da_conta'>
+                        Nome Da Conta
+                    </h4>
+                </div>
+
+                <div class = "nome_da_conta">
+
+                    <input type="text" name="descricao" id="txt_description">
+
+                </div>
+
+                <div class="saldo_inicial">
+
+                    <h4 id = 'titulo_saldo'>
+                        Saldo Inicial
+                    </h4>
+                    <input type="number" name="" id = "input_saldo" step="0.01">
+
+                </div>
+
+                <div class="div_nome_banco">
+
+                    
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>
