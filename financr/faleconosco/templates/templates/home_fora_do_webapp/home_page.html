@@ -98,7 +98,7 @@
                             <h3 id = 'titulo_aba' >E N T R A R</h3>
 
                         </div>
-                        <form class = 'form_login' action = "Functions.LoginPage" method="POST">
+                        <form class = 'form_login' method="POST">
                             {% csrf_token %}
                             <input id = 'txt_email' type = 'text' placeholder = " Usuário" name='username_login'>
                             <input id = 'txt_senha' type = 'password' placeholder = " Senha" name='password_login'>
@@ -187,7 +187,7 @@
                 <div class="imagem" >
                     <img class="img" src="{% static 'financr/img/imagens_para_a_home_fora_do_webapp/Captura de tela 2020-12-13 153143.png' %}" alt="grafico">
                 </div>
-                <form action= 'Functions' class="dados_cadastrais" id = 'a_cadastro' method= "POST">
+                <form class="dados_cadastrais" id = 'a_cadastro' method= "POST">
                     {% csrf_token %}
                     <h1 class="h1">Crie sua conta e venha fazer<br>parte da revolução nas<br>finanças pessoais!</h1>
                     <div class="dados">

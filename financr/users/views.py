@@ -17,60 +17,44 @@ from django.views.generic import DetailView, TemplateView
 from django.views.generic.edit import CreateView
 from users.forms import CreateUserForm
 
-class HomePageView(forms.ModelForm):
-    class Meta:
-        model = Faleconosco
-        fields = ['nome', 'email', 'mensagem']
 
+def LoginPage(request):
 
+    if request.method == 'POST':
+        username = request.POST.get('username_login')
+        password = request.POST.get('password_login')
 
-    def verificador(self):
+        user = authenticate(request, password = password, username = username)
 
-
-
-        if 'login_sub' in self.data:
-
-            def LoginPage(self, request):
-
-                if request.method == 'POST':
-                    username = request.POST.get('username_login')
-                    password = request.POST.get('password_login')
-
-                    user = authenticate(request, password = password, username = username)
-
-                    if user is not None:
-                        login(request, user)
-                        return redirect('app_home')
-                    
-                context = {}
-                return render(request, 'templates/home_fora_do_webapp/home_page.html', context)
+        if user is not None:
+            login(request, user)
+            return redirect('app_home')
         
-        elif 'mensagem_sub' in self.data:
+    context = {}
+    return render(request, 'templates/home_fora_do_webapp/home_page.html', context)
+    
 
-            def fale_conosco(request):
+def FunctionHomePage(request):
+    form = CreateUserForm()
 
-                if request.method == "POST":
-                    nome_completo = request.POST.get('nome')
-                    email = request.POST.get('email')
-                    mensagem = request.POST.get('mensagem')
-                    
-                    a =Faleconosco(None, nome_completo, email, mensagem)
-                    a.save()
-                    
-                    return render(request, 'templates/home_fora_do_webapp/home_page.html')
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+            return redirect('templates/home_fora_do_webapp/home_page.html')
+    
+    else:
+        context={'form':form}
+        return render(request, 'templates/home_fora_do_webapp/home_page.html', context)
 
-                return render(request, 'templates/home_fora_do_webapp/home_page.html')
 
-        elif 'register_sub' in self.data:
+    if request.method == 'POST':
+        username = request.POST.get('username_login')
+        password = request.POST.get('password_login')
 
-            def registerPage(self, request):
-                form = CreateUserForm()
+        user = authenticate(request, password = password, username = username)
 
-                if request.method == 'POST':
-                    form = CreateUserForm(request.POST)
-                    if form.is_valid():
-                        form.save()
-
-                context={'form':form}
-                return render(request, 'templates/home_fora_do_webapp/home_page.html', context)
-
+        if user is not None:
+            login(request, user)
+            return redirect('app_home')
