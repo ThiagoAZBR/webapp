@@ -1,1 +1,22 @@
-<p>deu ruim</p>
+<!--users/templates/users/register.html-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="cabecalho_registro">
+    <h2>Cadastrar</h2>
+</div>
+
+<div class="div_formulario_registro">
+    <form id="form_registro" method="post">
+        {% csrf_token %}
+        {{ form.errors }}
+        {{ form.non_field_errors }}
+        {{form}}
+        <input type="submit" value="Cadastrar">
+    </form>
+</div>
+<div class="links_pagina_registro">
+    <a href="{% url 'login' %}">Voltar para Login</a>
+</div>
+{% endblock %}

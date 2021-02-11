@@ -1,9 +1,15 @@
+{% extends 'base_contasbanco.html' %}
+
 {% block content %}
-    <h2>Teste</h2>
-    <form method="POST"  class="teste">
+<h2 class="cabecalho_criar_conta">Criar Conta</h2>
+<div class="div_formulario_criar_conta">
+    <form id="formulario_criar_conta" method="POST"  class="teste">
         {% csrf_token %}
         {{ form.as_p }}
         {{ form.non_field_errors }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
+</div>
+<br>
+<a style="text-decoration: none;" class="link_pagina_principal" href="{% url 'dashboard' %}">Página Principal</a>
 {% endblock %}

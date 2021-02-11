@@ -29,14 +29,19 @@ def register(request):
             
             categorias_despesa = ['Mercado', 'Restaurante', 'Lazer', 'Combustível', 'Cartão de Crédito',]
             categorias_receita = ['Salário', 'Vendas', 'Aluguel_terceiro', 'investimentos']
+            categoria_transferência = "Transferência"
             
+            for categoria in categorias_receita:
+                categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria, ativo=1, classe_transacao=1)
+                categoria_inicial.save() 
+                
             for categoria in categorias_despesa:
-                categoria_inicial = Categoria_transacaocategoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria, ativo=1, classe_transacao=1)
+                categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria, ativo=1, classe_transacao=2)
                 categoria_inicial.save()
                 
-            for categoria in categorias_receita:
-                categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria, ativo=1, classe_transacao=2)
-                categoria_inicial.save() 
+            #Categoria Transferência    
+            categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria_transferência, ativo=1, classe_transacao=3)
+            categoria_inicial.save()
                
             return redirect(reverse("dashboard"))
         else:
