@@ -42,7 +42,6 @@ def home_page(request):
     elif request.method == "POST":
         form = CustomUserAuthenticationForm(request.POST)
         user = form
-        print("\n\noi\n\n")
         
         if form.is_valid():
             login(request, user)

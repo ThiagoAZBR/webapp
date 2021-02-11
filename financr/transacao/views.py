@@ -412,8 +412,19 @@ def transferencia(request):
             
             if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
                 if  data_atual >= data_transacao_data: #Verifica se é uma transação atual ou futura
-                    instance.transacao_efetivada = True
-                    instance.save()
+                    # instance.transacao_efetivada = True
+                    # instance.save()
+                    for transferencia in range(2):
+                        instance.pk = None
+                        instance.transacao_efetivada = False
+                        if transferencia == 1:
+                            inverte_conta_origem_destino = id_banco_origem
+                            instance.conta_id = id_banco_destino
+
+                        instance.save()
+                    
+                    
+                    
                     conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
                     
                     conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
@@ -434,7 +445,6 @@ def transferencia(request):
                 else: 
                     instance.transacao_efetivada = False
                     instance.save()
-                    
             
             if tipo_transacao == 2: #TRANSAÇÃO FIXA
                 
