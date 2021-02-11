@@ -94,15 +94,15 @@
                 <div class = 'aba_de_login'>
                         <div class = 'titulo_e_x_de_fechar'>
 
-                        <img id = 'x_fechar' src = 'https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png'>
-                        <h3 id = 'titulo_aba' >E N T R A R</h3>
+                            <img id = 'x_fechar' src = 'https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png'>
+                            <h3 id = 'titulo_aba' >E N T R A R</h3>
 
                         </div>
-                        <form class = 'form_login' action = "accounts/login" method="post">
+                        <form class = 'form_login' method="POST">
                             {% csrf_token %}
-                            <input id = 'txt_email' type = 'text' placeholder = " Usuário" name='username'>
-                            <input id = 'txt_senha' type = 'password' placeholder = " Senha" name='password'>
-                            <input type="submit" id = 'entrar' value = " Login">
+                            <input id = 'txt_email' type = 'text' placeholder = " Usuário" name='username_login'>
+                            <input id = 'txt_senha' type = 'password' placeholder = " Senha" name='password_login'>
+                            <input type="submit" name = 'login_sub' id = 'entrar' value = " Login">
                         </form>
                 </div>
             </div>
@@ -187,14 +187,14 @@
                 <div class="imagem" >
                     <img class="img" src="{% static 'financr/img/imagens_para_a_home_fora_do_webapp/Captura de tela 2020-12-13 153143.png' %}" alt="grafico">
                 </div>
-                <form action= {% url 'register' %} class="dados_cadastrais" id = 'a_cadastro' method= "POST">
+                <form class="dados_cadastrais" id = 'a_cadastro' method= "POST">
                     {% csrf_token %}
                     <h1 class="h1">Crie sua conta e venha fazer<br>parte da revolução nas<br>finanças pessoais!</h1>
                     <div class="dados">
-                        <input class="email" type="email" placeholder=" E-mail:" id='email' name='email'>
-                        <input class="nome" type="text" placeholder=" Nome de Usuário:" id='username' name='username'>
-                        <input class="senha" type="password" placeholder=" Senha:" id='password1' name='password1'>
-                        <input class="repitasenha" type="password" placeholder=" Repita a senha:" name='password2'>
+                        {{form.username}} <!-- class = email -->
+                        {{form.email}} <!-- class = nome -->
+                        {{form.password1}} <!-- class = senha -->
+                        {{form.password2}} <!-- class = repitasenha -->
                     </div>  
                     <div class="check" >
                         <input type="checkbox">
@@ -202,12 +202,12 @@
                     </div>
                     <div class="enviar">
                         <p class="captcha">CaptCha</p>
-                        <input class="submit" type="submit" value="Criar conta">
+                        <input class="submit" name = 'register_sub' type="submit" value="Criar conta">
                     </div>
                 </form>
             </div>
             <div class="contato" id="fale_conosco">
-                <form method="POST" class="formulario" action= {% url 'faleconosco' %}>
+                <form method="POST" class="formulario" action = "{% url 'faleconosco' %}">
                     {% csrf_token %}
                     <div class="colunaesquerda">
                         <h1 class="h1">Fale Conosco</h1>
@@ -218,7 +218,7 @@
                         <div class="enviar">
 
                             <p class="captcha">CaptCha</p>
-                            <button class="submit" type="submit" value="Enviar mensagem">Enviar mensagem</button>
+                            <button class="submit" type="submit" name = "mensagem_sub" value="Enviar mensagem">Enviar mensagem</button>
                         </div>
                     </div>
                 </form>

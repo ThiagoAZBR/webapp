@@ -285,10 +285,10 @@
     justify-content: space-between;
 }
 
-.cadastro .dados_cadastrais .dados .email,
-.cadastro .dados_cadastrais .dados .nome,
-.cadastro .dados_cadastrais .dados .senha,
-.cadastro .dados_cadastrais .dados .repitasenha{
+.cadastro .dados_cadastrais .dados #id_email,
+.cadastro .dados_cadastrais .dados #id_username,
+.cadastro .dados_cadastrais .dados #id_password1,
+.cadastro .dados_cadastrais .dados #id_password2{
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
     font-size: 2.4rem;
     border: 1px solid black;

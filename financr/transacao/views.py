@@ -16,84 +16,172 @@ def receita(request):
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
-        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=2)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=1)
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
         usuario = request.user
-        classe_transacao=(Transacao(classe_transacao=1, user_id=usuario))
+        classe_transacao=(Transacao(classe_transacao=1, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
         form = Criar_transacao_Form(request.POST, instance=classe_transacao)
         
         if form.is_valid():
+            instance = form.save(commit=False)
             
+            #INFORMAÇÕES PARA FILTRAR DADOS NO BANCO DE DADOS
             tipo_transacao = int(form['tipo_transacao'].data)
             receita = Decimal(form['valor'].data)    
-            id_banco = form['conta'].data
-            usuario_id = request.user.id
+            id_banco = int(form['conta'].data)
+            usuario_id = int(request.user.id)
+            
+            #INFORMAÇÕES DE DATA DE TRANSAÇÃO E REGULARIDADE
+            try:
+                regularidade = int(form['regularidade'].data)
+            
+            except:
+                regularidade = 0
+                instance.regularidade = 0
+                
+            data_atual = datetime.today()
+            data_atual_formatada = data_atual.strftime("%Y-%m-%d")
+            data_transacao_str = form['data_transacao'].data
+            data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
 
             if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
                 
-                form.save()
-                
-                conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
-                novo_saldo = (conta_bancaria[0].saldo + receita)
-                
-                transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
-                transacao.save()            
+                if  data_atual >= data_transacao_data: #Verifica se é uma transação atual ou futura
+                    instance.transacao_efetivada = True 
+                    
+                    instance.save()
+                    
+                    conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                    novo_saldo = (conta_bancaria[0].saldo + receita)
+                    
+                    transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                    transacao.save()
+                            
+                else: #Caso seja uma transação futura o saldo não é atualizado (função de rotina verificará e atualizará o saldo em períodos de tempo fixo APScheduler)
+                    instance.transacao_efetivada = False
+                    instance.save()
             
             elif tipo_transacao == 2: #TRANSAÇÃO FIXA
-                regularidade = int(form['regularidade'].data)
                 
                 if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
                     intervalo_transacao = timedelta(days=1)
-                    data_atual = datetime.today()
-                    data_atual_formatada = data_atual.strftime("%Y-%m-%d")
-                    data_transacao_str = form['data_transacao'].data
-                    data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
-                    
-                    
-                    while data_atual > data_transacao_data:
-                        print(data_atual)
-                        print(data_transacao_data)
-                        
-                        form.save()
-                        
-                        conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
-                        novo_saldo = (conta_bancaria[0].saldo + receita)
-                        
-                        print(conta_bancaria[0].saldo, receita)
-                        print(novo_saldo)
-                        
-                        transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
-                        transacao.save()
-                        data_transacao_data += intervalo_transacao
 
                 elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
                     intervalo_transacao = timedelta(weeks=1)
                 
                 elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
-                    intervalo_transacao = timedelta(months=1)
+                    intervalo_transacao = timedelta(days=30)
                 
                 else:
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, "testando.html", {'form': form})
                 
+                while data_atual > data_transacao_data:
+                    instance.pk = None
+                    instance.data_transacao = data_transacao_data
+                    instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
+                    #somente as transações futuras. Assim facilita o programa a encontrar as transacoes fixas e atualizar e recriar outra transação futura no tempo certo
+                    instance.transacao_efetivada = True
+                    instance.save()
+                    
+                    conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                    novo_saldo = (conta_bancaria[0].saldo + receita)
+                    
+                    transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                    transacao.save()
+                    data_transacao_data += intervalo_transacao
+                
+                #Criando transação futura sem alterar saldo
+                instance.pk = None
+                instance.data_transacao = data_transacao_data
+                instance.transacao_fixa = True
+                instance.transacao_efetivada = False
+                instance.save()
+                
                 return render(request, "users/dashboard.html")
+                ###
+                #Criar Função para gerar uma transacao futura para continuar a conta fixa
+                #Criar uma função para verificar se a transacao anterior está pronta para ser efetivada e
+                #criar uma nova transacao para continuar o ciclo 
+                ###
             
-                form.save()
-                receita = Decimal(form['valor'].data)    
-                id_banco = form['conta'].data
-                usuario_id = request.user.id
-                
-                conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
-                novo_saldo = (conta_bancaria[0].saldo + receita)
-                
-                transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
-                transacao.save()  
            
             elif tipo_transacao == 3:  #TRANSAÇÃO PARCELADA
-               pass 
+                valor_transacao = Decimal(form['valor'].data)
+                qtde_parcelas = int(form['num_parcelas'].data)
+                valor_parcela = round(valor_transacao/qtde_parcelas, 2)
+                dizima = False
                 
+                if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+                    intervalo_transacao = timedelta(days=1)
+
+                elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+                    intervalo_transacao = timedelta(weeks=1)
+                
+                elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+                    intervalo_transacao = timedelta(days=30)
+                
+                else:
+                    form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
+                    return render(request, "testando.html", {'form': form})
+                
+                if  valor_parcela * qtde_parcelas != valor_transacao:
+                    dizima = True
+                    valor_parcela_1 = valor_parcela
+                    valor_parcela_1 += Decimal(0.01)
+                    valor_parcela_1 = round(valor_parcela_1, 2)
+
+                for parcela in range(qtde_parcelas):
+                    if dizima:
+                        if data_atual > data_transacao_data:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = True
+                            instance.valor = valor_parcela_1
+                            dizima = False
+                            instance.save()
+                            
+                            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                            novo_saldo = (conta_bancaria[0].saldo + valor_parcela_1)
+                            
+                            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                            transacao.save()
+                            
+                        else:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = False
+                            instance.valor = valor_parcela_1
+                            dizima = False
+                            instance.save()
+                    
+                    else:
+                        if data_atual > data_transacao_data:    
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = True
+                            instance.valor = valor_parcela
+                            dizima = False
+                            instance.save()
+                            
+                            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                            novo_saldo = (conta_bancaria[0].saldo + valor_parcela)
+                            
+                            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                            transacao.save()
+                        
+                        else:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = False
+                            instance.valor = valor_parcela
+                            dizima = False
+                            instance.save()
+                    
+                    data_transacao_data += intervalo_transacao
+
             return render(request, "users/dashboard.html")
         
         return render(request, "testando.html", {'form': form})
@@ -105,33 +193,167 @@ def despesa(request):
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
-        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=1)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=2)
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
         usuario = request.user
-        classe_transacao=(Transacao(classe_transacao=2, user_id=usuario))
+        classe_transacao=(Transacao(classe_transacao=2, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
         form = Criar_transacao_Form(request.POST, instance=classe_transacao)
         
         if form.is_valid():
-            form.save(commit=False)
+            instance = form.save(commit=False)
             
+            #INFORMAÇÕES PARA FILTRAR DADOS NO BANCO DE DADOS
+            tipo_transacao = int(form['tipo_transacao'].data)
             despesa = Decimal(form['valor'].data)    
             id_banco = form['conta'].data
             usuario_id = request.user.id
-            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
-            novo_saldo = (conta_bancaria[0].saldo - despesa)
             
-            if novo_saldo < 0:
-                form.add_error('valor','O valor da despesa é maior que o saldo disponível em conta.')
-                return render(request, "testando.html", {'form': form})
-                       
-            form.save()
+            #INFORMAÇÕES DE DATA DE TRANSAÇÃO E REGULARIDADE
+            try:
+                regularidade = int(form['regularidade'].data)
             
-            # transacao = Contas_bancarias(1, usuario_id, conta_bancaria[0].nome_banco, conta_bancaria[0].saldo + despesa)
-            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
-            transacao.save()            
+            except:
+                regularidade = 0
+                instance.regularidade = 0
+                
+            data_atual = datetime.today()
+            data_atual_formatada = data_atual.strftime("%Y-%m-%d")
+            data_transacao_str = form['data_transacao'].data
+            data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
             
+            # if novo_saldo < 0:
+            #     form.add_error('valor','O valor da despesa é maior que o saldo disponível em conta.')
+            #     return render(request, "testando.html", {'form': form})
+            
+            if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
+                if  data_atual >= data_transacao_data: #Verifica se é uma transação atual ou futura
+                    instance.transacao_efetivada = True 
+                    instance.save()
+                    conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                    novo_saldo = (conta_bancaria[0].saldo - despesa)
+                    
+                    transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                    transacao.save()
+                            
+                else: #Caso seja uma transação futura o saldo não é atualizado (função de rotina verificará e atualizará o saldo em períodos de tempo fixo APScheduler)
+                    instance.transacao_efetivada = False
+                    instance.save()
+                
+            elif tipo_transacao == 2: #TRANSAÇÃO FIXA
+                
+                if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+                    intervalo_transacao = timedelta(days=1)
+
+                elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+                    intervalo_transacao = timedelta(weeks=1)
+                
+                elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+                    intervalo_transacao = timedelta(days=30)
+                
+                else:
+                    form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
+                    return render(request, "testando.html", {'form': form})
+
+                while data_atual > data_transacao_data:
+                    instance.pk = None
+                    instance.data_transacao = data_transacao_data
+                    instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
+                    #somente as transações futuras. Assim facilita o programa a encontrar as transacoes fixas e atualizar e recriar outra transação futura no tempo certo
+                    instance.transacao_efetivada = True
+                    instance.save()
+                    
+                    conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                    novo_saldo = (conta_bancaria[0].saldo - despesa)
+                    
+                    transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                    transacao.save()
+                    data_transacao_data += intervalo_transacao
+                
+                #Criando transação futura sem alterar saldo
+                instance.pk = None
+                instance.data_transacao = data_transacao_data
+                instance.transacao_fixa = True
+                instance.transacao_efetivada = False
+                instance.save()
+                
+                return render(request, "users/dashboard.html")
+            
+            elif tipo_transacao == 3: #TRANSAÇÃO PARCELADA
+                valor_transacao = Decimal(form['valor'].data)
+                qtde_parcelas = int(form['num_parcelas'].data)
+                valor_parcela = round(valor_transacao/qtde_parcelas, 2)
+                dizima = False
+                
+                if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+                    intervalo_transacao = timedelta(days=1)
+
+                elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+                    intervalo_transacao = timedelta(weeks=1)
+                
+                elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+                    intervalo_transacao = timedelta(days=30)
+                
+                else:
+                    form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
+                    return render(request, "testando.html", {'form': form})
+                
+                if  valor_parcela * qtde_parcelas != valor_transacao:
+                    dizima = True
+                    valor_parcela_1 = valor_parcela
+                    valor_parcela_1 += Decimal(0.01)
+                    valor_parcela_1 = round(valor_parcela_1, 2)
+
+                for parcela in range(qtde_parcelas):
+                    if dizima:
+                        if data_atual > data_transacao_data:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = True
+                            instance.valor = valor_parcela_1
+                            dizima = False
+                            instance.save()
+                            
+                            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                            novo_saldo = (conta_bancaria[0].saldo - valor_parcela_1)
+                            
+                            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                            transacao.save()
+                            
+                        else:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = False
+                            instance.valor = valor_parcela_1
+                            dizima = False
+                            instance.save()
+                    
+                    else:
+                        if data_atual > data_transacao_data:    
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = True
+                            instance.valor = valor_parcela
+                            dizima = False
+                            instance.save()
+                            
+                            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+                            novo_saldo = (conta_bancaria[0].saldo - valor_parcela)
+                            
+                            transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+                            transacao.save()
+                        
+                        else:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = False
+                            instance.valor = valor_parcela
+                            dizima = False
+                            instance.save()
+                    
+                    data_transacao_data += intervalo_transacao
+
             return render(request, "users/dashboard.html")
         
         return render(request, "testando.html", {'form': form})
@@ -145,44 +367,219 @@ def transferencia(request):
         form = Criar_transferencia_Form(instance=classe_transacao)
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["conta_destino"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
-        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id)
+        form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id, classe_transacao=3)
         
         return render(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
-        
         usuario = request.user
-        classe_transacao=(Transacao(classe_transacao=3, user_id=usuario))
+        classe_transacao=(Transacao(classe_transacao=3, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
         form = Criar_transferencia_Form(request.POST, instance=classe_transacao)
         
         if form.is_valid():
-            form.save(commit=False)
+            instance = form.save(commit=False)
             
+            #INFORMAÇÕES PARA FILTRAR DADOS NO BANCO DE DADOS
+            tipo_transacao = int(form['tipo_transacao'].data)
             transferencia = Decimal(form['valor'].data)    
             id_banco_origem = form['conta'].data
             id_banco_destino = form['conta_destino'].data
             usuario_id = request.user.id
-            conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
-            conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
-            novo_saldo_origem = (conta_bancaria_origem[0].saldo - transferencia)
-            novo_saldo_destino = (conta_bancaria_destino[0].saldo + transferencia)
+
+            #INFORMAÇÕES DE DATA DE TRANSAÇÃO E REGULARIDADE
+            try:
+                regularidade = int(form['regularidade'].data)
             
-            if novo_saldo_origem < 0:
-                form.add_error('valor','O valor da transferencia é maior que o saldo disponível em conta.')
+            except:
+                regularidade = 0
+                instance.regularidade = 0
+            
+            #INFORMAÇÕES PARA FILTRAR DADOS NO BANCO DE DADOS
+            data_atual = datetime.today()
+            data_atual_formatada = data_atual.strftime("%Y-%m-%d")
+            data_transacao_str = form['data_transacao'].data
+            data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
+            
+            # if novo_saldo_origem < 0:
+            #     form.add_error('valor','O valor da transferencia é maior que o saldo disponível em conta.')
             
             if form['conta'].data == form['conta_destino'].data:
                 form.add_error('conta_destino','O banco destino não pode ser igual ao banco de origem.')
                        
             if form.errors:
                 return render(request, "testando.html", {'form': form})
-            form.save()
             
-            # transacao = Contas_bancarias(1, usuario_id, conta_bancaria_origem[0].nome_banco, conta_bancaria_origem[0].saldo + transferencia)
-            transacao_saida = Contas_bancarias(id= conta_bancaria_origem[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_origem[0].nome_banco, saldo= novo_saldo_origem)
             
-            transacao_entrada = Contas_bancarias(id= conta_bancaria_destino[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_destino[0].nome_banco, saldo= novo_saldo_destino)
-            transacao_saida.save()
-            transacao_entrada.save()            
+            if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
+                if  data_atual >= data_transacao_data: #Verifica se é uma transação atual ou futura
+                    # instance.transacao_efetivada = True
+                    # instance.save()
+                    for transferencia in range(2):
+                        instance.pk = None
+                        instance.transacao_efetivada = False
+                        if transferencia == 1:
+                            inverte_conta_origem_destino = id_banco_origem
+                            instance.conta_id = id_banco_destino
+
+                        instance.save()
+                    
+                    
+                    
+                    conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
+                    
+                    conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
+                    
+                    novo_saldo_origem = (conta_bancaria_origem[0].saldo - transferencia)
+                    
+                    novo_saldo_destino = (conta_bancaria_destino[0].saldo + transferencia)
+                    
+                    transacao_saida = Contas_bancarias(id= conta_bancaria_origem[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_origem[0].nome_banco, saldo= novo_saldo_origem)
+            
+                    transacao_entrada = Contas_bancarias(id= conta_bancaria_destino[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_destino[0].nome_banco, saldo= novo_saldo_destino)
+                    
+                    transacao_saida.save()
+                    transacao_entrada.save()
+                    
+
+                #Caso seja uma transação futura o saldo não é atualizado (função de rotina verificará e atualizará o saldo em períodos de tempo fixo APScheduler)
+                else: 
+                    instance.transacao_efetivada = False
+                    instance.save()
+            
+            if tipo_transacao == 2: #TRANSAÇÃO FIXA
+                
+                if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+                    intervalo_transacao = timedelta(days=1)
+
+                elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+                    intervalo_transacao = timedelta(weeks=1)
+                
+                elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+                    intervalo_transacao = timedelta(days=30)
+                
+                else:
+                    form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
+                    return render(request, "testando.html", {'form': form})
+            
+                while data_atual > data_transacao_data:
+                    instance.pk = None
+                    instance.data_transacao = data_transacao_data
+                    instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
+                    #somente as transações futuras. Assim facilita o programa a encontrar as transacoes fixas e atualizar e recriar outra transação futura no tempo certo
+                    instance.transacao_efetivada = True
+                    instance.save()
+                    
+                    conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
+                    
+                    conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
+                    
+                    novo_saldo_origem = (conta_bancaria_origem[0].saldo - transferencia)
+                    
+                    novo_saldo_destino = (conta_bancaria_destino[0].saldo + transferencia)
+                    
+                    transacao_saida = Contas_bancarias(id= conta_bancaria_origem[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_origem[0].nome_banco, saldo= novo_saldo_origem)
+            
+                    transacao_entrada = Contas_bancarias(id= conta_bancaria_destino[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_destino[0].nome_banco, saldo= novo_saldo_destino)
+                    
+                    transacao_saida.save()
+                    transacao_entrada.save()
+
+                    data_transacao_data += intervalo_transacao
+                
+                #Criando transação futura sem alterar saldo
+                instance.pk = None
+                instance.data_transacao = data_transacao_data
+                instance.transacao_fixa = True
+                instance.transacao_efetivada = False
+                instance.save()
+                
+                return render(request, "users/dashboard.html")
+                   
+            if tipo_transacao == 3: #TRANSAÇÃO PARCELADA
+                valor_transacao = Decimal(form['valor'].data)
+                qtde_parcelas = int(form['num_parcelas'].data)
+                valor_parcela = round(valor_transacao/qtde_parcelas, 2)
+                dizima = False
+                
+                if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+                    intervalo_transacao = timedelta(days=1)
+
+                elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+                    intervalo_transacao = timedelta(weeks=1)
+                
+                elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+                    intervalo_transacao = timedelta(days=30)
+                
+                else:
+                    form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
+                    return render(request, "testando.html", {'form': form})
+                
+                if  valor_parcela * qtde_parcelas != valor_transacao:
+                    dizima = True
+                    valor_parcela_1 = valor_parcela
+                    valor_parcela_1 += Decimal(0.01)
+                    valor_parcela_1 = round(valor_parcela_1, 2)
+
+                for parcela in range(qtde_parcelas):
+                    if dizima:
+                        if data_atual > data_transacao_data:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = True
+                            instance.valor = valor_parcela_1
+                            dizima = False
+                            instance.save()
+            
+                            conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
+                            conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
+                            novo_saldo_origem = (conta_bancaria_origem[0].saldo - valor_parcela_1)
+                            novo_saldo_destino = (conta_bancaria_destino[0].saldo + valor_parcela_1)
+                            
+                            transacao_saida = Contas_bancarias(id= conta_bancaria_origem[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_origem[0].nome_banco, saldo= novo_saldo_origem)
+            
+                            transacao_entrada = Contas_bancarias(id= conta_bancaria_destino[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_destino[0].nome_banco, saldo= novo_saldo_destino)
+                            transacao_saida.save()
+                            transacao_entrada.save()
+                        
+                        else:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = False
+                            instance.valor = valor_parcela_1
+                            dizima = False
+                            instance.save()
+                    
+                    else:
+                        if data_atual > data_transacao_data:    
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = True
+                            instance.valor = valor_parcela
+                            dizima = False
+                            instance.save()
+
+                            conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
+                            conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
+                            novo_saldo_origem = (conta_bancaria_origem[0].saldo - valor_parcela)
+                            novo_saldo_destino = (conta_bancaria_destino[0].saldo + valor_parcela)
+                            
+                            transacao_saida = Contas_bancarias(id= conta_bancaria_origem[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_origem[0].nome_banco, saldo= novo_saldo_origem)
+            
+                            transacao_entrada = Contas_bancarias(id= conta_bancaria_destino[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria_destino[0].nome_banco, saldo= novo_saldo_destino)
+                            transacao_saida.save()
+                            transacao_entrada.save()
+                            
+                        else:
+                            instance.pk = None
+                            instance.data_transacao = data_transacao_data
+                            instance.transacao_efetivada = False
+                            instance.valor = valor_parcela
+                            dizima = False
+                            instance.save()
+                    
+                    data_transacao_data += intervalo_transacao
+            
+            atualizar_saldos_transacoes()
             
             return render(request, "users/dashboard.html")
         
@@ -223,5 +620,57 @@ def sucesso(request):
     return render(request, "sucesso.html")
     
 
-def atualizar_saldo():
-    pass
+#       ----     Views Do App Aquiiiii !!!!!!!!!!!!!!!!!!!!!!!!!!!!    ----
+
+
+from django.views.generic import TemplateView
+class TransactionScreenView(TemplateView):
+    template_name = './templates/tela_de_transacoes/arkhe.html'
+
+class TransactionScreen2View(TemplateView):
+    template_name = './templates/tela_de_transacoes/despesa.html'
+
+class TransactionScreen3View(TemplateView):
+    template_name = './templates/tela_de_transacoes/transferir.html'
+def atualizar_saldos_transacoes():
+    total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year)
+    
+
+    # Varre todas as transações não efetivadas e efetua a transação caso seja o dia da transação
+    for transacao in total_transacao_nao_efetivada:
+        transacao.transacao_efetivada = True
+        id_banco = transacao.conta_id
+        usuario_id = transacao.user_id_id
+        valor = transacao.valor
+        # id_conta_destino = transacao.conta_destino
+        
+        #Receita
+        if transacao.classe_transacao == 1:
+            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+            novo_saldo = (conta_bancaria[0].saldo + valor)
+                    
+            efetivacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+            efetivacao.save()
+            
+            if transacao.transacao_fixa:
+                transacao.transacao_fixa = False
+                
+        
+        #Despesa
+        elif transacao.classe_transacao == 2:
+            conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+            novo_saldo = (conta_bancaria[0].saldo - valor)
+                    
+            efetivacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+            efetivacao.save()
+        
+        #Transferência
+        elif transacao.classe_transacao == 3:
+            pass
+        
+        # transacao.save()
+        break
+        
+        
+        
+

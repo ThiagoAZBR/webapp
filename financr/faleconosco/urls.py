@@ -1,11 +1,17 @@
 from django.conf.urls import url
-from faleconosco.views import Formulario, fale_conosco, app_home, home_page
+from faleconosco.views import app_home, fale_conosco
 from django.urls import path
+from django.contrib.auth.forms import UserCreationForm
+from users.views import FunctionHomePage
+from contasbanco.views import TelaCriarConta, TelaEditarConta, TelaExcluirConta
 
-urlpatterns = [   
-    url(r"^fale_conosco/", Formulario.as_view(), name="fale_conosco"),
-    url(r'^faleconosco/', fale_conosco, name="faleconosco"),
-    url(r'^app', app_home, name = 'app_home'),
-    # url(r'^', home_page, name = 'home_page'),
-    path('', home_page, name = 'home_page'),
+
+urlpatterns = [
+    path("", FunctionHomePage, name = 'home'),
+    url(r'^app/', app_home, name = 'app_home'),
+    path('criar-conta/', TelaCriarConta, name = 'criar-conta'),
+    path('editar-conta/', TelaEditarConta, name = 'editar-conta'),
+    path('excluir-conta/', TelaExcluirConta, name = 'excluir-conta'),
+    path('faleconosco/', fale_conosco, name="faleconosco"),
+
 ]

@@ -1,0 +1,449 @@
+html, body {
+
+    margin: 0;
+    font-size: 62.5%;
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    
+    
+}
+
+.global {
+
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.transferir {
+
+    background: #00d2ff;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a7bd5, #00d2ff);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3a7bd5, #00d2ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    border: 0.2rem black solid;
+    border-radius: 1%;
+    height: 92vh;
+    min-height: 92vh;
+    width: 30vw;
+    
+}
+
+
+.cabecalho {
+
+    display: flex;
+    flex-direction: row;
+    font-size: 1rem;
+    width: 90%;
+    align-items: center;
+    justify-content: space-between;
+    justify-items: center;
+    justify-self: center;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+
+}
+
+.xiz {
+
+    width: 40px;
+    height: 0px;
+    align-items: center;
+    justify-content: center;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+#one,
+#two {
+
+    background-color: black;
+    height: 3px;
+    width: 90%;
+
+
+}
+
+.xiz #one {
+
+    transform: rotate(45deg) translate(-1px, 1px);
+
+}
+
+.xiz #two {
+
+    transform: rotate(-45deg) translate(1px, -5px);
+
+}
+
+
+.from_account {
+
+    width: 90%;
+    margin: auto;
+    color: black;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+
+#select_from_account{
+
+    background-color: transparent;
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+
+}
+
+.to_account {
+
+    width: 90%;
+    margin: auto;
+    color: black;
+    font-size: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#select_to_account {
+
+    background-color: transparent;
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+
+}
+
+.div_titulo_valor_e_data {
+
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    height: 44px;
+    margin-bottom: 0.2vh;
+
+}
+
+
+#titulo2_valor_e_data {
+
+    margin-left: 14.4vw;
+
+}
+
+.valor_e_data {
+
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5vh;
+    
+}
+
+.valor_e_data input {
+    
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    font-size: 1.5rem;
+    width: 10vw;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+.div_titulo_tipo {
+
+    display: flex;
+    width: 90%;
+    margin: auto;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+
+}
+
+.tipo_de_receita {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 3vh;
+    width: 90%;
+    align-items: start;
+    margin: auto;
+
+}
+
+.tipo_de_receita input {
+
+    grid-row: 1/1;
+    background-color: transparent;
+
+}
+
+.tipo_de_receita h4 {
+
+    grid-row: 1/1;
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    margin: 1px;
+
+}
+
+.div_check1 {
+
+    grid-column: 1/1;
+    display: flex;
+    flex-direction: row;
+}
+
+.div_check2 {
+
+    grid-column: 2/2;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.div_check3 {
+
+    grid-column: 3/3;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.div_tipo_pontual {
+
+    display: none;
+    width: 90%;
+    height: 30vh;
+    margin: auto;
+    margin-top: 4vh;
+
+}
+
+.div_observacao {
+
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+
+}
+
+#h4_observacao {
+
+    margin-bottom: 2vh;
+    font-size: 1.5rem;
+
+}
+
+#txt_observacao {
+
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    color: #333335;
+    font-size: 1.4rem;
+
+}
+
+.div_tipo_fixa {
+
+    display: none;
+    width: 90%;
+    margin: auto;
+
+}
+
+.div_regularidade {
+
+    font-size: 1.4rem;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#select_regularidade {
+
+    background-color: transparent;
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    width: 8vw;
+
+}
+
+
+.div_tipo_parcelada {
+
+    display: none;
+    width: 90%;
+    margin: auto;
+
+}
+
+#txt_regularidade {
+
+    margin-top: 2vh;
+
+}
+
+#txt_numero_parcelas {
+
+    margin-top: 2vh;
+
+}
+
+.div_regularidade_parcelas {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+
+.div_numero_de_parcelas {
+
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    width: 9vw;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+
+}
+
+#input_numero_de_parcelas {
+
+    border: 1px black solid;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-left-width: 0;
+    background-color: transparent;
+    width: 5vw;
+    margin-left: 3vw;
+
+}
+
+
+.div_salvar_sair {
+ 
+    width: 90%;
+    height: 5vh;
+    margin: auto;
+    margin-top: 5vh;
+
+}
+
+.div_botoes {
+
+    display: flex;
+    width: 27vw;
+    height: 5vh;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    bottom: 8vh;
+
+}
+
+#adicionar {
+
+    background-color: #00d2ff;
+    color: white;
+    border: 0;
+    border-radius: 10%;
+    height: 5vh;
+    width: 5vw;
+}
+
+#resetar {
+
+    background-color: #e43a15;
+    color: white;
+    border: 0;
+    border-radius: 10%;
+    height: 5vh;
+    width: 4.5vw;
+
+}
+
+
+
+
+
+
+
+
+@media (min-height: 680px) {
+
+    html {
+
+        font-size: 72.5%;
+
+    }
+
+
+}
+
+@media (min-height: 900px) {
+
+    html {
+
+        font-size: 82.5%;
+
+    }
+
+    .description {
+
+        margin-bottom: 1vh;
+
+    }
+
+    .valor_e_data {
+
+        margin-bottom: 1vh;
+
+    }
+
+    .conta_e_categoria {
+
+        margin-bottom: 1vh;
+
+    }
+
+}

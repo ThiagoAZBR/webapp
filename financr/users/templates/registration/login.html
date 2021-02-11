@@ -3,15 +3,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Login</h2>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-</form>
-
-<a href="{% url 'dashboard' %}">Back to dashboard</a>
-<a href="{% url 'password_reset' %}">Reset password</a>
-<a href="{% url 'register' %}">Register</a>
+<div class="cabecalho_login">
+    <h2>Login</h2>
+</div>
+<div class="div_formulario_login">
+    <form id="form_login" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login">
+    </form>
+</div>
+<br>
+<div class="links_pagina_login">
+    <a href="{% url 'dashboard' %}">Página Principal</a>
+    <a href="{% url 'password_reset' %}">Alterar Senha</a>
+    <a href="{% url 'register' %}">Cadastrar</a>
+</div>
 {% endblock %}

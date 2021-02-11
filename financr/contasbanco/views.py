@@ -46,4 +46,11 @@ def contas_banco(request):
 def sucesso(request):
     return render(request, "sucesso.html")
 
-        
+def TelaCriarConta(request):
+    return render(request, 'templates/tela_de_criar_conta/premissa.html')
+
+def TelaEditarConta(request):
+    return render(request, 'templates/tela_de_criar_conta/modify.html')
+
+def TelaExcluirConta(request):
+    return render(request, 'templates/tela_de_criar_conta/excluir.html')

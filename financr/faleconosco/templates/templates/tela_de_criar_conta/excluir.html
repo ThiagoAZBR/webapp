@@ -1,0 +1,80 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fr - Excluir</title>
+
+    <link rel="stylesheet" href="{% static 'financr/css_da_tela_criar_conta/style_excluir.css' %}">
+
+    <!-- Open Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Roboto Muito Fino -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+    
+    <div class="global">
+
+        <div class="excluir_conta">
+
+            <div class="cabecalho">
+
+                <h1>Excluir Conta</h1>
+    
+                <a href="{% url 'app_home' %}">
+                <div class="xiz">
+                    <div id = 'one' > </div>
+                    <div id = 'two' > </div>
+                </div>
+                </a>
+    
+            </div>
+
+            <div class="conta_a_excluir">
+
+                <h4 id = 'titulo_de_selecionar_conta'>
+                    Selecione a Conta
+                </h4>
+
+                <select name="" id = "select_conta">
+
+
+
+                </select>
+                
+            </div>
+
+            <div class="div_avisos">
+
+                <h4 id = 'txt_avisos'>
+
+                    Ao Excluir a Conta, Todos os Dados Serão Apagados Permanentemente.<br><br>
+                    > <strong>Sem Possibilidade de Recuperação!</strong> <
+
+                </h4>
+
+            </div>
+
+            <div class="div_salvar_sair">
+
+                <div class="div_botoes">
+
+                    <input type="button" value = "Excluir" id = 'adicionar'>
+
+                    <input type = "reset" value = "Resetar" id = 'resetar'>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

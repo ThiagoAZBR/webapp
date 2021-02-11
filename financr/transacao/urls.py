@@ -1,5 +1,6 @@
 from django.conf.urls import url
-from transacao.views import receita, despesa, transferencia, sucesso, categoria
+from transacao.views import TransactionScreenView, TransactionScreen2View, TransactionScreen3View
+from transacao.views import receita, despesa, transferencia, sucesso, categoria, atualizar_saldos_transacoes
 from django.urls import path
 
 urlpatterns = [   
@@ -8,4 +9,9 @@ urlpatterns = [
     url(r"^transferencia/", transferencia, name="transferencia"),
     url(r"^criar_categoria/", categoria, name="criar_categoria"),
     url(r"^nova_entrada_sucesso/", sucesso, name="sucesso"),
+
+    #           --- Acessar os Paths para Transações ---
+    path('adicionar', TransactionScreenView.as_view(), name = 'adicionar'),
+    path('subtrair', TransactionScreen2View.as_view(), name = 'subtrair'),
+    path('transferir', TransactionScreen3View.as_view(), name = 'transferir')
 ]

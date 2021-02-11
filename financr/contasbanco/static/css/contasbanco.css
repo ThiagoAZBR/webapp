@@ -1,0 +1,50 @@
+.div_formulario_criar_conta{
+    display: flex;
+    justify-content: center;
+}
+
+.div_formulario_criar_conta #formulario_criar_conta{
+    background-color: lightgray ;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.cabecalho_criar_conta{
+    background:white;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.rodape_base{
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
+    height: 50px;
+    width: 100%;
+    background-color: #2d2220;
+    color: lightgray;
+    justify-items: center;
+}
+
+.rodape_base p{
+    padding-left: 10px;
+}
+
+.link_pagina_principal{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    text-decoration: none;
+    color: rgb(25, 27, 27);
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}

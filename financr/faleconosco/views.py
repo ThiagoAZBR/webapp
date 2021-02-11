@@ -6,26 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomUserAuthenticationForm
 
 
-class Formulario(CreateView):
-    model = Faleconosco
-    fields = ['nome', 'email', 'mensagem']
-    template_name = "faleconosco/contato.html"
-    success_url = reverse_lazy('fale_conosco')
 
 
-def fale_conosco(request):
 
-    if request.method == "POST":
-        nome_completo = request.POST.get('nome')
-        email = request.POST.get('email')
-        mensagem = request.POST.get('mensagem')
-        
-        a =Faleconosco(None, nome_completo, email, mensagem)
-        a.save()
-        
-        return render(request, 'templates/home_fora_do_webapp/home_page.html')
 
-    return render(request, 'templates/home_fora_do_webapp/home_page.html')
        
   
 @login_required(login_url='/accounts/login/')
@@ -42,8 +26,21 @@ def home_page(request):
     elif request.method == "POST":
         form = CustomUserAuthenticationForm(request.POST)
         user = form
-        print("\n\noi\n\n")
         
         if form.is_valid():
             login(request, user)
         return render(request, './templates/home_fora_do_webapp/home_page.html')
+
+def fale_conosco(request):
+
+    if request.method == "POST":
+        nome_completo = request.POST.get('nome')
+        email = request.POST.get('email')
+        mensagem = request.POST.get('mensagem')
+        
+        a =Faleconosco(None, nome_completo, email, mensagem)
+        a.save()
+        
+        return render(request, 'templates/home_fora_do_webapp/home_page.html')
+
+    return render(request, 'templates/home_fora_do_webapp/home_page.html')
