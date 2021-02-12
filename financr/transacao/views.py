@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .forms import Criar_transacao_Form, Criar_transferencia_Form, Criar_categoria_Form
 from contasbanco.models import Contas_bancarias
-from transacao.models import Transacao, Categoria_transacao
+from transacao.models import Transacao, Categoria_transacao, Transferencia
 from django.contrib.auth.models import User
 from decimal import Decimal
 from django.contrib.auth.decorators import login_required
@@ -10,14 +10,14 @@ from django.utils import formats
 
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='home')
 def receita(request):
     if request.method =="GET":
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=1)
-        return render(request, "testando.html", {'form': form})
+        return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
         
     elif request.method == "POST":
         usuario = request.user
@@ -76,7 +76,7 @@ def receita(request):
                 
                 else:
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
-                    return render(request, "testando.html", {'form': form})
+                    return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
                 
                 while data_atual > data_transacao_data:
                     instance.pk = None
@@ -100,7 +100,7 @@ def receita(request):
                 instance.transacao_efetivada = False
                 instance.save()
                 
-                return render(request, "users/dashboard.html")
+                return render(request, './templates/tela_inicial_do_webapp/principia.html')
                 ###
                 #Criar Função para gerar uma transacao futura para continuar a conta fixa
                 #Criar uma função para verificar se a transacao anterior está pronta para ser efetivada e
@@ -125,7 +125,7 @@ def receita(request):
                 
                 else:
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
-                    return render(request, "testando.html", {'form': form})
+                    return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
                 
                 if  valor_parcela * qtde_parcelas != valor_transacao:
                     dizima = True
@@ -182,19 +182,19 @@ def receita(request):
                     
                     data_transacao_data += intervalo_transacao
 
-            return render(request, "users/dashboard.html")
+            return render(request, './templates/tela_inicial_do_webapp/principia.html')
         
-        return render(request, "testando.html", {'form': form})
+        return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='home')
 def despesa(request):
     if request.method =="GET":
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=2)
-        return render(request, "testando.html", {'form': form})
+        return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
         
     elif request.method == "POST":
         usuario = request.user
@@ -254,7 +254,7 @@ def despesa(request):
                 
                 else:
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
-                    return render(request, "testando.html", {'form': form})
+                    return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
 
                 while data_atual > data_transacao_data:
                     instance.pk = None
@@ -278,7 +278,7 @@ def despesa(request):
                 instance.transacao_efetivada = False
                 instance.save()
                 
-                return render(request, "users/dashboard.html")
+                return render(request, './templates/tela_inicial_do_webapp/principia.html')
             
             elif tipo_transacao == 3: #TRANSAÇÃO PARCELADA
                 valor_transacao = Decimal(form['valor'].data)
@@ -297,7 +297,7 @@ def despesa(request):
                 
                 else:
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
-                    return render(request, "testando.html", {'form': form})
+                    return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
                 
                 if  valor_parcela * qtde_parcelas != valor_transacao:
                     dizima = True
@@ -354,26 +354,26 @@ def despesa(request):
                     
                     data_transacao_data += intervalo_transacao
 
-            return render(request, "users/dashboard.html")
+            return render(request, './templates/tela_inicial_do_webapp/principia.html')
         
-        return render(request, "testando.html", {'form': form})
+        return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
     
     
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='home')
 def transferencia(request):
     if request.method =="GET":
         usuario = request.user
-        classe_transacao=(Transacao(descricao="Transferência para conta própria"))
+        classe_transacao=(Transferencia(descricao="Transferência para conta própria"))
         form = Criar_transferencia_Form(instance=classe_transacao)
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["conta_destino"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id, classe_transacao=3)
         
-        return render(request, "testando.html", {'form': form})
+        return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
         
     elif request.method == "POST":
         usuario = request.user
-        classe_transacao=(Transacao(classe_transacao=3, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
+        classe_transacao=(Transferencia(classe_transacao=3, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
         form = Criar_transferencia_Form(request.POST, instance=classe_transacao)
         
         if form.is_valid():
@@ -407,24 +407,14 @@ def transferencia(request):
                 form.add_error('conta_destino','O banco destino não pode ser igual ao banco de origem.')
                        
             if form.errors:
-                return render(request, "testando.html", {'form': form})
+                return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
             
             
             if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
                 if  data_atual >= data_transacao_data: #Verifica se é uma transação atual ou futura
-                    # instance.transacao_efetivada = True
-                    # instance.save()
-                    for transferencia in range(2):
-                        instance.pk = None
-                        instance.transacao_efetivada = False
-                        if transferencia == 1:
-                            inverte_conta_origem_destino = id_banco_origem
-                            instance.conta_id = id_banco_destino
-
-                        instance.save()
-                    
-                    
-                    
+                    instance.transacao_efetivada = True
+                    instance.save()
+                
                     conta_bancaria_origem = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_origem)
                     
                     conta_bancaria_destino = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco_destino)
@@ -459,7 +449,7 @@ def transferencia(request):
                 
                 else:
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
-                    return render(request, "testando.html", {'form': form})
+                    return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
             
                 while data_atual > data_transacao_data:
                     instance.pk = None
@@ -493,7 +483,7 @@ def transferencia(request):
                 instance.transacao_efetivada = False
                 instance.save()
                 
-                return render(request, "users/dashboard.html")
+                return render(request, './templates/tela_inicial_do_webapp/principia.html')
                    
             if tipo_transacao == 3: #TRANSAÇÃO PARCELADA
                 valor_transacao = Decimal(form['valor'].data)
@@ -512,7 +502,7 @@ def transferencia(request):
                 
                 else:
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
-                    return render(request, "testando.html", {'form': form})
+                    return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
                 
                 if  valor_parcela * qtde_parcelas != valor_transacao:
                     dizima = True
@@ -581,13 +571,13 @@ def transferencia(request):
             
             atualizar_saldos_transacoes()
             
-            return render(request, "users/dashboard.html")
+            return render(request, './templates/tela_inicial_do_webapp/principia.html')
         
-        return render(request, "testando.html", {'form': form})
+        return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
     
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='home')
 def categoria(request):
     if request.method =="GET":  
         usuario = request.user
@@ -632,6 +622,8 @@ class TransactionScreen2View(TemplateView):
 
 class TransactionScreen3View(TemplateView):
     template_name = './templates/tela_de_transacoes/transferir.html'
+    
+    
 def atualizar_saldos_transacoes():
     total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year)
     

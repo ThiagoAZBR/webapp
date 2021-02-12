@@ -43,7 +43,7 @@
 
                 <li id = 'dados'> Usuario </li>
                 <li id = 'configuracoes'> Configurações </li>
-                <li id = 'sair'> Sair </li>
+                <a id = 'sair' href="{% url 'logout' %}"> Sair </a>
 
             </nav>
 
@@ -52,7 +52,7 @@
         <div class = "conf_usuario">
 
             <h4> < Olá, {{ user.username|default:'Guest' }} > </h4>
-            <h4> < Seu Email: > <br>< Email Não inserido > </h4>
+            <h4> < Seu Email: > <br>< {{ user.email|default:'E-mail não informado' }} > </h4>
 
         </div>
 

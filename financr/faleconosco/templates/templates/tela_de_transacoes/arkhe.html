@@ -35,8 +35,9 @@
 
             </div>
 
-            <form action = "" method="post" class = 'formulario_receita'>
-
+            <form method="POST" class = 'formulario_receita'>
+                {% csrf_token %}
+                {{ form.errors }}
                 <div class="div_titulo_description">
                     <h4 id = 'titulo_description'>
                         Descrição
@@ -44,8 +45,8 @@
                 </div>
 
                 <div class = "description">
-
-                    <input type="text" name="descricao" id="txt_description">
+                    {{form.descricao}}
+                    <!-- <input type="text" name="descricao" id="txt_description"> -->
 
                 </div>
 
@@ -60,9 +61,10 @@
                 </div>
 
                 <div class = "valor_e_data">
-
-                    <input type="number" step="0.01" name = "valor" id = "txt_value">
-                    <input type="date" name = "data_transacao" id = "data_transacao">
+                    {{form.valor}}
+                    {{form.data_transacao}}
+                    <!-- <input type="number" step="0.01" name = "valor" id = "txt_value">
+                    <input type="date" name = "data_transacao" id = "data_transacao"> -->
 
                 </div>
 
@@ -77,9 +79,11 @@
                 </div>
 
                 <div class = "conta_e_categoria">
+                    {{form.conta}}
+                    {{form.categoria_transacao}}
 
-                    <select name = "conta" id = "select_conta"></select>
-                    <select name = "categoria_transacao" id = "select_categoria"></select>
+                    <!-- <select name = "conta" id = "select_conta"></select>
+                    <select name = "categoria_transacao" id = "select_categoria"></select> -->
 
                 </div>
 
@@ -88,7 +92,6 @@
                         Tipo De Receita
                     </h4>
                 </div>
-
                 <div class="tipo_de_receita">
 
                     <div class="div_check1">
@@ -114,7 +117,8 @@
                     <div class="div_observacao">
 
                         <h4 id = 'h4_observacao'> Observação </h4>
-                        <input type="text" name = "observacoes" id = "txt_observacao">
+                        {{form.observacoes}}
+                        <!-- <input type="text" name = "observacoes" id = "txt_observacao"> -->
             
                     </div>
 
@@ -125,19 +129,21 @@
                     <div class="div_regularidade">
 
                         <h4 id = 'txt_regularidade'> Regularidade </h4>
-                        <select name="" id = "select_regularidade">
+                        {{form.regularidade}}
+                        <!-- <select name="" id = "select_regularidade">
                             <option value="mensal"> Mensal </option>
                             <option value="semanal"> Semanal </option>
                             <option value="diario"> Diário </option>
                             <option value="anual"> Anual </option>
-                        </select>
+                        </select> -->
 
                     </div>
 
                     <div class="div_observacao">
 
                         <h4 id = 'h4_observacao' > Observação </h4>
-                        <input type="text" name = "observacoes" id = "txt_observacao">
+                        <!-- {{form.observacoes}} -->
+                        <!-- <input type="text" name = "observacoes" id = "txt_observacao"> -->
             
                     </div>
 
@@ -153,19 +159,21 @@
                         <div class="div_regularidade">
 
                             <h4 id = 'txt_regularidade'> Regularidade </h4>
-                            <select name="" id = "select_regularidade">
+                            
+                            <!-- <select name="" id = "select_regularidade">
                                 <option value="mensal"> Mensal </option>
                                 <option value="semanal"> Semanal </option>
                                 <option value="diario"> Diário </option>
                                 <option value="anual"> Anual </option>
-                            </select>
+                            </select> -->
     
                         </div>
     
                         <div class="div_numero_de_parcelas">
     
                             <h4 id = 'txt_numero_parcelas'> Número De Parcelas </h4>
-                            <input type = "number" name = "" id = "input_numero_de_parcelas">
+                            {{form.num_parcelas}}
+                            <!-- <input type = "number" name = "" id = "input_numero_de_parcelas"> -->
     
                         </div>
 
@@ -174,7 +182,8 @@
                     <div class="div_observacao">
 
                         <h4 id = 'h4_observacao'> Observação </h4>
-                        <input type="text" name = "observacoes" id = "txt_observacao">
+                        <!-- {{form.observacoes}} -->
+                        <!-- <input type="text" name = "observacoes" id = "txt_observacao"> -->
             
                     </div>
 
@@ -185,7 +194,7 @@
 
                     <div class="div_botoes">
 
-                        <input type="button" value = "Adicionar" id = 'adicionar'>
+                        <input type="submit" value = "Adicionar" id = 'adicionar'>
 
                         <input type = "reset" value = "Resetar" id = 'resetar'>
 

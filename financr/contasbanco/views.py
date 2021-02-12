@@ -4,11 +4,11 @@ from .models import Contas_bancarias
 from django.contrib.auth.decorators import login_required
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='home')
 def criar_conta(request):
     if request.method == "GET":
         form = Criar_ContaBanco_Form()
-        return render(request, 'criar_conta.html', {'form': form})
+        return render(request, 'templates/tela_de_criar_conta/premissa.html', {'form': form})
     
     elif request.method == "POST":
         usuario = request.user
@@ -21,20 +21,20 @@ def criar_conta(request):
             
             try:
                 form.save()
-                return render(request, 'users/dashboard.html', {'form': form})
+                return render(request, './templates/tela_inicial_do_webapp/principia.html', {'form': form})
             
             except:
                 form.add_error('nome_banco','Este Banco já existe.')
-                return render(request, 'criar_conta.html', {'form': form})
+                return render(request, 'templates/tela_de_criar_conta/premissa.html', {'form': form})
             
         else:    
-            return render(request, 'criar_conta.html', {'form': form})
+            return render(request, 'templates/tela_de_criar_conta/premissa.html', {'form': form})
     
     else:
         return render(request, 'fracasso.html')
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='home')
 def contas_banco(request):
     if request.method == "GET":
         usuario = request.user 
@@ -42,15 +42,13 @@ def contas_banco(request):
         return render(request, 'contas.html', {'lista_contas_banco': contas_banco_usuario})
     
 
-
 def sucesso(request):
     return render(request, "sucesso.html")
 
-def TelaCriarConta(request):
-    return render(request, 'templates/tela_de_criar_conta/premissa.html')
 
 def TelaEditarConta(request):
     return render(request, 'templates/tela_de_criar_conta/modify.html')
+
 
 def TelaExcluirConta(request):
     return render(request, 'templates/tela_de_criar_conta/excluir.html')

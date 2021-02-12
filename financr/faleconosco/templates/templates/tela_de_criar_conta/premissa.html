@@ -36,17 +36,18 @@
 
             </div>
 
-            <form method="post" class = 'formulario-conta'>
-
+            <form method="POST" class = 'formulario-conta'>
+                {% csrf_token %}
+                {{ form.errors }}
                 <div class="div_titulo_nome_da_conta">
                     <h4 id = 'titulo_nome_da_conta'>
                         Nome Do Banco
                     </h4>
                 </div>
-
+        
                 <div class = "nome_da_conta">
-
-                    <input type="text" name="descricao" id="txt_description">
+                    
+                    {{form.nome_banco}}
 
                 </div>
 
@@ -55,7 +56,7 @@
                     <h4 id = 'titulo_saldo'>
                         Saldo Inicial
                     </h4>
-                    <input type="number" name="" id = "input_saldo" step="0.01">
+                    {{form.saldo}}
 
                 </div>
 
@@ -63,7 +64,7 @@
 
                     <div class="div_botoes">
 
-                        <input type="button" value = "Adicionar" id = 'adicionar'>
+                        <input type="submit" value = "Adicionar" id = 'adicionar'>
 
                         <input type = "reset" value = "Resetar" id = 'resetar'>
 

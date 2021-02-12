@@ -5,14 +5,7 @@ from django.shortcuts import render, reverse
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserAuthenticationForm
 
-
-
-
-
-
-       
-  
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='home')
 def app_home(request):
     if request.method == "GET":
         return render(request, './templates/tela_inicial_do_webapp/principia.html')
