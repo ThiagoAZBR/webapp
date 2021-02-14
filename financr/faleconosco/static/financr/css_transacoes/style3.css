@@ -87,6 +87,13 @@ html, body {
 }
 
 
+#id_descricao {
+
+    display: none;
+
+}
+
+
 .from_account {
 
     width: 90%;
@@ -98,13 +105,16 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 
-#select_from_account{
+#id_conta{
 
     background-color: transparent;
     border: 1px black solid;
     border-right-width: 0;
     border-top-width: 0;
     border-left-width: 0;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+
 
 }
 
@@ -120,13 +130,16 @@ html, body {
 
 }
 
-#select_to_account {
+#id_conta_destino {
 
     background-color: transparent;
     border: 1px black solid;
     border-right-width: 0;
     border-top-width: 0;
     border-left-width: 0;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+
 
 }
 
@@ -169,7 +182,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     width: 10vw;
     font-family: 'Roboto', sans-serif;
 
@@ -264,7 +277,7 @@ html, body {
 
 }
 
-#txt_observacao {
+#id_observacoes {
 
     border: 1px black solid;
     border-right-width: 0;
@@ -272,7 +285,11 @@ html, body {
     border-left-width: 0;
     background-color: transparent;
     color: #333335;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    width: 97%;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+
 
 }
 
@@ -294,7 +311,7 @@ html, body {
 
 }
 
-#select_regularidade {
+#id_regularidade {
 
     background-color: transparent;
     border: 1px black solid;
@@ -302,6 +319,9 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     width: 8vw;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+
 
 }
 
@@ -339,14 +359,14 @@ html, body {
 
     display: flex;
     flex-direction: column;
-    font-size: 1.3rem;
-    width: 9vw;
+    font-size: 1.4rem;
+    width: auto;
     font-family: 'Roboto', sans-serif;
     color: black;
 
 }
 
-#input_numero_de_parcelas {
+#id_num_parcelas {
 
     border: 1px black solid;
     border-right-width: 0;
@@ -355,8 +375,29 @@ html, body {
     background-color: transparent;
     width: 5vw;
     margin-left: 3vw;
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+
 
 }
+
+
+
+.div_erros {
+
+    position: absolute;
+    top: 2vh;
+    left: 3vw;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    font-size: 1.8rem;
+
+}
+
+
 
 
 .div_salvar_sair {
