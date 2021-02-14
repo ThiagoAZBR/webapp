@@ -31,7 +31,7 @@ html, body {
     border-radius: 1%;
     height: 92vh;
     min-height: 92vh;
-    width: 30vw;
+    width: 30%;
 
 
 }
@@ -124,7 +124,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     width: 70%;
     font-family: 'Roboto', sans-serif;
 
@@ -189,7 +189,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     width: 10vw;
     font-family: 'Roboto', sans-serif;
 
@@ -305,7 +305,7 @@ html, body {
 
 }
 
-#txt_observacao {
+#id_observacoes {
 
     border: 1px black solid;
     border-right-width: 0;
@@ -313,7 +313,7 @@ html, body {
     border-left-width: 0;
     background-color: transparent;
     color: #333335;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 
 }
 
@@ -335,7 +335,7 @@ html, body {
 
 }
 
-#select_regularidade {
+#id_regularidade {
 
     background-color: transparent;
     border: 1px black solid;
@@ -387,7 +387,7 @@ html, body {
 
 }
 
-#input_numero_de_parcelas {
+#id_num_parcelas {
 
     border: 1px black solid;
     border-right-width: 0;
@@ -429,7 +429,7 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 5vw;
+    width: 24%;
 }
 
 #resetar {
@@ -439,7 +439,7 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 4.5vw;
+    width: 23.5%;
 
 }
 

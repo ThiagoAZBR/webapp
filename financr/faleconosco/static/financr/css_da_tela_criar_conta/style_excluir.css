@@ -22,13 +22,13 @@ html, body {
 
 }
 
-.excluir_conta {
+.categoria_conta {
 
     border: black 0.4px solid;
     border-radius: 1%;
     height: 46vh;
     min-height: 46vh;
-    width: 28vw;
+    width: 28%;
     margin: auto;
     margin-top: 23vh;
     background-color: white;
@@ -90,7 +90,7 @@ html, body {
 
 }
 
-.conta_a_excluir {
+.conta_a_categoria {
 
     width: 90%;
     margin: auto;
@@ -170,7 +170,7 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 5vw;
+    width: 24%;
 }
 
 #resetar {
@@ -180,6 +180,6 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 4.5vw;
+    width: 23.5%;
 
 }

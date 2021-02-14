@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fr - Excluir</title>
+    <title>Fr - categoria</title>
 
-    <link rel="stylesheet" href="{% static 'financr/css_da_tela_criar_conta/style_excluir.css' %}">
+    <link rel="stylesheet" href="{% static 'financr/css_da_tela_criar_conta/style_categoria.css' %}">
 
     <!-- Open Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
@@ -20,11 +20,11 @@
     
     <div class="global">
 
-        <div class="excluir_conta">
+        <div class="categoria_conta">
 
             <div class="cabecalho">
 
-                <h1>Excluir Conta</h1>
+                <h1>Criar Categoria</h1>
     
                 <a href="{% url 'app_home' %}">
                 <div class="xiz">
@@ -35,10 +35,10 @@
     
             </div>
 
-            <div class="conta_a_excluir">
+            <div class="conta_a_categoria">
 
                 <h4 id = 'titulo_de_selecionar_conta'>
-                    Selecione a Conta
+                    Nome da Categoria
                 </h4>
 
                 <select name="" id = "select_conta">
@@ -51,12 +51,6 @@
 
             <div class="div_avisos">
 
-                <h4 id = 'txt_avisos'>
-
-                    Ao Excluir a Conta, Todos os Dados Serão Apagados Permanentemente.<br><br>
-                    > <strong>Sem Possibilidade de Recuperação!</strong> <
-
-                </h4>
 
             </div>
 
@@ -64,7 +58,7 @@
 
                 <div class="div_botoes">
 
-                    <input type="button" value = "Excluir" id = 'adicionar'>
+                    <input type="button" value = "categoria" id = 'adicionar'>
 
                     <input type = "reset" value = "Resetar" id = 'resetar'>
 
