@@ -447,6 +447,27 @@ html, body {
 
 
 
+.div_erros {
+
+    position: absolute;
+    top: 2vh;
+    left: 3vw;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    font-size: 1.8rem;
+
+}
+
+
+
+
+
+
+
+
 
 ::-moz-placeholder {  /* Firefox 19+ */
 
