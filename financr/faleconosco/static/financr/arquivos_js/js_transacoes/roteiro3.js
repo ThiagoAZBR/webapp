@@ -17,6 +17,13 @@ let div_forms = document.querySelector('.div_tipo_parcelada')
 
 let resetar = document.querySelector('#resetar')
 
+let oitenta_e_sete = 87
+let select = document.querySelector('#id_categoria_transacao').value = oitenta_e_sete
+
+let tipo_transacao = document.querySelector('#id_tipo_transacao')
+
+
+
 resetar.addEventListener('click', function() {
 
     div_check1.style.display = 'flex'
@@ -38,6 +45,7 @@ check1.onchange = function () {
         div_check3.style.display = 'none'
         regularide.style.display = 'none'
         parcelas.style.display = 'none'
+        tipo_transacao.value = '1'
 
     }
 
@@ -46,6 +54,7 @@ check1.onchange = function () {
         div_forms.style.display = 'none'
         div_check2.style.display = 'flex'
         div_check3.style.display = 'flex'
+        tipo_transacao.value = '0'
 
     }
 
@@ -60,6 +69,9 @@ check2.onchange = function () {
         div_check3.style.display = 'none'
         regularide.style.display = 'block'
         parcelas.style.display = 'none'
+        tipo_transacao.value = '2'
+        
+
 
     }
 
@@ -68,6 +80,7 @@ check2.onchange = function () {
         div_forms.style.display = 'none'
         div_check1.style.display = 'flex'
         div_check3.style.display = 'flex'
+        tipo_transacao.value = '0'
 
     }
 
@@ -83,6 +96,7 @@ check3.onchange = function () {
         regularide.style.display = 'block'
         parcelas.style.display = 'block'
         console.log('Check3 Aqui')
+        tipo_transacao.value = '3'
 
     }
 
@@ -91,6 +105,7 @@ check3.onchange = function () {
         div_forms.style.display = 'none'
         div_check1.style.display = 'flex'
         div_check2.style.display = 'flex'
+        tipo_transacao.value = '0'
         console.log('Check3 Falso Aqui')
 
     }

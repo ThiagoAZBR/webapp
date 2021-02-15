@@ -93,6 +93,12 @@ html, body {
 
 }
 
+#id_categoria_transacao {
+
+    display: none;
+
+}
+
 
 .from_account {
 
@@ -251,13 +257,9 @@ html, body {
 
 }
 
-.div_tipo_pontual {
+#id_tipo_transacao {
 
     display: none;
-    width: 90%;
-    height: 30vh;
-    margin: auto;
-    margin-top: 4vh;
 
 }
 
@@ -287,19 +289,12 @@ html, body {
     color: #333335;
     font-size: 1.8rem;
     width: 97%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: black;
 
 
 }
 
-.div_tipo_fixa {
-
-    display: none;
-    width: 90%;
-    margin: auto;
-
-}
 
 .div_regularidade {
 

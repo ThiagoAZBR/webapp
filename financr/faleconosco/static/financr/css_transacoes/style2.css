@@ -278,15 +278,12 @@ html, body {
 
 }
 
-.div_tipo_pontual {
+#id_tipo_transacao {
 
     display: none;
-    width: 90%;
-    height: 30vh;
-    margin: auto;
-    margin-top: 4vh;
 
 }
+
 
 .div_observacao {
 
@@ -317,13 +314,7 @@ html, body {
 
 }
 
-.div_tipo_fixa {
 
-    display: none;
-    width: 90%;
-    margin: auto;
-
-}
 
 .div_regularidade {
 

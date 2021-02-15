@@ -17,6 +17,8 @@ let div_forms = document.querySelector('.div_tipo_parcelada')
 
 let resetar = document.querySelector('#resetar')
 
+let tipo_transacao = document.querySelector('#id_tipo_transacao')
+
 
 resetar.addEventListener('click', function() {
 
@@ -40,6 +42,7 @@ check1.onchange = function () {
         observaca.style.display = 'block'
         regularide.style.display = 'none'
         parcelas.style.display = 'none'
+        tipo_transacao.value = '1'
 
     }
 
@@ -48,6 +51,7 @@ check1.onchange = function () {
         div_forms.style.display = 'none'
         div_check2.style.display = 'flex'
         div_check3.style.display = 'flex'
+        tipo_transacao.value = '0'
 
     }
 
@@ -62,6 +66,7 @@ check2.onchange = function () {
         div_check3.style.display = 'none'
         regularide.style.display = 'block'
         parcelas.style.display = 'none'
+        tipo_transacao.value = '2'
 
     }
 
@@ -70,6 +75,7 @@ check2.onchange = function () {
         div_forms.style.display = 'none'
         div_check1.style.display = 'flex'
         div_check3.style.display = 'flex'
+        tipo_transacao.value = '0'
 
     }
 
@@ -84,6 +90,7 @@ check3.onchange = function () {
         div_check2.style.display = 'none'
         regularide.style.display = 'block'
         parcelas.style.display = 'block'
+        tipo_transacao.value = '3'
         console.log('Check3 Aqui')
 
     }
@@ -94,6 +101,7 @@ check3.onchange = function () {
         div_check1.style.display = 'flex'
         div_check2.style.display = 'flex'
         console.log('Check3 Falso Aqui')
+        tipo_transacao.value = '0'
 
     }
 
