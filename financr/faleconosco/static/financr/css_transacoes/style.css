@@ -279,15 +279,12 @@ html, body {
 
 }
 
-.div_tipo_pontual {
+#id_tipo_transacao {
 
     display: none;
-    width: 90%;
-    height: 30vh;
-    margin: auto;
-    margin-top: 4vh;
 
 }
+
 
 .div_observacao {
 
@@ -317,13 +314,6 @@ html, body {
 
 }
 
-.div_tipo_fixa {
-
-    display: none;
-    width: 90%;
-    margin: auto;
-
-}
 
 .div_regularidade {
 
@@ -442,6 +432,30 @@ html, body {
     width: 23.5%;
 
 }
+
+
+
+
+
+.div_erros {
+
+    position: absolute;
+    top: 23.1vh;
+    left: 3vw;
+    width: 27vw;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    font-size: 1.8rem;
+    /* border: 4px #333335 solid; */
+    border-radius: 1%;
+
+}
+
+
+
 
 
 

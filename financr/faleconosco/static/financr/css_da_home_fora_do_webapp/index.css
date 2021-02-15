@@ -320,7 +320,8 @@
 
 .cadastro .dados_cadastrais .enviar .captcha{
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     height: 55px;
     width: 115px;
@@ -332,7 +333,7 @@
 
 .cadastro .dados_cadastrais .enviar .submit {
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-    height: 35px;
+    height: 45px;
     width: 155px;
     font-size: 2.4rem;
     margin-top: 30px;
@@ -430,7 +431,8 @@
 
 .contato .colunaesquerda .enviar .captcha{
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: column;
     max-height: 65px;
     height: 65px;
@@ -446,8 +448,8 @@
 }
 
 .contato .colunaesquerda .enviar .submit{
-    height: 60px;
-    max-width: 185px;
+    height: auto;
+    /* max-width: 185px; */
     width: 185px;
     font-size: 2rem;
     margin-top: 30px;
@@ -558,6 +560,12 @@
 }
 
 @media (max-width: 950px) {
+
+    .contato h1 {
+
+        margin-bottom: 65px;
+
+    }
 
     html {
 
@@ -689,6 +697,7 @@
 
 }
 
+
 @media (max-width: 600px) {
 
     html {
@@ -730,4 +739,10 @@
         width: 90px;
 
     }
+}
+
+.contato h1 {
+
+    margin-bottom: 55px;
+
 }

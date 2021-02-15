@@ -121,7 +121,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     width: 70%;
     font-family: 'Roboto', sans-serif;
 
@@ -133,7 +133,7 @@ html, body {
     flex-direction: row;
     width: 90%;
     margin: auto;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     font-family: 'Roboto', sans-serif;
     color: #333335;
     height: 44px;
@@ -154,7 +154,7 @@ html, body {
     flex-direction: row;
     width: 90%;
     margin: auto;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     font-family: 'Roboto', sans-serif;
     color: #333335;
     height: 41px;
@@ -186,7 +186,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     width: 10vw;
     font-family: 'Roboto', sans-serif;
 
@@ -210,7 +210,7 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     width: 10vw;
 
 }
@@ -278,15 +278,12 @@ html, body {
 
 }
 
-.div_tipo_pontual {
+#id_tipo_transacao {
 
     display: none;
-    width: 90%;
-    height: 30vh;
-    margin: auto;
-    margin-top: 4vh;
 
 }
+
 
 .div_observacao {
 
@@ -304,7 +301,7 @@ html, body {
 
 }
 
-#txt_observacao {
+#id_observacoes {
 
     border: 1px black solid;
     border-right-width: 0;
@@ -312,17 +309,12 @@ html, body {
     border-left-width: 0;
     background-color: transparent;
     color: #333335;
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+    width: 97%;
 
 }
 
-.div_tipo_fixa {
 
-    display: none;
-    width: 90%;
-    margin: auto;
-
-}
 
 .div_regularidade {
 
@@ -334,7 +326,7 @@ html, body {
 
 }
 
-#select_regularidade {
+#id_regularidade {
 
     background-color: transparent;
     border: 1px black solid;
@@ -386,7 +378,7 @@ html, body {
 
 }
 
-#input_numero_de_parcelas {
+#id_num_parcelas {
 
     border: 1px black solid;
     border-right-width: 0;
@@ -397,6 +389,28 @@ html, body {
     margin-left: 3.7vw;
 
 }
+
+
+
+.div_erros {
+
+    position: absolute;
+    top: 23.1vh;
+    left: 3vw;
+    width: 27vw;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    font-size: 1.8rem;
+    /* border: 4px #333335 solid; */
+    border-radius: 1%;
+
+}
+
+
+
 
 
 .div_salvar_sair {

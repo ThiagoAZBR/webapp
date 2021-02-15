@@ -37,7 +37,11 @@
 
             <form method="POST" class = 'formulario_receita'>
                 {% csrf_token %}
+
+                <div class="div_erros">
                 {{ form.errors }}
+                </div>
+
                 <div class="div_titulo_description">
                     <h4 id = 'titulo_description'>
                         Descrição
@@ -92,6 +96,7 @@
                         Tipo De Receita
                     </h4>
                 </div>
+                {{form.tipo_transacao}}
                 <div class="tipo_de_receita">
 
                     <div class="div_check1">

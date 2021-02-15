@@ -157,8 +157,8 @@ tela_saldo.addEventListener('click', function() {
 
         lista_off.forEach(function (tela) {
 
-            tela.style.width = '200px'
-            tela.style.height = '17vh'
+            tela.style.width = '170px'
+            tela.style.height = '15vh'
             console.log('Lista off Aqui')
 
         })
@@ -217,8 +217,8 @@ tela_graficos.addEventListener('click', function() {
 
         lista_off.forEach(function (tela) {
 
-            tela.style.width = '200px'
-            tela.style.height = '17vh'
+            tela.style.width = '170px'
+            tela.style.height = '15vh'
             console.log('Lista off Aqui')
 
         })
@@ -282,8 +282,8 @@ tela_criar_conta.addEventListener('click', function() {
 
         lista_off.forEach(function (tela) {
 
-            tela.style.width = '200px'
-            tela.style.height = '17vh'
+            tela.style.width = '170px'
+            tela.style.height = '15vh'
             console.log('Lista off Aqui')
 
         })
@@ -346,8 +346,8 @@ tela_transferencias.addEventListener('click', function() {
 
         lista_off.forEach(function (tela) {
 
-            tela.style.width = '200px'
-            tela.style.height = '17vh'
+            tela.style.width = '170px'
+            tela.style.height = '15vh'
             console.log('Lista off Aqui')
 
         })
