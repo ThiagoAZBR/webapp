@@ -40,18 +40,67 @@
                 {% endfor %}
             </ul>
         </div>
-        <div id="ultimas_transacoes">
+        <div id="ultimas_receitas">
             <ul>
-                <p>ÚLTIMAS 3 TRANSAÇÕES:</p>
-                <p>Data - Valor</p>
-                {% for transacao in ultimas_transacoes %}
-                    <p></p>{{ transacao.data_transacao }} - R${{ transacao.valor }}</p>
-                    <p></p>
+                <p>ÚLTIMAS RECEITAS:</p>
+                {% for receita in ultimas_receitas %}
+                <p>DATA: {{ receita.data_transacao }} - R${{ receita.valor }}</p>
+                <p></p>
                 {% endfor %}
             </ul>
         </div>
+        <div id="ultimas_despesas">
+            <ul>
+                <p>ÚLTIMAS DESPESAS:</p>
+                {% for despesas in ultimas_despesas %}
+                <p>DATA: {{ despesas.data_transacao }} - R${{ despesas.valor }}</p>
+                <p></p>
+                {% endfor %}
+            </ul>
+        </div>  
+    </div>
+    <div class="graficos">
+        <div id="graficopizza">
+        </div>
+        <div id="graficodespesas">
+        </div>
+        <div id="graficoreceitas">
+        </div>
     </div>
 </div>
-<div id="grafico">
+<div>
+    Categorias cadastradas de receita
+    {% for i in categorias_receitas %}
+        <p>{{ i.categoria }}</p>
+        <p></p>
+    {% endfor %}
+</div>
+<div>
+    Categorias cadastradas de despesa
+    {% for i in categorias_despesas %}
+        <p>{{ i.categoria }}</p>
+        <p></p>
+    {% endfor %}
+</div>
+<div>
+    HISTÓRICO DE RECEITAS
+    {% for i in lista_transacoes_receitas %}
+        <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
+        <p></p>
+    {% endfor %}
+</div>
+<div>
+    HISTÓRICO DE DESPESAS
+    {% for i in lista_transacoes_despesas %}
+        <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
+        <p></p>
+    {% endfor %}
+</div>
+<div>
+    HISTÓRICO DE TRANSFERENCIAS
+    {% for i in lista_transacoes_transferencias %}
+        <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
+        <p></p>
+    {% endfor %}
 </div>
 {% endblock %}

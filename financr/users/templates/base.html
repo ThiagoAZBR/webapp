@@ -8,32 +8,81 @@
     <link href="{% static 'css/users.css' %}" rel='stylesheet'>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script>
-        var a = "{{contas}}";
-        console.log(a);
-
+        
         google.charts.load('current', {packages: ['corechart']});
         google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(graficodespesas);
+        google.charts.setOnLoadCallback(graficoreceitas);
 
         function drawChart(){
-            const container = document.querySelector('#grafico')
-            const data = new google.visualization.arrayToDataTable([
-            ['Categoria' , 'Gasto'], 
-            ['Alimentação', 2000],
-            ['Combustivel', 1000],
-            ['Aluguel', 2300],
-            ['Internet', 90],
-            ['Energia', 190]
-            ])
+
+            let a = ('{{graficobancos | safe}}');
+
+            const container = document.querySelector('#graficopizza')
+            const data = new google.visualization.arrayToDataTable(JSON.parse(a))
             
             const options = {
-                title: 'Gastos',
-                height:800,
-                weight:800,
+                title: 'Saldo por banco',
+                height:500,
+                weight:500,
             }
 
             const chart = new google.visualization.PieChart(container)
             chart.draw(data, options)
         }
+
+        function graficodespesas(){
+            let b = ('{{graficodespesas | safe}}');
+            const container = document.querySelector('#graficodespesas')
+            let data = new google.visualization.arrayToDataTable(JSON.parse(b))            
+            const options = {
+                // set annotation for -- No Data Copy
+                annotations: {
+                // remove annotation stem and push to middle of chart
+                stem: {
+                    color: 'transparent',
+                    length: 120
+                },
+                title: 'Despesas Recentes',
+                color: '#edf7ff',
+                height:300,
+                weight:100,
+                }
+            };
+        
+            if (data.getNumberOfRows() === 0) {
+                data.addRows([
+                    ['', 0, null, 'No Data Copy']
+                ]);
+            }
+            const chart = new google.visualization.ColumnChart(container)
+            chart.draw(data, options)
+        }
+
+        function graficoreceitas(){
+            let c = ('{{graficoreceitas | safe}}');
+            const container = document.querySelector('#graficoreceitas')
+            const data = new google.visualization.arrayToDataTable(JSON.parse(c))            
+            const options = {
+                // set annotation for -- No Data Copy
+                annotations: {
+                // remove annotation stem and push to middle of chart
+                stem: {
+                    color: 'transparent',
+                    length: 120
+                },
+                title: 'Receitas Recentes',
+                curveType: 'function',
+                height:300,
+                weight:100,
+                }
+            };
+
+            const chart = new google.visualization.BarChart(container)
+            chart.draw(data, options)
+        }
+
+
     </script>
     <style>
         label, input {
