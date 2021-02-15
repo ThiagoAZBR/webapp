@@ -1,7 +1,7 @@
 from django.views.generic.edit import CreateView
 from .models import Faleconosco
 from django.urls import reverse_lazy
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserAuthenticationForm
 
@@ -132,6 +132,6 @@ def fale_conosco(request):
         a =Faleconosco(None, nome_completo, email, mensagem)
         a.save()
         
-        return render(request, 'templates/home_fora_do_webapp/home_page.html')
+        return redirect(reverse("home"))
 
     return render(request, 'templates/home_fora_do_webapp/home_page.html')

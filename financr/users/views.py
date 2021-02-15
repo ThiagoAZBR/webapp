@@ -40,7 +40,7 @@ def FunctionHomePage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('app_home')   
+            return redirect(reverse('app_home'))   
         
         
         form = CreateUserForm(request.POST)

@@ -13,7 +13,7 @@ from django.db.models import Q
 
 @login_required(login_url='home')
 def receita(request):
-    if request.method =="GET":
+    if request.method =="GET":  
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
@@ -41,11 +41,11 @@ def receita(request):
             except:
                 regularidade = 0
                 instance.regularidade = 0
-                
+            print(form['data_transacao'].data)      
             data_atual = datetime.today()
             data_atual_formatada = data_atual.strftime("%Y-%m-%d")
             data_transacao_str = form['data_transacao'].data
-            data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
+            data_transacao_data =datetime(int(data_transacao_str[:4]), int(data_transacao_str[5:7]),int(data_transacao_str[8:10])) #ANO MES DIA
 
             if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
                 
@@ -101,7 +101,7 @@ def receita(request):
                 instance.transacao_efetivada = False
                 instance.save()
                 
-                return redirect(request, './templates/tela_inicial_do_webapp/principia.html')
+                return redirect(reverse('app_home'))
                 ###
                 #Criar Função para gerar uma transacao futura para continuar a conta fixa
                 #Criar uma função para verificar se a transacao anterior está pronta para ser efetivada e
@@ -222,7 +222,7 @@ def despesa(request):
             data_atual = datetime.today()
             data_atual_formatada = data_atual.strftime("%Y-%m-%d")
             data_transacao_str = form['data_transacao'].data
-            data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
+            data_transacao_data =datetime(int(data_transacao_str[:4]), int(data_transacao_str[5:7]),int(data_transacao_str[8:10])) #ANO MES DIA
             
             # if novo_saldo < 0:
             #     form.add_error('valor','O valor da despesa é maior que o saldo disponível em conta.')
@@ -278,8 +278,6 @@ def despesa(request):
                 instance.transacao_fixa = True
                 instance.transacao_efetivada = False
                 instance.save()
-                
-                return render(request, './templates/tela_inicial_do_webapp/principia.html')
             
             elif tipo_transacao == 3: #TRANSAÇÃO PARCELADA
                 valor_transacao = Decimal(form['valor'].data)
@@ -355,7 +353,7 @@ def despesa(request):
                     
                     data_transacao_data += intervalo_transacao
 
-            return render(request, './templates/tela_inicial_do_webapp/principia.html')
+            return redirect(reverse('app_home'))
         
         return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
     
@@ -399,7 +397,7 @@ def transferencia(request):
             data_atual = datetime.today()
             data_atual_formatada = data_atual.strftime("%Y-%m-%d")
             data_transacao_str = form['data_transacao'].data
-            data_transacao_data =datetime(int(data_transacao_str[6:10]), int(data_transacao_str[3:5]),int(data_transacao_str[:2])) #ANO MES DIA
+            data_transacao_data =datetime(int(data_transacao_str[:4]), int(data_transacao_str[5:7]),int(data_transacao_str[8:10])) #ANO MES DIA
             
             # if novo_saldo_origem < 0:
             #     form.add_error('valor','O valor da transferencia é maior que o saldo disponível em conta.')
@@ -437,7 +435,7 @@ def transferencia(request):
                     instance.transacao_efetivada = False
                     instance.save()
             
-            if tipo_transacao == 2: #TRANSAÇÃO FIXA
+            elif tipo_transacao == 2: #TRANSAÇÃO FIXA
                 
                 if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
                     intervalo_transacao = timedelta(days=1)
@@ -483,10 +481,8 @@ def transferencia(request):
                 instance.transacao_fixa = True
                 instance.transacao_efetivada = False
                 instance.save()
-                
-                return render(request, './templates/tela_inicial_do_webapp/principia.html')
                    
-            if tipo_transacao == 3: #TRANSAÇÃO PARCELADA
+            elif tipo_transacao == 3: #TRANSAÇÃO PARCELADA
                 valor_transacao = Decimal(form['valor'].data)
                 qtde_parcelas = int(form['num_parcelas'].data)
                 valor_parcela = round(valor_transacao/qtde_parcelas, 2)
@@ -568,11 +564,9 @@ def transferencia(request):
                             dizima = False
                             instance.save()
                     
-                    data_transacao_data += intervalo_transacao
+                    data_transacao_data += intervalo_transacao           
             
-            atualizar_saldos_transacoes()
-            
-            return render(request, './templates/tela_inicial_do_webapp/principia.html')
+            return redirect(reverse('app_home'))
         
         return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
     
@@ -593,7 +587,7 @@ def categoria(request):
         if form.is_valid():
             try:
                 form.save()
-                return redirect('app_home')
+                return redirect(reverse('app_home'))
             
             except:
                 form.add_error('categoria','Esta categoria já existe.')
@@ -603,30 +597,11 @@ def categoria(request):
             return render(request, "templates/tela_de_criar_conta/categoria.html", {'form': form})
         
         return render(request, "templates/tela_de_criar_conta/categoria.html", {'form': form})
-
-
-
-def sucesso(request):
-    print("Deu boas!")
-    return render(request, "sucesso.html")
     
-
-#       ----     Views Do App Aquiiiii !!!!!!!!!!!!!!!!!!!!!!!!!!!!    ----
-
-
-# from django.views.generic import TemplateView
-# class TransactionScreenView(TemplateView):
-#     template_name = './templates/tela_de_transacoes/arkhe.html'
-
-# class TransactionScreen2View(TemplateView):
-#     template_name = './templates/tela_de_transacoes/despesa.html'
-
-# class TransactionScreen3View(TemplateView):
-#     template_name = './templates/tela_de_transacoes/transferir.html'
     
-def teste(request):
-    atualizar_saldos_transacoes()
-    return render(request, './templates/tela_inicial_do_webapp/principia.html')   
+# def teste(request):
+#     atualizar_saldos_transacoes()
+#     return render(request, './templates/tela_inicial_do_webapp/principia.html')   
     
 
 def atualizar_saldos_transacoes():
