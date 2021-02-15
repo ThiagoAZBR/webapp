@@ -207,7 +207,7 @@ html, body {
     height: 80vh;
     min-height: 80vh;
     width: 55vw;
-    min-width: 55vw;
+    min-width: 45vw;
 
 }
 
@@ -245,7 +245,7 @@ html, body {
     height: 80vh;
     min-height: 80vh;
     width: 55vw;
-    min-width: 55vw;
+    min-width: 45vw;
 
 }
 
@@ -329,7 +329,7 @@ html, body {
     height: 80vh;
     min-height: 80vh;
     width: 55vw;
-    min-width: 55vw;
+    min-width: 45vw;
 
 
 
@@ -421,7 +421,7 @@ html, body {
     height: 80vh;
     min-height: 80vh;
     width: 55vw;
-    min-width: 55vw;
+    min-width: 45vw;
 
 
 }
@@ -464,7 +464,80 @@ html, body {
 
 
 
+@media (max-width: 1260px) {
 
+    .telas_e_expansao {
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+    }
+
+    .telas_e_expansao img {
+
+        min-width: 100px;
+        min-height: 100px;
+
+    }
+
+    .tela_saldo {
+
+        grid-column: 1/1;
+        grid-row: 1/1;
+
+    }
+
+    .tela_saldo.on {
+
+        min-height: 60vh;
+        height: 60vh;
+        width: 80vw;
+
+    }
+    .tela_graficos.on {
+
+        min-height: 60vh;
+        height: 60vh;
+        width: 80vw;
+
+    }
+    .tela_criar.on {
+
+        min-height: 60vh;
+        height: 60vh;
+        width: 60vw;
+
+    }
+    .tela_transferencias.on {
+
+        min-height: 60vh;
+        height: 60vh;
+        width: 60vw;
+
+    }
+
+    .tela_graficos {
+
+        grid-column: 1/1;
+        grid-row: 2/2;
+
+    }
+
+    .tela_criar {
+
+        grid-row: 1/1;
+        grid-column: 2/2;
+
+    }
+
+    .tela_transferencias {
+
+        grid-column: 2/2;
+        grid-row: 2/2;
+
+    }
+
+}
 
 @media (min-width: 100vw) {
 

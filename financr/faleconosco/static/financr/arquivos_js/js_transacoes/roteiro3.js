@@ -17,12 +17,13 @@ let div_forms = document.querySelector('.div_tipo_parcelada')
 
 let resetar = document.querySelector('#resetar')
 
-let oitenta_e_sete = 87
-let select = document.querySelector('#id_categoria_transacao').value = oitenta_e_sete
-
 let tipo_transacao = document.querySelector('#id_tipo_transacao')
 
+var select = document.getElementById('id_categoria_transacao');
+var value = select.options[select.selectedIndex].value;
+console.log(value); // pt
 
+$("#id_categoria_transacao").val( $('option:contains("Transferência")').val() );
 
 resetar.addEventListener('click', function() {
 
@@ -44,6 +45,7 @@ check1.onchange = function () {
         div_forms.style.display = 'block'
         div_check2.style.display = 'none'
         div_check3.style.display = 'none'
+        observaca.style.display = 'block'
         regularide.style.display = 'none'
         parcelas.style.display = 'none'
         tipo_transacao.value = '1'
@@ -71,8 +73,6 @@ check2.onchange = function () {
         regularide.style.display = 'block'
         parcelas.style.display = 'none'
         tipo_transacao.value = '2'
-        
-
 
     }
 
@@ -96,8 +96,8 @@ check3.onchange = function () {
         div_check2.style.display = 'none'
         regularide.style.display = 'block'
         parcelas.style.display = 'block'
-        console.log('Check3 Aqui')
         tipo_transacao.value = '3'
+        console.log('Check3 Aqui')
 
     }
 
@@ -106,8 +106,8 @@ check3.onchange = function () {
         div_forms.style.display = 'none'
         div_check1.style.display = 'flex'
         div_check2.style.display = 'flex'
-        tipo_transacao.value = '0'
         console.log('Check3 Falso Aqui')
+        tipo_transacao.value = '0'
 
     }
 
