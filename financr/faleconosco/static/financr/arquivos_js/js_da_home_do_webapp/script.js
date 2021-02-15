@@ -14,6 +14,11 @@ let divs_expansao = document.querySelectorAll('.telas_e_expansao div')
 let maximo = divs_expansao.length
 let dados_usuario = document.querySelector('#dados')
 let conf_usuario = document.querySelector('.conf_usuario')
+
+let xiz = document.querySelector('.xiz')
+
+
+
 // Transformar de None para Block, ou Block para None
 
 icone_usuario.addEventListener('click', () => {
@@ -68,7 +73,12 @@ tela_graficos.addEventListener('click', () => {
         console.log(i)
         if (i >= maximo) break;
 
-        divs_expansao[i].classList.remove('on')
+        if ($(".tela_graficos").hasClass("on")) {
+
+            console.log('Funcionou O Console Log')
+
+        }
+            divs_expansao[i].classList.remove('on')
 
     }
 
@@ -145,12 +155,9 @@ tela_saldo.addEventListener('click', function() {
         else {
 
             lista_off.push(item)
-            console.log('Entrou')
 
         }
 
-        console.log(lista_off)
-        console.log(lista_on)
 
 
     if (tela_saldo.className.indexOf('on') != -1) {
@@ -159,7 +166,6 @@ tela_saldo.addEventListener('click', function() {
 
             tela.style.width = '170px'
             tela.style.height = '15vh'
-            console.log('Lista off Aqui')
 
         })
 
@@ -181,7 +187,6 @@ tela_saldo.addEventListener('click', function() {
 
     lista_on.forEach(function (tela_on) {
 
-        console.log('Lista on Aqui')
 
     })
 
@@ -205,12 +210,9 @@ tela_graficos.addEventListener('click', function() {
         else {
 
             lista_off.push(item)
-            console.log('Entrou')
 
         }
 
-        console.log(lista_off)
-        console.log(lista_on)
 
 
     if (tela_graficos.className.indexOf('on') != -1) {
@@ -219,7 +221,6 @@ tela_graficos.addEventListener('click', function() {
 
             tela.style.width = '170px'
             tela.style.height = '15vh'
-            console.log('Lista off Aqui')
 
         })
         
@@ -242,7 +243,6 @@ tela_graficos.addEventListener('click', function() {
 
     lista_on.forEach(function (tela_on) {
 
-        console.log('Lista on Aqui')
 
     })
 
@@ -270,12 +270,9 @@ tela_criar_conta.addEventListener('click', function() {
         else {
 
             lista_off.push(item)
-            console.log('Entrou')
 
         }
 
-        console.log(lista_off)
-        console.log(lista_on)
 
 
     if (tela_criar_conta.className.indexOf('on') != -1) {
@@ -284,7 +281,6 @@ tela_criar_conta.addEventListener('click', function() {
 
             tela.style.width = '170px'
             tela.style.height = '15vh'
-            console.log('Lista off Aqui')
 
         })
         
@@ -307,7 +303,6 @@ tela_criar_conta.addEventListener('click', function() {
 
     lista_on.forEach(function (tela_on) {
 
-        console.log('Lista on Aqui')
 
     })
 
@@ -334,12 +329,9 @@ tela_transferencias.addEventListener('click', function() {
         else {
 
             lista_off.push(item)
-            console.log('Entrou')
 
         }
 
-        console.log(lista_off)
-        console.log(lista_on)
 
 
     if (tela_transferencias.className.indexOf('on') != -1) {
