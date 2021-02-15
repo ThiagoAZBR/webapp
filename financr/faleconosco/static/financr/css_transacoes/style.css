@@ -440,14 +440,17 @@ html, body {
 .div_erros {
 
     position: absolute;
-    top: 2vh;
+    top: 23.1vh;
     left: 3vw;
-    font-family: 'Roboto', sans-serif;
+    width: 27vw;
+    font-family: 'Open Sans', sans-serif;
     color: black;
     display: flex;
     flex-direction: column;
     align-content: space-between;
     font-size: 1.8rem;
+    /* border: 4px #333335 solid; */
+    border-radius: 1%;
 
 }
 

@@ -27,6 +27,7 @@ resetar.addEventListener('click', function() {
     div_check3.style.display = 'flex'
 
     div_forms.style.display = 'none'
+    tipo_transacao.value = '0'
 
 
 

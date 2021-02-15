@@ -37,6 +37,8 @@
 
             <form method="post" class = 'formulario-conta'>
 
+                {% csrf_token %}
+
                 <div class="div_titulo_nome_da_conta">
                     <h4 id = 'titulo_nome_da_conta'>
                         Nome Do Banco

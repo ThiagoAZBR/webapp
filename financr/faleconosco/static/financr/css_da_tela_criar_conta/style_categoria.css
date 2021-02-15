@@ -26,9 +26,9 @@ html, body {
 
     border: black 0.4px solid;
     border-radius: 1%;
-    height: 46vh;
-    min-height: 46vh;
-    width: 28%;
+    height: 50vh;
+    min-height: 50vh;
+    width: 30%;
     margin: auto;
     margin-top: 23vh;
     background-color: white;
@@ -50,7 +50,7 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     color: black;
     margin-top: 1vh;
-    margin-bottom: 2.7vh;
+    margin-bottom: 0vh;
 
 }
 
@@ -90,26 +90,53 @@ html, body {
 
 }
 
+
+
+#formulario_categoria {
+
+    height: auto;
+
+}
+
+.div_erros {
+
+    position: absolute;
+    top: 23.1vh;
+    left: 3vw;
+    width: 27vw;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    font-size: 1.8rem;
+    /* border: 4px #333335 solid; */
+    border-radius: 1%;
+
+}
+
 .conta_a_categoria {
 
     width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column;
+    
 
 }
 
 #titulo_de_selecionar_conta {
 
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
     color: #333335;
+    margin-bottom: 1.2vh;
 
 }
 
-#select_conta {
+#id_categoria {
 
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-family: 'Roboto', sans-serif;
     color: #333335;
     background-color: transparent;
@@ -122,21 +149,40 @@ html, body {
 }
 
 
-.div_avisos {
+.div_select {
 
+    display: flex;
+    flex-direction: column;
     width: 90%;
     margin: auto;
     text-align: center;
     margin-top: 4vh;
 
+
 }
 
-#txt_avisos {
+#txt_tipo_de_transacao {
 
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
+    color: #333335;
+    margin-top: 1vh;
+    margin-bottom: 1.9vh;
+    text-align: left;
+
+}
+
+#id_classe_transacao {
+
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
     color: black;
-    letter-spacing: 0.2rem;
+    background-color: transparent;
+    width: 98%;
+    border: 0.3px black solid;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
 
 }
 
@@ -153,13 +199,11 @@ html, body {
 .div_botoes {
 
     display: flex;
-    width: 24.7vw;
+    width: 100%;
     height: 5vh;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    position: absolute;
-    bottom: 35.5vh;
 
 }
 
@@ -169,7 +213,7 @@ html, body {
     color: white;
     border: 0;
     border-radius: 10%;
-    height: 5vh;
+    height: 6vh;
     width: 24%;
 }
 
@@ -179,7 +223,7 @@ html, body {
     color: white;
     border: 0;
     border-radius: 10%;
-    height: 5vh;
+    height: 6vh;
     width: 23.5%;
 
 }
