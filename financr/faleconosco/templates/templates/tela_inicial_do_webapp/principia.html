@@ -67,13 +67,109 @@
                 <img src = "{% static 'financr\img\imagens_para_home_do_webapp\saldo.png' %}" alt = "Uma seta girando ao redor de um símbolo de dinheiro específico para a moeda do real" id = 'img_saldo'>
                 <h4 id = 'txt_saldo'>SALDO</h4>
 
+                <div class="div_formatacao_dados">
+                    <div id="saldos">
+                        <ul>
+                            <p>SALDOS</p>
+                            <select name = "" id="">
+                            {% for banco in contas %}
+                                <option value="">{{ banco.nome_banco }} - R${{ banco.saldo}}</option>
+                                <p></p>
+                            {% endfor %}
+                        </select>
+                        </ul>
+                    </div>
+                    <div id="bancos">
+                        <ul>
+                            <p>SUAS CONTAS</p>
+                            <select name="" id="">
+                            {% for banco in contas %}
+                                <option value=""> {{ banco.nome_banco }} </option>
+                                <p></p>
+                            {% endfor %}
+                        </select>
+                        </ul>
+                    </div>
+                    <div id="ultimas_receitas">
+                        <ul>
+                            <p>ÚLTIMAS RECEITAS:</p>
+                            {% for receita in ultimas_receitas %}
+                            <p>DATA: {{ receita.data_transacao }} - R${{ receita.valor }}</p>
+                            <p></p>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div id="ultimas_despesas">
+                        <ul>
+                            <p>ÚLTIMAS DESPESAS:</p>
+                            <select name="" id="">
+                                {% for despesas in ultimas_despesas %}
+                                <option>DATA: {{ despesas.data_transacao }} - R${{ despesas.valor }}</option>
+                                <p></p>
+                                {% endfor %}
+                            </select>
+                        </ul>
+                    </div>
+                    <div>
+                        Categorias cadastradas de receita
+                        {% for i in categorias_receitas %}
+                            <p>{{ i.categoria }}</p>
+                            <p></p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        Categorias cadastradas de despesa
+                        {% for i in categorias_despesas %}
+                            <p>{{ i.categoria }}</p>
+                            <p></p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        HISTÓRICO DE RECEITAS
+                        {% for i in lista_transacoes_receitas %}
+                            <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
+                            <p></p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        HISTÓRICO DE DESPESAS
+                        {% for i in lista_transacoes_despesas %}
+                            <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
+                            <p></p>
+                        {% endfor %}
+                    </div>
+                    <div>
+                        HISTÓRICO DE TRANSFERENCIAS
+                        {% for i in lista_transacoes_transferencias %}
+                            <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
+                            <p></p>
+                        {% endfor %}
+                    </div>
+                </div>
+
             </div>
 
             <div class = "tela_graficos">
 
                 <div id = "fundo"></div>
                 <img src="{% static 'financr\img\imagens_para_home_do_webapp\grafico.png' %}" alt="Ícone de um gráfico onde tem uma seta subindo por cima de várias colunas de diversos tamanhos" id = 'img_grafico'>
-                <h4 id = 'txt_grafico'>GRÁFICO</h4>
+                <div class="div_formatacao_grafico">
+                    
+                    <div id="graficopizza">
+
+                    </div>
+
+                    <div id="graficodespesas">
+
+                    </div>
+
+                    <div id="graficoreceitas">
+
+                    </div>
+
+
+                </div>
+
 
             </div>
 
@@ -121,7 +217,94 @@
 
     </div>
 
-
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src = "{% static 'financr/arquivos_js/js_da_home_do_webapp/script.js' %}"></script>
+    <script src = "{% static 'financr/arquivos_js/js_da_home_do_webapp/grafico.js' %}"></script>
+    <script>
+        
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(graficodespesas);
+        google.charts.setOnLoadCallback(graficoreceitas);
+
+        function drawChart(){
+
+            let a = ('{{graficobancos | safe}}');
+
+            const container = document.querySelector('#graficopizza')
+            const data = new google.visualization.arrayToDataTable(JSON.parse(a))
+            
+            const options = {
+                // set annotation for -- No Data Copy
+                annotations: {
+                // remove annotation stem and push to middle of chart
+                stem: {
+                    color: 'transparent',
+                    length: 120
+                },
+                title: 'Saldo por banco',
+                height:500,
+                width:500,
+                }
+            };
+
+            const chart = new google.visualization.PieChart(container)
+            chart.draw(data, options)
+        }
+
+        function graficodespesas(){
+            let b = ('{{graficodespesas | safe}}');
+            const container = document.querySelector('#graficodespesas')
+            let data = new google.visualization.arrayToDataTable(JSON.parse(b))            
+            const options = {
+                // set annotation for -- No Data Copy
+                annotations: {
+                // remove annotation stem and push to middle of chart
+                stem: {
+                    color: 'transparent',
+                    length: 120
+                },
+                title: 'Despesas Recentes',
+                color: '#edf7ff',
+                height:300,
+                width:100,
+
+                }
+            };
+        
+            if (data.getNumberOfRows() === 0) {
+                data.addRows([
+                    ['', 0, null, 'No Data Copy']
+                ]);
+            }
+            const chart = new google.visualization.ColumnChart(container)
+            chart.draw(data, options)
+        }
+
+        function graficoreceitas(){
+            let c = ('{{graficoreceitas | safe}}');
+            const container = document.querySelector('#graficoreceitas')
+            const data = new google.visualization.arrayToDataTable(JSON.parse(c))            
+            const options = {
+                // set annotation for -- No Data Copy
+                annotations: {
+                // remove annotation stem and push to middle of chart
+                stem: {
+                    color: 'transparent',
+                    length: 120
+                },
+                title: 'Receitas Recentes',
+                curveType: 'function',
+                height:300,
+                weight:100,
+                }
+            };
+
+            const chart = new google.visualization.BarChart(container)
+            chart.draw(data, options)
+        }
+
+
+    </script>
 </body>
 </html>
