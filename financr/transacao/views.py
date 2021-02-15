@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .forms import Criar_transacao_Form, Criar_transferencia_Form, Criar_categoria_Form
 from contasbanco.models import Contas_bancarias
 from transacao.models import Transacao, Categoria_transacao, Transferencia
@@ -7,6 +7,7 @@ from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from datetime import *
 from django.utils import formats
+from django.db.models import Q
 
 
 
@@ -100,7 +101,7 @@ def receita(request):
                 instance.transacao_efetivada = False
                 instance.save()
                 
-                return render(request, './templates/tela_inicial_do_webapp/principia.html')
+                return redirect(request, './templates/tela_inicial_do_webapp/principia.html')
                 ###
                 #Criar Função para gerar uma transacao futura para continuar a conta fixa
                 #Criar uma função para verificar se a transacao anterior está pronta para ser efetivada e
@@ -182,7 +183,7 @@ def receita(request):
                     
                     data_transacao_data += intervalo_transacao
 
-            return render(request, './templates/tela_inicial_do_webapp/principia.html')
+            return redirect(reverse('app_home'))
         
         return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
 
@@ -582,7 +583,7 @@ def categoria(request):
     if request.method =="GET":  
         usuario = request.user
         form = Criar_categoria_Form()
-        return render(request, "testando.html", {'form': form})
+        return redirect(request, "testando.html", {'form': form})
         
     elif request.method == "POST":
         usuario = request.user
@@ -613,28 +614,43 @@ def sucesso(request):
 #       ----     Views Do App Aquiiiii !!!!!!!!!!!!!!!!!!!!!!!!!!!!    ----
 
 
-from django.views.generic import TemplateView
-class TransactionScreenView(TemplateView):
-    template_name = './templates/tela_de_transacoes/arkhe.html'
+# from django.views.generic import TemplateView
+# class TransactionScreenView(TemplateView):
+#     template_name = './templates/tela_de_transacoes/arkhe.html'
 
-class TransactionScreen2View(TemplateView):
-    template_name = './templates/tela_de_transacoes/despesa.html'
+# class TransactionScreen2View(TemplateView):
+#     template_name = './templates/tela_de_transacoes/despesa.html'
 
-class TransactionScreen3View(TemplateView):
-    template_name = './templates/tela_de_transacoes/transferir.html'
+# class TransactionScreen3View(TemplateView):
+#     template_name = './templates/tela_de_transacoes/transferir.html'
     
+def teste(request):
+    atualizar_saldos_transacoes()
+    return render(request, './templates/tela_inicial_do_webapp/principia.html')   
     
+
 def atualizar_saldos_transacoes():
-    total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year)
-    
 
+    total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year).filter(Q(classe_transacao=1) | Q(classe_transacao=2))
+    # total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0).filter(Q(classe_transacao=1) | Q(classe_transacao=2))
+    
     # Varre todas as transações não efetivadas e efetua a transação caso seja o dia da transação
     for transacao in total_transacao_nao_efetivada:
         transacao.transacao_efetivada = True
         id_banco = transacao.conta_id
         usuario_id = transacao.user_id_id
         valor = transacao.valor
-        # id_conta_destino = transacao.conta_destino
+        regularidade = transacao.regularidade
+
+        if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+            intervalo_transacao = timedelta(days=1)
+
+        elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+            intervalo_transacao = timedelta(weeks=1)
+        
+        elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+            intervalo_transacao = timedelta(days=30)
+
         
         #Receita
         if transacao.classe_transacao == 1:
@@ -643,11 +659,17 @@ def atualizar_saldos_transacoes():
                     
             efetivacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
             efetivacao.save()
-            
+        
             if transacao.transacao_fixa:
                 transacao.transacao_fixa = False
+                transacao.save()
                 
-        
+                nova_transacao = transacao
+                nova_transacao.pk = None
+                nova_transacao.data_transacao += intervalo_transacao
+                nova_transacao.transacao_fixa = True
+                nova_transacao.save()
+                
         #Despesa
         elif transacao.classe_transacao == 2:
             conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
@@ -655,14 +677,67 @@ def atualizar_saldos_transacoes():
                     
             efetivacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
             efetivacao.save()
+            
+            if transacao.transacao_fixa:
+                transacao.transacao_fixa = False
+                transacao.save()
+                
+                nova_transacao = transacao
+                nova_transacao.pk = None
+                nova_transacao.data_transacao += intervalo_transacao
+                nova_transacao.transacao_fixa = True
+                nova_transacao.save()
         
-        #Transferência
-        elif transacao.classe_transacao == 3:
-            pass
-        
-        # transacao.save()
-        break
-        
-        
-        
+    #Transferência
 
+    total_transacao_nao_efetivada_transferencia = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year).filter(classe_transacao=3)
+    # total_transacao_nao_efetivada_transferencia = Transferencia.objects.filter(classe_transacao=3, transacao_efetivada=0)
+    
+    for transacao in total_transacao_nao_efetivada_transferencia:
+        transacao.transacao_efetivada = True
+        id_banco = transacao.conta_id
+        usuario_id = transacao.user_id_id
+        valor = transacao.valor
+        regularidade = transacao.regularidade
+        if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
+            intervalo_transacao = timedelta(days=1)
+
+        elif regularidade == 2: #TRANSAÇÃO FIXA SEMANAL
+            intervalo_transacao = timedelta(weeks=1)
+        
+        elif regularidade == 3: #TRANSAÇÃO FIXA MENSAL
+            intervalo_transacao = timedelta(days=30)
+        
+        conta_destino = Transferencia.objects.filter(transacao_ptr_id=transacao.id)
+        id_conta_destino = conta_destino[0].conta_destino_id
+        
+        #Atualização da conta de Origem (Saída do dinheiro)
+        conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_banco)
+        novo_saldo = (conta_bancaria[0].saldo - valor)
+                
+        efetivacao_origem = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+        efetivacao_origem.save()
+        
+        #Atualização da conta de Destino (Entrada do dinheiro)
+        conta_bancaria = Contas_bancarias.objects.filter(user_id_id = usuario_id).filter(id = id_conta_destino)
+        novo_saldo = (conta_bancaria[0].saldo + valor)
+                
+        efetivacao_destino = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
+        efetivacao_destino.save()
+        
+        if transacao.transacao_fixa:
+            transacao.transacao_fixa = False
+            transacao.save()
+            
+            nova_transacao = transacao
+            nova_transacao.pk = None
+            nova_transacao.id = None
+            nova_transacao.data_transacao += intervalo_transacao
+            nova_transacao.transacao_fixa = True
+            nova_transacao.transacao_efetivada = False
+            nova_transacao.conta_destino_id = id_conta_destino
+            nova_transacao.transacao_ptr_id = nova_transacao.pk
+            nova_transacao.save()
+        
+        else:
+            transacao.save()
