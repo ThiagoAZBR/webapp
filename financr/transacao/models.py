@@ -59,7 +59,7 @@ class Transacao(models.Model):
     data_criacao = models.DateField(auto_now=True, blank=False, null=False)
 
     def __str__(self):
-        return self.user_id
+        return self.descricao
 
     transacao_efetivada = models.BooleanField(max_length=1, default=0)
     transacao_fixa = models.BooleanField(max_length=1, default=0)
