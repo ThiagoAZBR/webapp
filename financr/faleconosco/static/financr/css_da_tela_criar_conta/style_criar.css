@@ -27,7 +27,7 @@ html, body {
     border-radius: 1%;
     height: 46vh;
     min-height: 46vh;
-    width: 28vw;
+    width: 28%;
     margin: auto;
     margin-top: 23vh;
     background-color: white;
@@ -48,7 +48,7 @@ html, body {
     font-family: 'Open Sans', sans-serif;
     color: black;
     margin-top: 1vh;
-    margin-bottom: 2.7vh;
+    margin-bottom: 0.5vh;
 
 }
 
@@ -101,11 +101,11 @@ html, body {
     width: 90%;
     margin: auto;
     font-size: 1.6rem;
-    height: 6vh;
+    height: 4.5vh;
     color: #333335;
     font-family: 'Roboto', sans-serif;
-    margin-bottom: 1vh;
-
+    display: flex;
+    align-items: center;
 }
 
 .nome_da_conta {
@@ -141,10 +141,11 @@ html, body {
     font-size: 1.6rem;
     color: #333335;
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 2vh;
 
 }
 
-#input_saldo {
+#id_saldo {
 
     border: 1px black solid;
     border-right-width: 0;
@@ -167,20 +168,18 @@ html, body {
     width: 90%;
     height: 5vh;
     margin: auto;
-    margin-top: 5vh;
 
 }
 
 .div_botoes {
 
     display: flex;
-    width: 24.7vw;
+    width: 100%;
     height: 5vh;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    position: absolute;
-    bottom: 35.5vh;
+    margin-top: 5vh;
 
 }
 
@@ -191,7 +190,7 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 5vw;
+    width: 24%;
 }
 
 #resetar {
@@ -201,6 +200,6 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 4.5vw;
+    width: 23.5%;
 
 }

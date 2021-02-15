@@ -86,6 +86,7 @@ html, body {
     border-right-width: 0;
     padding: 5px;
     border-radius: 5%;
+    color: black;
 
 }
 
@@ -112,9 +113,16 @@ html, body {
 
 }
 
+#sair {
+
+    color: black;
+
+}
+
 .conf_usuario {
 
     display: none;
+    color: black;
     
 }
 
@@ -125,9 +133,10 @@ html, body {
     font-size: 1.8rem;
     font-family: 'Roboto', sans-serif;
     top: 15.3vh;
-    right: 18vw;
+    right: 20vw;
+    color: black;
 
-    width: 20vw;
+    width: 30vw;
     text-align: center;
 
 }
@@ -311,6 +320,7 @@ html, body {
     margin-left: 2.8vw;
     width: 63%;
     height: 84%;
+    margin-top: 3vh;
 }
 
 .tela_criar.on {
@@ -365,7 +375,7 @@ html, body {
 
     display: block;
     height: 22%;
-    width: 10vw;
+    width: 8vw;
     z-index: 10;
 
 }
@@ -402,6 +412,7 @@ html, body {
     width: 63%;
     height: 84%;
     margin-left: 40px;
+    margin-top: 1.5vh;
 
 }
 

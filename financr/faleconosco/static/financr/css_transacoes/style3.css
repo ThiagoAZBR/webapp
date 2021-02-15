@@ -30,7 +30,7 @@ html, body {
     border-radius: 1%;
     height: 92vh;
     min-height: 92vh;
-    width: 30vw;
+    width: 30%;
     
 }
 
@@ -388,7 +388,7 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 5vw;
+    width: 24%;
 }
 
 #resetar {
@@ -398,7 +398,7 @@ html, body {
     border: 0;
     border-radius: 10%;
     height: 5vh;
-    width: 4.5vw;
+    width: 23.5%;
 
 }
 
