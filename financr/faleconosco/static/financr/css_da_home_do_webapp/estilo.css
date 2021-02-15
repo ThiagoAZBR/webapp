@@ -176,6 +176,12 @@ html, body {
 
 }
 
+.tela_saldo .div_formatacao_dados {
+
+    display: none;
+
+}
+
 .tela_saldo #txt_saldo {
 
     display: none;
@@ -208,6 +214,14 @@ html, body {
     min-height: 80vh;
     width: 55vw;
     min-width: 45vw;
+    z-index: 1;
+
+}
+
+.tela_saldo.on .div_formatacao_dados {
+
+    display: block;
+    z-index: 2;
 
 }
 
@@ -240,12 +254,46 @@ html, body {
 
 }
 
+.tela_graficos .div_formatacao_grafico {
+
+    display: none;
+
+}
+
 .tela_graficos.on {
 
     height: 80vh;
     min-height: 80vh;
     width: 55vw;
     min-width: 45vw;
+    display: flex;
+    align-items: center;
+
+}
+
+.tela_graficos.on .div_formatacao_grafico {
+
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+
+
+}
+
+.tela_graficos.on #graficopizza {
+
+    margin-bottom: 20vh;
+    background-color: transparent;
+
+}
+
+.tela_graficos.on #graficodespesas {
+
+    margin-bottom: 20vh;
+    background-color: transparent;
 
 }
 
