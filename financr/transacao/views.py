@@ -79,7 +79,7 @@ def receita(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
                 
-                while data_atual > data_transacao_data:
+                while data_atual >= data_transacao_data:
                     instance.pk = None
                     instance.data_transacao = data_transacao_data
                     instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
@@ -102,12 +102,7 @@ def receita(request):
                 instance.save()
                 
                 return redirect(reverse('app_home'))
-                ###
-                #Criar Função para gerar uma transacao futura para continuar a conta fixa
-                #Criar uma função para verificar se a transacao anterior está pronta para ser efetivada e
-                #criar uma nova transacao para continuar o ciclo 
-                ###
-            
+                           
            
             elif tipo_transacao == 3:  #TRANSAÇÃO PARCELADA
                 valor_transacao = Decimal(form['valor'].data)
@@ -136,7 +131,7 @@ def receita(request):
 
                 for parcela in range(qtde_parcelas):
                     if dizima:
-                        if data_atual > data_transacao_data:
+                        if data_atual >= data_transacao_data:
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -159,7 +154,7 @@ def receita(request):
                             instance.save()
                     
                     else:
-                        if data_atual > data_transacao_data:    
+                        if data_atual >= data_transacao_data:    
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -257,7 +252,7 @@ def despesa(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
 
-                while data_atual > data_transacao_data:
+                while data_atual >= data_transacao_data:
                     instance.pk = None
                     instance.data_transacao = data_transacao_data
                     instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
@@ -306,7 +301,7 @@ def despesa(request):
 
                 for parcela in range(qtde_parcelas):
                     if dizima:
-                        if data_atual > data_transacao_data:
+                        if data_atual >= data_transacao_data:
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -329,7 +324,7 @@ def despesa(request):
                             instance.save()
                     
                     else:
-                        if data_atual > data_transacao_data:    
+                        if data_atual >= data_transacao_data:    
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -450,7 +445,7 @@ def transferencia(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
             
-                while data_atual > data_transacao_data:
+                while data_atual >= data_transacao_data:
                     instance.pk = None
                     instance.data_transacao = data_transacao_data
                     instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
@@ -509,7 +504,7 @@ def transferencia(request):
 
                 for parcela in range(qtde_parcelas):
                     if dizima:
-                        if data_atual > data_transacao_data:
+                        if data_atual >= data_transacao_data:
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -537,7 +532,7 @@ def transferencia(request):
                             instance.save()
                     
                     else:
-                        if data_atual > data_transacao_data:    
+                        if data_atual >= data_transacao_data:    
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
