@@ -304,6 +304,12 @@
                 weight:100,
                 }
             };
+            
+            if (data.getNumberOfRows() === 0) {
+                data.addRows([
+                    ['', 0, null, 'No Data Copy']
+                ]);
+            }
 
             const chart = new google.visualization.BarChart(container)
             chart.draw(data, options)
