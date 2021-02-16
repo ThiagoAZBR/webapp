@@ -26,7 +26,7 @@ def criar_conta(request):
             
             try:
                 form.save()
-                return render(request, './templates/tela_inicial_do_webapp/principia.html', {'form': form})
+                return redirect(reverse('app_home'))
             
             except:
                 form.add_error('nome_banco','Este Banco já existe.')
