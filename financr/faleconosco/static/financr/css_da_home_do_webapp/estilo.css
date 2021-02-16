@@ -40,6 +40,50 @@ html, body {
 }
 
 
+
+.xiz {
+
+    align-items: center;
+    justify-content: center;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+#one,
+#two {
+
+    background-color: black;
+
+
+}
+
+.xiz #one {
+
+    transform: rotate(45deg) translate(-4px, 0px);
+    width: 4px;
+    max-width: 4px;
+
+    height: 6vh;
+    max-height: 6vh;
+
+}
+
+.xiz #two {
+
+    transform: rotate(-45deg) translate(-1px, -5px);
+    width: 4px;
+    max-width: 4px;
+
+    height: 5.5vh;
+    max-height: 5.5vh;
+
+}
+
+
+
 .div_nome_app {
 
     z-index: 2;
@@ -205,6 +249,7 @@ html, body {
 
     width: 63%;
     height: 84%;
+    padding: 10px;
 
 }
 
@@ -221,7 +266,7 @@ html, body {
 .tela_saldo.on .div_formatacao_dados {
 
     display: block;
-    z-index: 2;
+    z-index: 1;
 
 }
 
@@ -454,6 +499,12 @@ html, body {
 
 }
 
+.tela_transferencias .xiz {
+
+    display: none;
+
+}
+
 
 #img_transferencia {
 
@@ -471,6 +522,14 @@ html, body {
     width: 55vw;
     min-width: 45vw;
 
+
+}
+
+.tela_transferencias.on .xiz {
+
+    display: flex;
+    align-self: flex-start;
+    justify-self: right;
 
 }
 
