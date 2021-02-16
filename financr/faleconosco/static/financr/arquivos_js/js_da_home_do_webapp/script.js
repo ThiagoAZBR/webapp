@@ -15,6 +15,13 @@ let maximo = divs_expansao.length
 let dados_usuario = document.querySelector('#dados')
 let conf_usuario = document.querySelector('.conf_usuario')
 
+// Imagens Abaixo
+let img_saldo = document.querySelector('#img_saldo')
+let img_grafico = document.querySelector('#img_grafico')
+let img_criar_conta = document.querySelector('#img_criar_conta')
+let img_transferencia = document.querySelector('#img_transferencia')
+
+
 let xiz = document.querySelector('.xiz')
 
 
@@ -38,7 +45,7 @@ icone_usuario.addEventListener('click', () => {
 
 revelar = true
 
-
+// Settings
 
 dados_usuario.addEventListener('click', () => {
 
@@ -48,11 +55,13 @@ dados_usuario.addEventListener('click', () => {
 
 })
 
-tela_saldo.addEventListener('click', () => {
+
+
+
+img_saldo.addEventListener('click', () => {
 
     for (var i = 0;; i++) {
 
-        console.log(i)
         if (i >= maximo) break;
 
         divs_expansao[i].classList.remove('on')
@@ -66,16 +75,14 @@ tela_saldo.addEventListener('click', () => {
 
 })
 
-tela_graficos.addEventListener('click', () => {
+img_grafico.addEventListener('click', () => {
 
     for (var i = 0;; i++) {
 
-        console.log(i)
         if (i >= maximo) break;
 
         if ($(".tela_graficos").hasClass("on")) {
 
-            console.log('Funcionou O Console Log')
 
         }
             divs_expansao[i].classList.remove('on')
@@ -90,11 +97,10 @@ tela_graficos.addEventListener('click', () => {
 
 })
 
-tela_criar_conta.addEventListener('click', () => {
+img_criar_conta.addEventListener('click', () => {
 
     for (var i = 0;; i++) {
 
-        console.log(i)
         if (i >= maximo) break;
 
         divs_expansao[i].classList.remove('on')
@@ -109,11 +115,10 @@ tela_criar_conta.addEventListener('click', () => {
 
 })
 
-tela_transferencias.addEventListener('click', () => {
+img_transferencia.addEventListener('click', () => {
 
     for (var i = 0;; i++) {
 
-        console.log(i)
         if (i >= maximo) break;
 
         divs_expansao[i].classList.remove('on')
@@ -178,6 +183,14 @@ tela_saldo.addEventListener('click', function() {
             tela_off.style.width = '18vw'
             tela_off.style.height = '27vh'
 
+            for (var i = 0;; i++) {
+
+                if (i >= maximo) break;
+        
+                divs_expansao[i].classList.remove('on')
+        
+            }
+
 
         })
 
@@ -234,6 +247,13 @@ tela_graficos.addEventListener('click', function() {
             tela_off.style.width = '18vw'
             tela_off.style.height = '27vh'
 
+            for (var i = 0;; i++) {
+
+                if (i >= maximo) break;
+        
+                divs_expansao[i].classList.remove('on')
+        
+            }
 
         })
 
@@ -294,6 +314,14 @@ tela_criar_conta.addEventListener('click', function() {
             tela_off.style.width = '18vw'
             tela_off.style.height = '27vh'
 
+            for (var i = 0;; i++) {
+
+                if (i >= maximo) break;
+        
+                divs_expansao[i].classList.remove('on')
+        
+            }
+
 
         })
 
@@ -340,7 +368,6 @@ tela_transferencias.addEventListener('click', function() {
 
             tela.style.width = '170px'
             tela.style.height = '15vh'
-            console.log('Lista off Aqui')
 
         })
         
@@ -354,6 +381,14 @@ tela_transferencias.addEventListener('click', function() {
             tela_off.style.width = '18vw'
             tela_off.style.height = '27vh'
 
+            for (var i = 0;; i++) {
+
+                if (i >= maximo) break;
+        
+                divs_expansao[i].classList.remove('on')
+        
+            }
+
 
         })
 
@@ -363,7 +398,6 @@ tela_transferencias.addEventListener('click', function() {
 
     lista_on.forEach(function (tela_on) {
 
-        console.log('Lista on Aqui')
 
     })
 
