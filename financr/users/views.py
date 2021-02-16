@@ -55,9 +55,9 @@ def FunctionHomePage(request):
             conta_inicial = Contas_bancarias(None, user.id , "Carteira", 0)
             conta_inicial.save()
             
-            categorias_despesa = ['Mercado', 'Restaurante', 'Lazer', 'Combustível', 'Cartão de Crédito',]
-            categorias_receita = ['Salário', 'Vendas', 'Aluguel_terceiro', 'investimentos']
-            categoria_transferência = "Transferência"
+            categorias_despesa = ['Mercado', 'Restaurante', 'Lazer', 'Combustível', 'Cartão de Crédito', 'Curso', 'Academia',]
+            categorias_receita = ['Salário', 'Vendas', 'Aluguel Terceiro', 'Investimentos',]
+            categoria_transferência = ["Transferência", "Portabilidade"]
             
             for categoria in categorias_receita:
                 categoria_inicial = Categoria_transacao(id=None, user_id_id=user.id, categoria=categoria, ativo=1, classe_transacao=1)
