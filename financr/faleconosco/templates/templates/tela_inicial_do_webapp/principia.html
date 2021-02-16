@@ -253,6 +253,12 @@
                 }
             };
 
+            if (data.getNumberOfRows() === 0) {
+                data.addRows([
+                    ['', 0, null, 'No Data Copy']
+                ]);
+            }
+
             const chart = new google.visualization.PieChart(container)
             chart.draw(data, options)
         }
