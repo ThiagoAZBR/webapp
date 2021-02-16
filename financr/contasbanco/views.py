@@ -1,14 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .forms import Criar_ContaBanco_Form
 from .models import Contas_bancarias
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
 
 
 @login_required(login_url='home')
 def criar_conta(request):
     if request.method == "GET":
         form = Criar_ContaBanco_Form()
-        return render(request, 'templates/tela_de_criar_conta/premissa.html', {'form': form})
+        
+        usuario = request.user
+        lista_bancos = Contas_bancarias.objects.filter(user_id=usuario.id)
+        
+        return render(request, 'templates/tela_de_criar_conta/premissa.html', {'form': form, 'lista_bancos': lista_bancos})
     
     elif request.method == "POST":
         usuario = request.user
@@ -46,8 +51,21 @@ def sucesso(request):
     return render(request, "sucesso.html")
 
 
-def TelaEditarConta(request):
-    return render(request, 'templates/tela_de_criar_conta/modify.html')
+# def editar_conta(request, pk):
+#     if request.method == "GET":
+#         contas_bancarias = get_object_or_404(Contas_bancarias, pk=pk)
+        
+#         #Valida se o usuário logado e o usuário da conta pesquisada
+#         id_usuario_logado = request.user.id
+#         conta_usuario = Contas_bancarias.objects.filter(id=pk)
+#         id_usuario_conta = conta_usuario[0].user_id_id
+        
+#         if id_usuario_conta != id_usuario_logado:
+#             raise PermissionDenied
+        
+        
+        
+#     return redirect(reverse('home'))
 
 
 def TelacategoriaConta(request):

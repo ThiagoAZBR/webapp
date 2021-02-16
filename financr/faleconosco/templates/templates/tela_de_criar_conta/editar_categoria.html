@@ -1,0 +1,6 @@
+<div class="criar-conta">
+    <h1>Suas contas cadastradas:</h1>
+    {% for banco in lista_bancos %}
+    <li><a href="{% url 'editar_conta' pk=banco.id %}" style="text-decoration: None;">{{banco.id}} {{banco}}</a></li>
+    {% endfor %}
+</div>
