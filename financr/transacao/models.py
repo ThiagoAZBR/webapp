@@ -58,12 +58,12 @@ class Transacao(models.Model):
     observacoes = models.CharField(max_length=500, blank=False, null=False)
     data_criacao = models.DateField(auto_now=True, blank=False, null=False)
 
-    def __str__(self):
-        return self.descricao
 
     transacao_efetivada = models.BooleanField(max_length=1, default=0)
     transacao_fixa = models.BooleanField(max_length=1, default=0)
     
+    def __str__(self):
+        return self.descricao
     
 class Transferencia(Transacao):
     conta_destino = models.ForeignKey(Contas_bancarias, on_delete=models.RESTRICT, blank=False, null=False)

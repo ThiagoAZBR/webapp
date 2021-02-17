@@ -7,6 +7,8 @@ from django.core.exceptions import PermissionDenied
 
 @login_required(login_url='home')
 def criar_conta(request):
+    #Cria o o form de criar conta bancária e renderiza na página. Envia também a lista de bancos
+    # que a pessoa já tem cadastrado. (Não implementado esta lista)
     if request.method == "GET":
         form = Criar_ContaBanco_Form()
         
@@ -26,7 +28,8 @@ def criar_conta(request):
             
             try:
                 form.save()
-                return render(request, './templates/tela_inicial_do_webapp/principia.html', {'form': form})
+
+                return redirect(reverse('app_home'))
             
             except:
                 form.add_error('nome_banco','Este Banco já existe.')
@@ -51,9 +54,11 @@ def sucesso(request):
     return render(request, "sucesso.html")
 
 
+#Função que permite buscar a conta bancária selecionada quando o usuário clica em uma das contas cadastradas
+# apresentadas na tela de criação de conta bancária.
 # def editar_conta(request, pk):
 #     if request.method == "GET":
-#         contas_bancarias = get_object_or_404(Contas_bancarias, pk=pk)
+        # contas_bancarias = get_object_or_404(Contas_bancarias, pk=pk) #Caso usuário busque por um ID manualmente e inserir um id que não exista, retornará erro 404 - Página não encontrada.
         
 #         #Valida se o usuário logado e o usuário da conta pesquisada
 #         id_usuario_logado = request.user.id
@@ -62,9 +67,7 @@ def sucesso(request):
         
 #         if id_usuario_conta != id_usuario_logado:
 #             raise PermissionDenied
-        
-        
-        
+
 #     return redirect(reverse('home'))
 
 

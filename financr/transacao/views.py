@@ -8,24 +8,28 @@ from django.contrib.auth.decorators import login_required
 from datetime import *
 from django.utils import formats
 from django.db.models import Q
+from django.contrib import messages
 
-
-
+#Cria uma nova receita
 @login_required(login_url='home')
 def receita(request):
+    #Carrega o form do models de transação e já tráz informações do banco de dados, como os bancos que ele tem cadastrados, categorias, etc.
     if request.method =="GET":  
         usuario = request.user
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=1)
         return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
-        
+    
+    #Envia o formulário, preenchendo automaticamente o id do usuário e a data de criação da transação
     elif request.method == "POST":
         usuario = request.user
         classe_transacao=(Transacao(classe_transacao=1, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
         form = Criar_transacao_Form(request.POST, instance=classe_transacao)
         
+        #Verifica se as informações salvas no formulários estão coerentes com as restrições do models
         if form.is_valid():
+            #cria o objeto, porém não salva no banco de dados, permitindo trabalhar os dados no forms.
             instance = form.save(commit=False)
             
             #INFORMAÇÕES PARA FILTRAR DADOS NO BANCO DE DADOS
@@ -41,7 +45,7 @@ def receita(request):
             except:
                 regularidade = 0
                 instance.regularidade = 0
-            print(form['data_transacao'].data)      
+
             data_atual = datetime.today()
             data_atual_formatada = data_atual.strftime("%Y-%m-%d")
             data_transacao_str = form['data_transacao'].data
@@ -79,7 +83,7 @@ def receita(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
                 
-                while data_atual > data_transacao_data:
+                while data_atual >= data_transacao_data:
                     instance.pk = None
                     instance.data_transacao = data_transacao_data
                     instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
@@ -102,18 +106,13 @@ def receita(request):
                 instance.save()
                 
                 return redirect(reverse('app_home'))
-                ###
-                #Criar Função para gerar uma transacao futura para continuar a conta fixa
-                #Criar uma função para verificar se a transacao anterior está pronta para ser efetivada e
-                #criar uma nova transacao para continuar o ciclo 
-                ###
             
-           
             elif tipo_transacao == 3:  #TRANSAÇÃO PARCELADA
+                #Calcula o valor e uma parcela e arredonda para 2 casas decimais.
                 valor_transacao = Decimal(form['valor'].data)
                 qtde_parcelas = int(form['num_parcelas'].data)
                 valor_parcela = round(valor_transacao/qtde_parcelas, 2)
-                dizima = False
+                dizima = False #Considera-se que não há dízima/número quebrado que gere incoerência na hora de somar as parcelas 
                 
                 if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
                     intervalo_transacao = timedelta(days=1)
@@ -128,15 +127,18 @@ def receita(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
                 
+                #Verifica se o valor gerado gerou uma dízima ou um valor não exato que não permite que o valor da parcela seja igual ao valo cheio sendo multiplicado pelo número de parcelas.
+                #Caso o valor não seja igual, corrije-se a primeira parcela adicionando um cenvavo a mais.
                 if  valor_parcela * qtde_parcelas != valor_transacao:
                     dizima = True
                     valor_parcela_1 = valor_parcela
                     valor_parcela_1 += Decimal(0.01)
                     valor_parcela_1 = round(valor_parcela_1, 2)
 
+                #Cria as parcelas
                 for parcela in range(qtde_parcelas):
                     if dizima:
-                        if data_atual > data_transacao_data:
+                        if data_atual >= data_transacao_data:
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -159,7 +161,7 @@ def receita(request):
                             instance.save()
                     
                     else:
-                        if data_atual > data_transacao_data:    
+                        if data_atual >= data_transacao_data:    
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -188,7 +190,9 @@ def receita(request):
         return render(request, 'templates/tela_de_transacoes/arkhe.html', {'form': form})
 
 
+#Cria uma nova despesa
 @login_required(login_url='home')
+#Carrega o form do models de transação e já tráz informações do banco de dados, como os bancos que ele tem cadastrados, categorias, etc.
 def despesa(request):
     if request.method =="GET":
         usuario = request.user
@@ -196,12 +200,14 @@ def despesa(request):
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=2)
         return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
-        
+    
+    #Envia o formulário, preenchendo automaticamente o id do usuário e a data de criação da transação
     elif request.method == "POST":
         usuario = request.user
         classe_transacao=(Transacao(classe_transacao=2, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
         form = Criar_transacao_Form(request.POST, instance=classe_transacao)
         
+        #Verifica se as informações salvas no formulários estão coerentes com as restrições do models
         if form.is_valid():
             instance = form.save(commit=False)
             
@@ -224,10 +230,6 @@ def despesa(request):
             data_transacao_str = form['data_transacao'].data
             data_transacao_data =datetime(int(data_transacao_str[:4]), int(data_transacao_str[5:7]),int(data_transacao_str[8:10])) #ANO MES DIA
             
-            # if novo_saldo < 0:
-            #     form.add_error('valor','O valor da despesa é maior que o saldo disponível em conta.')
-            #     return render(request, "testando.html", {'form': form})
-            
             if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
                 if  data_atual >= data_transacao_data: #Verifica se é uma transação atual ou futura
                     instance.transacao_efetivada = True 
@@ -237,8 +239,9 @@ def despesa(request):
                     
                     transacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
                     transacao.save()
-                            
-                else: #Caso seja uma transação futura o saldo não é atualizado (função de rotina verificará e atualizará o saldo em períodos de tempo fixo APScheduler)
+                
+                #Caso seja uma transação futura o saldo não é atualizado (função de rotina verificará e atualizará o saldo em períodos de tempo fixo APScheduler)            
+                else: 
                     instance.transacao_efetivada = False
                     instance.save()
                 
@@ -257,7 +260,7 @@ def despesa(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
 
-                while data_atual > data_transacao_data:
+                while data_atual >= data_transacao_data:
                     instance.pk = None
                     instance.data_transacao = data_transacao_data
                     instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
@@ -280,10 +283,11 @@ def despesa(request):
                 instance.save()
             
             elif tipo_transacao == 3: #TRANSAÇÃO PARCELADA
+                #Calcula o valor e uma parcela e arredonda para 2 casas decimais.
                 valor_transacao = Decimal(form['valor'].data)
                 qtde_parcelas = int(form['num_parcelas'].data)
                 valor_parcela = round(valor_transacao/qtde_parcelas, 2)
-                dizima = False
+                dizima = False #Considera-se que não há dízima/número quebrado que gere incoerência na hora de somar as parcelas 
                 
                 if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
                     intervalo_transacao = timedelta(days=1)
@@ -298,15 +302,18 @@ def despesa(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
                 
+                #Verifica se o valor gerado gerou uma dízima ou um valor não exato que não permite que o valor da parcela seja igual ao valo cheio sendo multiplicado pelo número de parcelas.
+                #Caso o valor não seja igual, corrije-se a primeira parcela adicionando um cenvavo a mais.
                 if  valor_parcela * qtde_parcelas != valor_transacao:
                     dizima = True
                     valor_parcela_1 = valor_parcela
                     valor_parcela_1 += Decimal(0.01)
                     valor_parcela_1 = round(valor_parcela_1, 2)
 
+                #Cria as parcelas
                 for parcela in range(qtde_parcelas):
                     if dizima:
-                        if data_atual > data_transacao_data:
+                        if data_atual >= data_transacao_data:
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -329,7 +336,7 @@ def despesa(request):
                             instance.save()
                     
                     else:
-                        if data_atual > data_transacao_data:    
+                        if data_atual >= data_transacao_data:    
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -357,11 +364,14 @@ def despesa(request):
         
         return render(request, 'templates/tela_de_transacoes/despesa.html', {'form': form})
     
-    
+
+#Cria uma nova transferência 
 @login_required(login_url='home')
 def transferencia(request):
+    #Carrega o form do models de transação e já tráz informações do banco de dados, como os bancos que ele tem cadastrados, categorias, etc.
     if request.method =="GET":
         usuario = request.user
+        print(request.user.id)
         classe_transacao=(Transferencia(descricao="Transferência para conta própria"))
         form = Criar_transferencia_Form(instance=classe_transacao)
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
@@ -369,12 +379,14 @@ def transferencia(request):
         form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id, classe_transacao=3)
         
         return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
-        
+    
+    #Envia o formulário, preenchendo automaticamente o id do usuário e a data de criação da transação   
     elif request.method == "POST":
         usuario = request.user
         classe_transacao=(Transferencia(classe_transacao=3, user_id=usuario, transacao_efetivada=False, transacao_fixa=False))
         form = Criar_transferencia_Form(request.POST, instance=classe_transacao)
         
+        #Verifica se as informações salvas no formulários estão coerentes com as restrições do models
         if form.is_valid():
             instance = form.save(commit=False)
             
@@ -398,15 +410,15 @@ def transferencia(request):
             data_atual_formatada = data_atual.strftime("%Y-%m-%d")
             data_transacao_str = form['data_transacao'].data
             data_transacao_data =datetime(int(data_transacao_str[:4]), int(data_transacao_str[5:7]),int(data_transacao_str[8:10])) #ANO MES DIA
-            
-            # if novo_saldo_origem < 0:
-            #     form.add_error('valor','O valor da transferencia é maior que o saldo disponível em conta.')
-            
+        
             if form['conta'].data == form['conta_destino'].data:
                 form.add_error('conta_destino','O banco destino não pode ser igual ao banco de origem.')
                        
             if form.errors:
-                return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
+                print('passou aqui')
+                messages.info(request, 'O banco destino não pode ser igual ao banco de origem.')
+                return redirect(reverse('transferir'))
+                # return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
             
             
             if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
@@ -450,7 +462,7 @@ def transferencia(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
             
-                while data_atual > data_transacao_data:
+                while data_atual >= data_transacao_data:
                     instance.pk = None
                     instance.data_transacao = data_transacao_data
                     instance.transacao_fixa = False #As parcelas passadas não terão o marcador de Transação fixa,
@@ -483,10 +495,11 @@ def transferencia(request):
                 instance.save()
                    
             elif tipo_transacao == 3: #TRANSAÇÃO PARCELADA
+                #Calcula o valor e uma parcela e arredonda para 2 casas decimais.
                 valor_transacao = Decimal(form['valor'].data)
                 qtde_parcelas = int(form['num_parcelas'].data)
                 valor_parcela = round(valor_transacao/qtde_parcelas, 2)
-                dizima = False
+                dizima = False #Considera-se que não há dízima/número quebrado que gere incoerência na hora de somar as parcelas 
                 
                 if regularidade == 1: #TRANSAÇÃO FIXA DIÁRIA
                     intervalo_transacao = timedelta(days=1)
@@ -501,15 +514,19 @@ def transferencia(request):
                     form.add_error('regularidade','Selecione uma opção de "Regularidade" válida para transação "Fixa".')
                     return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
                 
+                
+                #Verifica se o valor gerado gerou uma dízima ou um valor não exato que não permite que o valor da parcela seja igual ao valo cheio sendo multiplicado pelo número de parcelas.
+                #Caso o valor não seja igual, corrije-se a primeira parcela adicionando um cenvavo a mais.
                 if  valor_parcela * qtde_parcelas != valor_transacao:
                     dizima = True
                     valor_parcela_1 = valor_parcela
                     valor_parcela_1 += Decimal(0.01)
                     valor_parcela_1 = round(valor_parcela_1, 2)
 
+                #Cria as parcelas
                 for parcela in range(qtde_parcelas):
                     if dizima:
-                        if data_atual > data_transacao_data:
+                        if data_atual >= data_transacao_data:
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -537,7 +554,7 @@ def transferencia(request):
                             instance.save()
                     
                     else:
-                        if data_atual > data_transacao_data:    
+                        if data_atual >= data_transacao_data:    
                             instance.pk = None
                             instance.data_transacao = data_transacao_data
                             instance.transacao_efetivada = True
@@ -574,16 +591,19 @@ def transferencia(request):
 
 @login_required(login_url='home')
 def categoria(request):
+    #Carrega o form do models de transação e já tráz informações do banco de dados, como os bancos que ele tem cadastrados, categorias, etc.
     if request.method =="GET":  
         usuario = request.user
         form = Criar_categoria_Form()
         return render(request, "templates/tela_de_criar_conta/categoria.html", {'form': form})
-        
+    
+    #Envia o formulário, preenchendo automaticamente o id do usuário.  
     elif request.method == "POST":
         usuario = request.user
         classe_categoria=(Categoria_transacao(user_id=usuario))
         form = Criar_categoria_Form(request.POST, instance=classe_categoria)
         
+        #Verifica se as informações inseridas no formulário são válidas, de acordo com o as restrições do models.
         if form.is_valid():
             try:
                 form.save()
@@ -604,8 +624,12 @@ def categoria(request):
 #     return render(request, './templates/tela_inicial_do_webapp/principia.html')   
     
 
+#Função que atualiza todo dia (ou de acordo com o programado) o saldo das contas, efetuando as transações
+# que não foram efetivadas (contas que foram cadastradas com data futura).
+#Caso haja transações Fixas, ou seja, transações que não possuem um fim até o usuário cancelar, além de efetivar a conta, o mesmo cria uma nova conta fixa no mesmo valor, porém com data futura com a mesma regularidade.
 def atualizar_saldos_transacoes():
 
+    #Filtra as transações não efetivadas e com data de pagamento para o dia atual
     total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year).filter(Q(classe_transacao=1) | Q(classe_transacao=2))
     # total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0).filter(Q(classe_transacao=1) | Q(classe_transacao=2))
     
@@ -634,7 +658,8 @@ def atualizar_saldos_transacoes():
                     
             efetivacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
             efetivacao.save()
-        
+            
+            #Cria uma nova transação fixa
             if transacao.transacao_fixa:
                 transacao.transacao_fixa = False
                 transacao.save()
@@ -653,6 +678,7 @@ def atualizar_saldos_transacoes():
             efetivacao = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
             efetivacao.save()
             
+            #Cria uma nova transação fixa
             if transacao.transacao_fixa:
                 transacao.transacao_fixa = False
                 transacao.save()
@@ -664,7 +690,6 @@ def atualizar_saldos_transacoes():
                 nova_transacao.save()
         
     #Transferência
-
     total_transacao_nao_efetivada_transferencia = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year).filter(classe_transacao=3)
     # total_transacao_nao_efetivada_transferencia = Transferencia.objects.filter(classe_transacao=3, transacao_efetivada=0)
     
@@ -700,13 +725,14 @@ def atualizar_saldos_transacoes():
         efetivacao_destino = Contas_bancarias(id= conta_bancaria[0].id, user_id_id= usuario_id, nome_banco= conta_bancaria[0].nome_banco, saldo= novo_saldo)
         efetivacao_destino.save()
         
+        #Cria uma nova transação fixa
         if transacao.transacao_fixa:
             transacao.transacao_fixa = False
             transacao.save()
             
             nova_transacao = transacao
-            nova_transacao.pk = None
-            nova_transacao.id = None
+            nova_transacao.pk = None #ID - Chave primária da tabela Transacao
+            nova_transacao.id = None #ID - Chave primária da tabela Transferência
             nova_transacao.data_transacao += intervalo_transacao
             nova_transacao.transacao_fixa = True
             nova_transacao.transacao_efetivada = False
