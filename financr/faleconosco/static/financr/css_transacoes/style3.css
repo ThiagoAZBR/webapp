@@ -544,7 +544,7 @@ html, body {
     #id_num_parcelas {
 
 
-        margin-left: 15vw;
+        float: right;
         width: 9vw;
         font-size: 1.5rem;
 
@@ -552,10 +552,10 @@ html, body {
 
     #txt_numero_parcelas {
 
-        margin-left: 7vw;
+        float: right;
 
     }
-
+    
 
 
 }
@@ -622,6 +622,86 @@ html, body {
     #titulo2_conta_e_categoria {
 
         margin-left: 28.4vw;
+
+    }
+
+    #id_regularidade {
+
+        width: 29vw;
+
+    }
+
+    #id_num_parcelas {
+
+        width: 20vw;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .transferir {
+
+        width: 80%;
+
+    }
+
+    #titulo2_valor_e_data {
+
+        margin-left: 35vw;
+
+    }
+
+    .valor_e_data input {
+
+        width: 31vw;
+
+    }
+
+}
+
+@media (max-width: 470px) {
+
+    .transferir {
+
+        width: 98%;
+
+    }
+
+    .tipo_de_receita {
+
+        width: 98%;
+
+    }
+
+    #id_data_transacao {
+
+        width: 45vw;
+
+    }
+
+    .cabecalho {
+
+        font-size: 0.8rem;
+
+    }
+
+    #id_regularidade {
+
+        width: 35vw;
+
+    }
+
+    #id_num_parcelas {
+
+        width: 28vw;
+
+    }
+
+    #id_data_transacao {
+
+        font-size: 1.5rem;
 
     }
 
