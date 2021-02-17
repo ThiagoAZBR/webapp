@@ -28,7 +28,8 @@ def criar_conta(request):
             
             try:
                 form.save()
-                return redirect(reverser('app_home'))
+
+                return redirect(reverse('app_home'))
             
             except:
                 form.add_error('nome_banco','Este Banco já existe.')
