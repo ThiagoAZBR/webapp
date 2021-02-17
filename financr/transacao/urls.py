@@ -13,5 +13,5 @@ urlpatterns = [
     path('nova_receita/', receita, name = 'adicionar'),
     path('nova_despesa/', despesa, name = 'subtrair'),
     path('transferencia/', transferencia, name = 'transferir'),
-    # path('teste/', teste, name='teste'),
+    path('atualizar_saldo/', atualizar_saldos_transacoes, name='atualizar_saldo'),
 ]
