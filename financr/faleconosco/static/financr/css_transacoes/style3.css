@@ -28,8 +28,7 @@ html, body {
 
     border: 0.2rem black solid;
     border-radius: 1%;
-    height: 92vh;
-    min-height: 92vh;
+    height: auto;
     width: 30%;
     
 }
@@ -85,6 +84,14 @@ html, body {
     transform: rotate(-45deg) translate(1px, -5px);
 
 }
+
+
+.formulario_transferencia {
+
+    padding-bottom: 5vh;
+
+}
+
 
 
 #id_descricao {
@@ -191,6 +198,7 @@ html, body {
     font-size: 1.6rem;
     width: 10vw;
     font-family: 'Roboto', sans-serif;
+    margin-top: 1.5vh;
 
 }
 
@@ -286,11 +294,9 @@ html, body {
     border-top-width: 0;
     border-left-width: 0;
     background-color: transparent;
-    color: #333335;
     font-size: 1.8rem;
     width: 97%;
     font-family: 'Open Sans', sans-serif;
-    color: black;
 
 
 }
@@ -315,7 +321,7 @@ html, body {
     border-left-width: 0;
     width: 8vw;
     font-size: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
 
 }
@@ -371,7 +377,7 @@ html, body {
     width: 5vw;
     margin-left: 3vw;
     font-size: 1.6rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 
 
 }
@@ -410,12 +416,11 @@ html, body {
 .div_botoes {
 
     display: flex;
-    width: 27vw;
+    width: 100%;
     height: 5vh;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    position: absolute;
     bottom: 8vh;
 
 }
@@ -452,7 +457,7 @@ html, body {
 
     html {
 
-        font-size: 72.5%;
+        font-size: 74.5%;
 
     }
 
@@ -482,6 +487,141 @@ html, body {
     .conta_e_categoria {
 
         margin-bottom: 1vh;
+
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    
+
+    .transferir {
+
+        width: 45%;
+
+    }
+
+    .description input {
+
+        width: 99%;
+
+    }
+
+    #titulo2_valor_e_data {
+
+        margin-left: 22.4vw;
+
+    }
+
+    #titulo2_conta_e_categoria {
+
+        margin-left: 22vw;
+
+    }
+
+    .valor_e_data input {
+
+        width: 14vw;
+
+    }
+
+    .conta_e_categoria select {
+
+        width: 14vw;
+        font-size: 1.6rem;
+
+    }
+
+
+    #id_regularidade {
+
+        width: 15vw;
+        font-size: 1.5rem;
+
+    }
+
+    #id_num_parcelas {
+
+
+        margin-left: 15vw;
+        width: 9vw;
+        font-size: 1.5rem;
+
+    }
+
+    #txt_numero_parcelas {
+
+        margin-left: 7vw;
+
+    }
+
+
+
+}
+
+@media (max-width: 930px) {
+
+    .transferir {
+
+        width: 60%;
+
+    }
+
+    
+    .valor_e_data input {
+
+        width: 21vw;
+        margin-top: 1vh;
+
+    }
+
+    .conta_e_categoria select {
+
+        width: 21vw;
+
+    }
+
+    #titulo2_valor_e_data {
+
+        margin-left: 27vw;
+
+    }
+
+
+
+}
+
+@media (max-width: 805px) {
+
+    .transferir {
+
+        width: 65%;
+
+    }
+
+    .valor_e_data input {
+
+        width: 24vw;
+
+    }
+
+    .conta_e_categoria select {
+
+        width: 24vw;
+
+    }
+
+    #titulo2_valor_e_data {
+
+        margin-left: 29vw;
+
+    }
+
+
+    #titulo2_conta_e_categoria {
+
+        margin-left: 28.4vw;
 
     }
 
