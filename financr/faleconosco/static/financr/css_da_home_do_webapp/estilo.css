@@ -232,6 +232,12 @@ html, body {
 
 }
 
+.tela_saldo .div_sair {
+
+    display: none;
+
+}
+
 #fundo {
 
     background-color: #ECE9E6;
@@ -258,15 +264,188 @@ html, body {
     height: 80vh;
     min-height: 80vh;
     width: 55vw;
-    min-width: 45vw;
+    min-width: 55vw;
     z-index: 1;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+
+}
+
+.div_formatacao_dados {
+    
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    height: 100%;
+
+}
+
+.tela_saldo.on .div_sair {
+
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+}
+
+#txt_fechar {
+
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    grid-row: 3/3;
+    grid-column: 1/1;
+    width: 15%;
 
 }
 
 .tela_saldo.on .div_formatacao_dados {
 
-    display: block;
+    display: grid;
     z-index: 1;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    height: 100%;
+
+    align-content: end;
+    grid-row: 2/2;
+    margin-left: 1vw;
+    margin-bottom: 7vh;
+
+}
+
+.tela_saldo.on .div_formatacao_dados p {
+
+    font-size: 1.4rem;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+
+}
+
+.tela_saldo.on .div_formatacao_dados select {
+
+    background-color: transparent;
+    border: 0.3px black solid;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    font-size: 1.4rem;
+    font-family: 'Open Sans', sans-serif;
+    width: 10vw;
+
+}
+
+.tela_saldo.on .div_formatacao_dados div {
+
+    margin: 10px;
+
+}
+
+#div_categoria_receita {
+
+    margin-left: 3vw;
+    margin-bottom: 4vh;
+
+}
+
+#div_historico_despesa {
+
+    margin-left: 3vw;
+
+}
+
+#div_historico_receita {
+
+    margin-right: 0;
+    margin-left: 3vw;
+
+}
+
+#div_categoria_despesa {
+
+    margin-left: 3vw;
+    margin-bottom: 4vh;
+
+
+}
+
+#div_historico_transferencia {
+
+    margin-left: 3vw;
+
+}
+
+#select-saldo {
+
+    grid-column: 1/1;
+    grid-row: 1/1;
+
+}
+
+#select-banco {
+
+    grid-column: 2/2;
+    grid-row: 1/1;
+
+}
+
+#select-ultimas_receitas {
+
+    grid-column: 3/3;
+    grid-row: 1/1;
+
+}
+
+#select-ultimas_despesas {
+
+    grid-column: 1/1;
+    grid-row: 2/2;
+
+}
+
+#select-categorias_receitas {
+
+    grid-column: 2/2;
+    grid-row: 2/2;
+}
+
+#select-categorias_despesa {
+
+    grid-column: 3/3;
+    grid-row: 2/2;
+
+}
+
+#select-historico_receita {
+
+    grid-column: 1/1;
+    grid-row: 3/3;
+
+}
+
+#select-historico_despesa {
+
+    grid-column: 2/2;
+    grid-row: 3/3;
+
+}
+
+#select-historico_transferencia {
+
+    grid-column: 3/3;
+    grid-row: 3/3;
 
 }
 
@@ -276,12 +455,29 @@ html, body {
 
 }
 
+.tela_saldo .div_titulo {
+
+    display: none;
+
+}
+
+.tela_saldo.on .div_titulo {
+
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    grid-row: 1/1;
+
+}
+
 .tela_saldo.on #txt_saldo {
 
     display: block;
     text-align: center;
     align-self: flex-start;
     font-size: 3rem;
+    width: 100%;
+    margin-top: 0;
 
 }
 
@@ -291,6 +487,16 @@ html, body {
     display: none;
 
 }
+
+
+
+
+
+
+
+
+
+
 
 
 .tela_graficos #txt_grafico {
@@ -573,6 +779,14 @@ html, body {
 
 @media (max-width: 1260px) {
 
+    .tela_saldo.on .div_formatacao_dados {
+
+        margin-left: 0vw;
+        margin-bottom: 0vh;
+        font-size: 1.2rem;
+
+    }
+
     .telas_e_expansao {
 
         grid-template-columns: 1fr 1fr;
@@ -596,8 +810,8 @@ html, body {
 
     .tela_saldo.on {
 
-        min-height: 60vh;
-        height: 60vh;
+        min-height: 62vh;
+        height: 62vh;
         width: 80vw;
 
     }
@@ -649,6 +863,27 @@ html, body {
 
 @media (min-width: 1010px) and (max-width: 1259px) {
 
+    .tela_saldo.on .div_formatacao_dados {
+
+        margin-left: 0vw;
+        margin-bottom: 0vh;
+        font-size: 1.2rem;
+        margin-right: 2vw;
+
+    }
+
+    .tela_saldo.on #txt_saldo {
+
+        margin-top: 1vh;
+
+    }
+
+    .tela_saldo.on .div_formatacao_dados select {
+
+        width: 13vw;
+
+    }
+
     #img_grafico {
 
         width: 78%;
@@ -675,6 +910,13 @@ html, body {
     #img_saldo {
 
         width: 80%;
+
+    }
+
+    .div_formatacao_dados {
+
+        margin-left: 0vw;
+        margin-bottom: 0vh;
 
     }
 
@@ -742,4 +984,3 @@ html, body {
     transition: all 0.3s;
 
 }
-

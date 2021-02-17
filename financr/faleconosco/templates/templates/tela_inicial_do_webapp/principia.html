@@ -67,86 +67,101 @@
 
                 <div id = "fundo"></div>
                 <img src = "{% static 'financr\img\imagens_para_home_do_webapp\saldo.png' %}" alt = "Uma seta girando ao redor de um símbolo de dinheiro específico para a moeda do real" id = 'img_saldo'>
+                <div class="div_titulo">
                 <h4 id = 'txt_saldo'>SALDO</h4>
-
+                </div>
                 <div class="div_formatacao_dados">
                     <div id="saldos">
                         <ul>
-                            <p>SALDOS</p>
-                            <select name = "" id="">
+                            <p>Saldos</p>
+                            <select name = "" id = "select-saldo">
                             {% for banco in contas %}
                                 <option value="">{{ banco.nome_banco }} - R${{ banco.saldo}}</option>
-                                <p></p>
                             {% endfor %}
                         </select>
                         </ul>
                     </div>
                     <div id="bancos">
                         <ul>
-                            <p>SUAS CONTAS</p>
-                            <select name="" id="">
+                            <p>Suas Contas</p>
+                            <select name="" id = "select-banco">
                             {% for banco in contas %}
                                 <option value=""> {{ banco.nome_banco }} </option>
-                                <p></p>
                             {% endfor %}
                         </select>
                         </ul>
                     </div>
                     <div id="ultimas_receitas">
                         <ul>
-                            <p>ÚLTIMAS RECEITAS:</p>
-                            {% for receita in ultimas_receitas %}
-                            <p>DATA: {{ receita.data_transacao }} - R${{ receita.valor }}</p>
-                            <p></p>
-                            {% endfor %}
+                            <p>Últimas Receitas:</p>
+                            <select name="" id="select-ultimas_receitas">
+
+                                {% for receita in ultimas_receitas %}
+                                <option>DATA: {{ receita.data_transacao }} - R${{ receita.valor }}</option>
+                                {% endfor %}
+
+                            </select>
                         </ul>
                     </div>
                     <div id="ultimas_despesas">
                         <ul>
-                            <p>ÚLTIMAS DESPESAS:</p>
-                            <select name="" id="">
+                            <p>Últimas Despesas:</p>
+                            <select name="" id = "select-ultimas_despesas">
                                 {% for despesas in ultimas_despesas %}
                                 <option>DATA: {{ despesas.data_transacao }} - R${{ despesas.valor }}</option>
-                                <p></p>
                                 {% endfor %}
                             </select>
                         </ul>
                     </div>
-                    <div>
-                        Categorias cadastradas de receita
-                        {% for i in categorias_receitas %}
-                            <p>{{ i.categoria }}</p>
-                            <p></p>
+                    <div id = 'div_categoria_receita'>
+                        <p>Categorias de receita</p>
+
+                        <select name="" id = "select-categorias_receitas">
+                            {% for i in categorias_receitas %}
+                            <option>{{ i.categoria }}</option>
                         {% endfor %}
+                        </select>
                     </div>
-                    <div>
-                        Categorias cadastradas de despesa
-                        {% for i in categorias_despesas %}
-                            <p>{{ i.categoria }}</p>
-                            <p></p>
+                    <div id = 'div_categoria_despesa'>
+                        <p>Categorias de despesa</p>
+                        <select name="" id = "select-categorias_despesa">
+
+                            {% for i in categorias_despesas %}
+                            <option>{{ i.categoria }}</option>
                         {% endfor %}
+
+                        </select>
                     </div>
-                    <div>
-                        HISTÓRICO DE RECEITAS
-                        {% for i in lista_transacoes_receitas %}
-                            <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
-                            <p></p>
+                    <div id = 'div_historico_receita'>
+                        <p>Histórico De Receitas</p>
+                        <select name="" id = "select-historico_receita">
+                            {% for i in lista_transacoes_receitas %}
+                            <option>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</option>
                         {% endfor %}
+                        </select>
                     </div>
-                    <div>
-                        HISTÓRICO DE DESPESAS
-                        {% for i in lista_transacoes_despesas %}
-                            <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
-                            <p></p>
+                    <div id = 'div_historico_despesa'>
+                        <p>Histórico De Despesas</p>
+                        <select name="" id = "select-historico_despesa">
+                            {% for i in lista_transacoes_despesas %}
+                            <option>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</option>
                         {% endfor %}
+                        </select>
                     </div>
-                    <div>
-                        HISTÓRICO DE TRANSFERENCIAS
-                        {% for i in lista_transacoes_transferencias %}
-                            <p>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</p>
-                            <p></p>
-                        {% endfor %}
+                    <div id = 'div_historico_transferencia'>
+
+                            <p>Histórico De Transferências</p>
+                        <select name="" id = "select-historico_transferencia">            
+                            {% for i in lista_transacoes_transferencias %}
+                                <option>descrição: {{ i.descricao }} - valor: {{ i.valor }} data {{ i.data_transacao }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
+                </div>
+                <div class="div_sair">
+                    <h4 id = 'txt_fechar'>
+                        Fechar
+                    </h4>
                 </div>
 
             </div>
