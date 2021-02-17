@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from datetime import *
 from django.utils import formats
 from django.db.models import Q
-
+from django.contrib import messages
 
 #Cria uma nova receita
 @login_required(login_url='home')
@@ -371,6 +371,7 @@ def transferencia(request):
     #Carrega o form do models de transação e já tráz informações do banco de dados, como os bancos que ele tem cadastrados, categorias, etc.
     if request.method =="GET":
         usuario = request.user
+        print(request.user.id)
         classe_transacao=(Transferencia(descricao="Transferência para conta própria"))
         form = Criar_transferencia_Form(instance=classe_transacao)
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
@@ -414,7 +415,10 @@ def transferencia(request):
                 form.add_error('conta_destino','O banco destino não pode ser igual ao banco de origem.')
                        
             if form.errors:
-                return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
+                print('passou aqui')
+                messages.info(request, 'O banco destino não pode ser igual ao banco de origem.')
+                return redirect(reverse('transferir'))
+                # return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})
             
             
             if tipo_transacao == 1: #TRANSAÇÃO PONTUAL
