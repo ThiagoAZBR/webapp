@@ -13,7 +13,7 @@ html, body {
 
 .global {
 
-    height: 60vh;
+    height: 100vh;
     width: 100%;
     display: flex;  
     flex-direction: row;
@@ -26,11 +26,9 @@ html, body {
 
     border: black 0.4px solid;
     border-radius: 1%;
-    height: 50vh;
-    min-height: 50vh;
+    height: auto;
     width: 30%;
     margin: auto;
-    margin-top: 23vh;
     background-color: white;
 
 }
@@ -95,6 +93,7 @@ html, body {
 #formulario_categoria {
 
     height: auto;
+    padding-bottom: 6vh;
 
 }
 
@@ -102,7 +101,7 @@ html, body {
 
     position: absolute;
     top: 23.1vh;
-    left: 3vw;
+    left: 0.3vw;
     width: 27vw;
     font-family: 'Open Sans', sans-serif;
     color: black;
@@ -137,7 +136,7 @@ html, body {
 #id_categoria {
 
     font-size: 1.8rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #333335;
     background-color: transparent;
     border: 1px black solid;
@@ -175,7 +174,7 @@ html, body {
 #id_classe_transacao {
 
     font-size: 1.8rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: black;
     background-color: transparent;
     width: 98%;
@@ -225,5 +224,121 @@ html, body {
     border-radius: 10%;
     height: 6vh;
     width: 23.5%;
+
+}
+
+@media (max-width: 1081px) {
+
+    .categoria_conta {
+
+        width: 44%;
+
+    }
+
+    #titulo_de_selecionar_conta {
+
+        font-size: 2.1rem;
+
+    }
+
+    #id_categoria {
+
+        font-size: 2.4rem;
+
+    }
+
+    #txt_tipo_de_transacao {
+
+        font-size: 2.1rem;
+
+    }
+
+    #id_classe_transacao {
+
+        font-size: 2.4rem;
+
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    #titulo_de_selecionar_conta {
+
+        font-size: 1.8rem;
+
+    }
+
+    #id_categoria {
+
+        font-size: 1.9rem;
+
+    }
+
+    #txt_tipo_de_transacao {
+
+        font-size: 1.8rem;
+
+    }
+
+    #id_classe_transacao {
+
+        font-size: 1.9rem;
+
+    }
+
+}
+
+@media (max-width: 760px) {
+
+    .categoria_conta {
+
+        width: 54%;
+
+    }
+
+}
+
+@media (max-width: 630px) {
+
+    .categoria_conta {
+
+        width: 75%;
+
+    }
+
+    #titulo_de_selecionar_conta {
+
+        font-size: 2.1rem;
+
+    }
+
+    #id_categoria {
+
+        font-size: 2.1rem;
+
+    }
+
+    #txt_tipo_de_transacao {
+
+        font-size: 2.1rem;
+
+    }
+
+    #id_classe_transacao {
+
+        font-size: 2.1rem;
+
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    .categoria_conta {
+
+        width: 96%;
+
+    }
 
 }
