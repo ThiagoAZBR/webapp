@@ -632,7 +632,7 @@ html, body {
 
     #txt_numero_parcelas {
 
-        margin-left: 12vw;
+        float: right;
 
     }
 
@@ -669,14 +669,106 @@ html, body {
 
     #titulo2_valor_e_data {
 
-        margin-left: 29vw;
+        margin-left: 27vw;
 
     }
 
 
     #titulo2_conta_e_categoria {
 
-        margin-left: 28.4vw;
+        margin-left: 26.4vw;
+
+    }
+
+    #id_regularidade {
+
+        width: 24vw;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .receita {
+
+        width: 80%;
+
+    }
+
+    .valor_e_data input {
+
+        width: 31vw;
+
+    }
+
+    .conta_e_categoria select {
+
+        width: 31vw;
+
+    }
+
+    #titulo2_conta_e_categoria {
+
+        margin-left: 31.4vw;
+
+    }
+
+    #titulo2_valor_e_data {
+
+        margin-left: 32vw;
+
+    }
+
+    #id_regularidade {
+
+        width: 32vw;
+
+    }
+
+}
+
+@media (max-width: 410px) {
+
+    .receita {
+
+        width: 98%;
+
+    }
+
+    .valor_e_data input {
+
+        width: 39vw;
+
+    }
+
+    .conta_e_categoria select {
+
+        width: 39vw;
+
+    }
+
+    #id_regularidade {
+
+        width: 39vw;
+
+    }
+
+    #titulo2_valor_e_data {
+
+        margin-left: 38vw;
+
+    }
+
+    #titulo2_conta_e_categoria {
+
+        margin-left: 37.4vw;
+
+    }
+
+    #id_num_parcelas {
+
+        width: 22vw;
 
     }
 
