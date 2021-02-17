@@ -608,11 +608,36 @@ body {
 
     }
 
+    #img_laptop {
+
+        width: 110%;
+        max-width: 110%;
+        margin-top: 9vh;
+        max-height: 70vh;
+        height: 70vh;
+
+    }
+    
+    #txt_laptop_da_esquerda {
+
+        margin-left: 9vw;
+        margin-top: 16vh;
+
+    }
+
+    #txt_registrar_laptop_da_esquerda {
+
+        margin-bottom: 14vh;
+        margin-left: 5vw;
+
+    }
+
     #img_laptop_2 {
 
         grid-column: 2/2;
-        width: 90%;
+        width: 80%;
         margin-left: 0;
+        margin-bottom: 0vh;
 
     }
 
@@ -620,7 +645,8 @@ body {
 
         align-self: initial;
         grid-column: 1/1;
-        margin-top: 40px;
+        margin-top: 136px;
+        margin-left: 3vw;
 
     }
 
@@ -628,6 +654,29 @@ body {
 
         grid-column: 1/1;
         align-self: center;
+        margin-top: 17vh;
+
+    }
+
+    #img_laptop_3 {
+
+        width: 94%;
+        margin-left: 0;
+        margin-bottom: 7vh;
+        height: 52vh;
+
+    }
+
+    #txt_laptop_da_direita {
+
+        margin-left: 4vw;
+        margin-top: 13vh;
+
+    }
+
+    #txt_contato_laptop_da_direita {
+
+        margin-left: 8vw;
 
     }
 
@@ -879,7 +928,7 @@ body {
 
     #img_laptop_2 {
 
-        width: 90%;
+        width: 85%;
 
     }
 
