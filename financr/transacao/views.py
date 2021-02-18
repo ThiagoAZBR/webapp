@@ -416,7 +416,6 @@ def transferencia(request):
                 form.add_error('conta_destino','O banco destino não pode ser igual ao banco de origem.')
                        
             if form.errors:
-                print('passou aqui')
                 messages.info(request, 'O banco destino não pode ser igual ao banco de origem.')
                 return redirect(reverse('transferir'))
                 # return render(request, 'templates/tela_de_transacoes/transferir.html', {'form': form})

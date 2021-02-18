@@ -384,23 +384,42 @@ html, body {
 
 
 
-.div_erros {
+.div_formatacao_erros {
 
     position: absolute;
-    top: 23.1vh;
-    left: 3vw;
-    width: 27vw;
+    top: 0;
+    left: 0;
+    width: 100%;
     font-family: 'Open Sans', sans-serif;
     color: black;
     display: flex;
     flex-direction: column;
     align-content: space-between;
     font-size: 1.8rem;
-    /* border: 4px #333335 solid; */
     border-radius: 1%;
+    height: 100%;
+    background: white;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
 }
 
+.errorlist {
+
+    margin-right: 5vw;
+    padding-right: 2vw;
+
+}
+
+#txt_fechar {
+
+    align-self: baseline;
+    margin-top: 32vh;
+    
+}
 
 
 

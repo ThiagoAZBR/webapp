@@ -505,6 +505,16 @@
     padding-left: 20px;
 }
 
+@media (min-height: 700px) {
+
+    .cadastro .dados_cadastrais .enviar .submit {
+
+        margin-top: 10vh;
+
+    }
+
+}
+
 @media (max-width: 1150px) {
 
     .funcionalidades {

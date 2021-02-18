@@ -14,6 +14,7 @@ html {
 
     background-color: #f6f4f3;
     font-size: 62.5%;
+    width: 100%;
 
 }
 
@@ -933,6 +934,12 @@ body {
 
     }
 
+    .cadastro .dados_cadastrais .enviar .submit {
+
+        margin-top: 10vh;
+
+    }
+
 }
 
 @media (min-height: 750px) {
@@ -1074,7 +1081,9 @@ body {
 
     }
 
+
 }
+
 
 @media (min-height: 680px) {
 
