@@ -16,6 +16,7 @@ def receita(request):
     #Carrega o form do models de transação e já tráz informações do banco de dados, como os bancos que ele tem cadastrados, categorias, etc.
     if request.method =="GET":  
         usuario = request.user
+        atualizar_saldos_transacoes()
         form = Criar_transacao_Form()
         form.fields["conta"].queryset = Contas_bancarias.objects.filter(user_id=usuario.id)
         form.fields["categoria_transacao"].queryset = Categoria_transacao.objects.filter(user_id=usuario.id).filter(classe_transacao=1)
@@ -628,7 +629,7 @@ def categoria(request):
 # que não foram efetivadas (contas que foram cadastradas com data futura).
 #Caso haja transações Fixas, ou seja, transações que não possuem um fim até o usuário cancelar, além de efetivar a conta, o mesmo cria uma nova conta fixa no mesmo valor, porém com data futura com a mesma regularidade.
 def atualizar_saldos_transacoes():
-
+    print('a função está sendo puxada')
     #Filtra as transações não efetivadas e com data de pagamento para o dia atual
     total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0, data_transacao__day=datetime.now().day, data_transacao__month=datetime.now().month, data_transacao__year=datetime.now().year).filter(Q(classe_transacao=1) | Q(classe_transacao=2))
     # total_transacao_nao_efetivada = Transacao.objects.filter(transacao_efetivada=0).filter(Q(classe_transacao=1) | Q(classe_transacao=2))
