@@ -312,18 +312,14 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     align-items: center;
-    min-width: 100%;
     max-width: 100%;
-    width: 100%;
-    min-height: 100%;
+    width: auto;
     max-height: 100%;
-    height: 100%;
+    height: auto;
+    margin-bottom: -2vh;
 
     align-content: end;
-    grid-row: 2/2;
-    margin-left: 1vw;
-    margin-bottom: 7vh;
-
+    grid-row: 1/1;
 }
 
 .tela_saldo.on .div_formatacao_dados p {
@@ -382,11 +378,11 @@ html, body {
 
 }
 
-#div_historico_transferencia {
 
-    margin-left: 3vw;
-    margin: inherit;
-    margin-bottom: 5vh;
+
+#select-historico_transferencia {
+
+    margin-left: 2vw;
 
 }
 
@@ -534,7 +530,6 @@ html, body {
     align-content: space-between;
     grid-template-columns: auto;
     grid-template-rows: auto auto auto;
-    margin-left: 20vw;
 }
 
 
@@ -573,6 +568,7 @@ html, body {
     justify-content: space-evenly;
     width: 60%;
     margin: auto;
+    margin-bottom: 4vh;
 
 
 }
@@ -580,7 +576,7 @@ html, body {
 
 .tela_graficos.on #graficopizza {
 
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
     background-color: transparent;
     grid-column: 1/1;
     grid-row: 2/2;
@@ -592,7 +588,7 @@ html, body {
 
 .tela_graficos.on #graficodespesas {
 
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
     background-color: transparent;
     grid-column: 1/1;
     grid-row: 2/2;
@@ -607,7 +603,7 @@ html, body {
     grid-column: 1/1;
     grid-row: 2/2;
     display: none;
-    margin-bottom: 20vh;
+    margin-bottom: 10vh;
     justify-self: center;
     display: none;
 
@@ -644,11 +640,13 @@ html, body {
 
 
 
-#div_sair2 {
+.div_sair2 {
 
     display: flex;
     width: 100%;
+    align-items: center;
     justify-content: center;
+    grid-column: 1/1;
 
 }
 
@@ -660,10 +658,7 @@ html, body {
     background-color: black;
     color: white;
     padding: 5px;
-    grid-row: 3/3;
-    grid-column: 1/1;
     width: 12%;
-    margin-left: 24vw;
 
 }
 
@@ -787,8 +782,9 @@ html, body {
 
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 24%;
     justify-content: center;
+    align-items: center;
 }
 
 #txt_fechar3 {
@@ -815,6 +811,7 @@ html, body {
     display: flex;
     width: 18vw;
     height: 27vh;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -857,13 +854,7 @@ html, body {
 
 }
 
-.tela_transferencias.on .xiz {
 
-    display: flex;
-    align-self: flex-start;
-    justify-self: right;
-
-}
 
 .tela_transferencias.on #fundo {
 
@@ -901,6 +892,37 @@ html, body {
 
 }
 
+.div_sair4 {
+
+    display: none;
+
+}
+
+.tela_transferencias.on .div_sair4 {
+
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    justify-content: center;
+    align-items: center;
+    margin-top: -59px;
+
+}
+
+#txt_fechar4 {
+
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 50%;
+
+}
+
 
 
 @media (max-width: 1260px) {
@@ -920,10 +942,35 @@ html, body {
 
     }
 
-    .telas_e_expansao img {
+    .tela_criar.on .div_tipos_conta img {
 
         min-width: 100px;
         min-height: 100px;
+
+    }
+
+    #img_criar_conta,
+    #img_saldo,
+    #img_grafico,
+    #img_transferencia {
+
+        min-width: 100px;
+        min-height: 100px;
+
+    }
+
+    .tela_transferencias.on .div_tipos_transacao img {
+
+        min-width: 100px;
+        min-height: 100px;
+
+    }
+
+    .tela_graficos.on .div_imgs_circulos img {
+
+        display: block;
+        max-height: 40px;
+        max-width: 40px;
 
     }
 
@@ -989,10 +1036,27 @@ html, body {
 
 @media (min-width: 1010px) and (max-width: 1259px) {
 
+    .tela_graficos.on #graficoreceitas {
+
+        margin-bottom: 5vh;
+
+    }
+    .tela_graficos.on  #graficodespesas {
+
+        margin-bottom: 5vh;
+
+    }
+
+    .tela_graficos.on #graficopizza {
+
+        margin-bottom: 5vh;
+
+    }
+
     .tela_saldo.on .div_formatacao_dados {
 
         margin-left: 0vw;
-        margin-bottom: 0vh;
+        margin-bottom: -9vh;
         font-size: 1.2rem;
         margin-right: 2vw;
 
@@ -1001,6 +1065,12 @@ html, body {
     .tela_saldo.on #txt_saldo {
 
         margin-top: 1vh;
+
+    }
+
+    .tela_saldo.on .div_formatacao_dados div {
+
+        margin-right: 0;
 
     }
 
@@ -1018,6 +1088,7 @@ html, body {
         max-height: 77%;
 
     }
+
 
     #img_transferencia {
 

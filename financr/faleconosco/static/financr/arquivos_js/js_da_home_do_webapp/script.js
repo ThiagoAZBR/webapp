@@ -11,6 +11,10 @@ let tela_criar_conta = document.querySelector('.tela_criar')
 let tela_transferencias = document.querySelector('.tela_transferencias')
 
 let divs_expansao = document.querySelectorAll('.telas_e_expansao div')
+
+let telas_do_app = [tela_saldo, tela_graficos, tela_criar_conta, tela_transferencias]
+let max_telas_do_app = telas_do_app.length
+
 let maximo = divs_expansao.length
 let dados_usuario = document.querySelector('#dados')
 let conf_usuario = document.querySelector('.conf_usuario')
@@ -22,6 +26,11 @@ let img_criar_conta = document.querySelector('#img_criar_conta')
 let img_transferencia = document.querySelector('#img_transferencia')
 
 let fechar = document.querySelector('#txt_fechar')
+let fechar2 = document.querySelector('#txt_fechar2')
+let fechar3 = document.querySelector('#txt_fechar3')
+let fechar4 = document.querySelector('#txt_fechar4')
+
+
 let xiz = document.querySelector('.xiz')
 
 
@@ -56,21 +65,32 @@ dados_usuario.addEventListener('click', () => {
 })
 
 
+// Clicar E Expandir
 
 
 img_saldo.addEventListener('click', () => {
 
-    for (var i = 0;; i++) {
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
+        }
+    })
 
-        if (i >= maximo) break;
-
-        divs_expansao[i].classList.remove('on')
-
-    }
-
-    tela_saldo.classList.toggle('on', expandir)
-
+    tela_saldo.classList.toggle('on', expandir) 
     expandir = !expandir
+
+    telas_do_app.forEach(function (iterador2){
+        if ($(iterador2).hasClass("on")) {
+            telas_do_app.forEach(function(iterador_interno2) {
+                iterador_interno2.style.width = '150px'
+                iterador_interno2.style.height = '15vh'
+            })
+        }
+    })
 
 
 })
@@ -79,533 +99,136 @@ img_saldo.addEventListener('click', () => {
 
 img_grafico.addEventListener('click', () => {
 
-    for (var i = 0;; i++) {
-
-        if (i >= maximo) break;
-
-        if ($(".tela_graficos").hasClass("on")) {
-
-
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
         }
-            divs_expansao[i].classList.remove('on')
+    })
 
-    }
-
-    tela_graficos.classList.toggle('on', expandir)
-
+    tela_graficos.classList.toggle('on', expandir) 
     expandir = !expandir
 
-
+    telas_do_app.forEach(function (iterador2){
+        if ($(iterador2).hasClass("on")) {
+            telas_do_app.forEach(function(iterador_interno2) {
+                iterador_interno2.style.width = '150px'
+                iterador_interno2.style.height = '15vh'
+            })
+        }
+    })
 
 })
 
 img_criar_conta.addEventListener('click', () => {
 
-    for (var i = 0;; i++) {
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
+        }
+    })
 
-        if (i >= maximo) break;
-
-        divs_expansao[i].classList.remove('on')
-
-    }
-
-    tela_criar_conta.classList.toggle('on', expandir)
-
+    tela_criar_conta.classList.toggle('on', expandir) 
     expandir = !expandir
 
+    telas_do_app.forEach(function (iterador2){
+        if ($(iterador2).hasClass("on")) {
+            telas_do_app.forEach(function(iterador_interno2) {
+                iterador_interno2.style.width = '150px'
+                iterador_interno2.style.height = '15vh'
+            })
+        }
+    })
 
 
 })
 
 img_transferencia.addEventListener('click', () => {
 
-    for (var i = 0;; i++) {
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
+        }
+    })
 
-        if (i >= maximo) break;
-
-        divs_expansao[i].classList.remove('on')
-
-    }
-
-    tela_transferencias.classList.toggle('on', expandir)
-
+    tela_transferencias.classList.toggle('on', expandir) 
     expandir = !expandir
 
+    telas_do_app.forEach(function (iterador2){
+        if ($(iterador2).hasClass("on")) {
+            telas_do_app.forEach(function(iterador_interno2) {
+                iterador_interno2.style.width = '150px'
+                iterador_interno2.style.height = '15vh'
+            })
+        }
+    })
+
 
 })
 
+fechar.addEventListener('click', () => {
 
-
-
-
-
-let tela_total = document.querySelector('.telas_e_expansao')
-
-let div_formatacao_saldo = document.querySelector('.div_formatacao_dados')
-let div_titulo_saldo = document.querySelector('.div_titulo')
-let div_sair = document.querySelector('.div_sair')
-
-let query_formatacao_saldo = document.querySelectorAll('.div_formatacao_dados div')
-
-let lista_on = []
-let lista_off = []
-
-//  Controlar o tamanho das outras telas ao clicar e expandir
-
-fechar.addEventListener('click', function() {
-
-    for (var i = 0;; i++) {
-
-        if (i >= maximo) break;
-
-        divs_expansao[i].classList.remove('on')
-
-    }
-
-    tela_saldo.classList.toggle('on', expandir)
-
-    expandir = !expandir
-
-
-
-    divs_expansao.forEach(function (item) {
-
-        if (item.className.indexOf('on') != -1) {
-
-            lista_on.push(item)
-            
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
         }
-
-        else {
-
-            lista_off.push(item)
-
-        }
-
-
-
-    if (tela_saldo.className.indexOf('on') != -1) {
-
-        lista_off.forEach(function (tela) {
-
-            tela.style.width = '170px'
-            tela.style.height = '15vh'
-
-        })
-
-
-        div_formatacao_saldo.style.width = '100%'
-        div_formatacao_saldo.style.height = '100%'
-
-        div_titulo_saldo.style.width = '100%'
-        div_titulo_saldo.style.height = 'auto'
-
-        div_sair.style.width = '100%'
-        div_sair.style.height = 'auto'
-
-        query_formatacao_saldo.style.width = 'auto'
-        query_formatacao_saldo.style.height = 'auto'
-
-    }
-
-    else {
-
-        lista_off.forEach(function (tela_off) {
-
-            tela_off.style.width = '18vw'
-            tela_off.style.height = '27vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-            for (var i = 0;; i++) {
-
-                if (i >= maximo) break;
-        
-                divs_expansao[i].classList.remove('on')
-        
-            }
-
-
-        })
-
-    }
-
-
-
-    lista_on.forEach(function (tela_on) {
-
-
-    })
-
-    })
-})
-
-tela_saldo.addEventListener('click', function() {
-
-    divs_expansao.forEach(function (item) {
-
-        if (item.className.indexOf('on') != -1) {
-
-            lista_on.push(item)
-            
-        }
-
-        else {
-
-            lista_off.push(item)
-
-        }
-
-
-
-    if (tela_saldo.className.indexOf('on') != -1) {
-
-        lista_off.forEach(function (tela) {
-
-            tela.style.width = '170px'
-            tela.style.height = '15vh'
-
-        })
-
-
-        div_formatacao_saldo.style.width = '100%'
-        div_formatacao_saldo.style.height = '100%'
-
-        div_titulo_saldo.style.width = '100%'
-        div_titulo_saldo.style.height = 'auto'
-
-        div_sair.style.width = '100%'
-        div_sair.style.height = 'auto'
-
-        query_formatacao_saldo.style.width = 'auto'
-        query_formatacao_saldo.style.height = 'auto'
-
-    }
-
-    else {
-
-        lista_off.forEach(function (tela_off) {
-
-            tela_off.style.width = '18vw'
-            tela_off.style.height = '27vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-            for (var i = 0;; i++) {
-
-                if (i >= maximo) break;
-        
-                divs_expansao[i].classList.remove('on')
-        
-            }
-
-
-        })
-
-    }
-
-
-
-    lista_on.forEach(function (tela_on) {
-
-
-    })
-
     })
 
 })
 
-//                                                         ----     G R Á F I C O S   -----
+fechar2.addEventListener('click', () => {
 
-
-tela_graficos.addEventListener('click', function() {
-
-    divs_expansao.forEach(function (item) {
-
-        if (item.className.indexOf('on') != -1) {
-
-            lista_on.push(item)
-            
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
         }
-
-        else {
-
-            lista_off.push(item)
-
-        }
-
-
-
-    if (tela_graficos.className.indexOf('on') != -1) {
-
-        lista_off.forEach(function (tela) {
-
-            tela.style.width = '170px'
-            tela.style.height = '15vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-
-        })
-        
-
-    }
-
-    else {
-
-        lista_off.forEach(function (tela_off) {
-
-            tela_off.style.width = '18vw'
-            tela_off.style.height = '27vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-            for (var i = 0;; i++) {
-
-                if (i >= maximo) break;
-        
-                divs_expansao[i].classList.remove('on')
-        
-            }
-
-        })
-
-    }
-
-
-
-    lista_on.forEach(function (tela_on) {
-
-
-    })
-
     })
 
 })
 
+fechar3.addEventListener('click', () => {
 
-
-
-//                                                         ----     C R I A R  C O N T A   -----
-
-
-
-tela_criar_conta.addEventListener('click', function() {
-
-    divs_expansao.forEach(function (item) {
-
-        if (item.className.indexOf('on') != -1) {
-
-            lista_on.push(item)
-            
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
         }
-
-        else {
-
-            lista_off.push(item)
-
-        }
-
-
-
-    if (tela_criar_conta.className.indexOf('on') != -1) {
-
-        lista_off.forEach(function (tela) {
-
-            tela.style.width = '170px'
-            tela.style.height = '15vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-
-        })
-        
-
-    }
-
-    else {
-
-        lista_off.forEach(function (tela_off) {
-
-            tela_off.style.width = '18vw'
-            tela_off.style.height = '27vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-            for (var i = 0;; i++) {
-
-                if (i >= maximo) break;
-        
-                divs_expansao[i].classList.remove('on')
-        
-            }
-
-
-        })
-
-    }
-
-
-
-    lista_on.forEach(function (tela_on) {
-
-
-    })
-
     })
 
 })
 
+fechar4.addEventListener('click', () => {
 
-
-//                                                         ----     T R A N S F E R E N C I A S   -----
-
-
-
-tela_transferencias.addEventListener('click', function() {
-
-    divs_expansao.forEach(function (item) {
-
-        if (item.className.indexOf('on') != -1) {
-
-            lista_on.push(item)
-            
+    telas_do_app.forEach( function (iterador){
+        if ($(iterador).hasClass("on")) {
+            iterador.classList.remove('on')
+            telas_do_app.forEach(function(iterador_interno) {
+                iterador_interno.style.width = '18vw'
+                iterador_interno.style.height = '27vh'
+            })
         }
-
-        else {
-
-            lista_off.push(item)
-
-        }
-
-
-
-    if (tela_transferencias.className.indexOf('on') != -1) {
-
-        lista_off.forEach(function (tela) {
-
-            tela.style.width = '170px'
-            tela.style.height = '15vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-
-
-
-        })
-        
-
-    }
-
-    else {
-
-        lista_off.forEach(function (tela_off) {
-
-            tela_off.style.width = '18vw'
-            tela_off.style.height = '27vh'
-
-            div_formatacao_saldo.style.width = '100%'
-            div_formatacao_saldo.style.height = '100%'
-    
-            div_titulo_saldo.style.width = '100%'
-            div_titulo_saldo.style.height = 'auto'
-    
-            div_sair.style.width = '100%'
-            div_sair.style.height = 'auto'
-    
-            query_formatacao_saldo.style.width = 'auto'
-            query_formatacao_saldo.style.height = 'auto'
-
-            for (var i = 0;; i++) {
-
-                if (i >= maximo) break;
-        
-                divs_expansao[i].classList.remove('on')
-        
-            }
-
-
-        })
-
-    }
-
-
-
-    lista_on.forEach(function (tela_on) {
-
-
-    })
-
     })
 
 })
