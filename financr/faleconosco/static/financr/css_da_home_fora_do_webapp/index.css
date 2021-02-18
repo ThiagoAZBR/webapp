@@ -290,8 +290,8 @@
 .cadastro .dados_cadastrais .dados #id_username,
 .cadastro .dados_cadastrais .dados #id_password1,
 .cadastro .dados_cadastrais .dados #id_password2{
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
-    font-size: 2.4rem;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 2.6rem;
     border: 1px solid black;
     height: 30px;
     border-radius: 0px;
@@ -354,7 +354,6 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
-    margin-left: 2%;
     margin-bottom: 60px;
     background-color: lightgrey;
 }
@@ -573,7 +572,7 @@
 
     .contato h1 {
 
-        margin-top: 12vh;
+        margin-top: 6vh;
         margin-left: 0.5vw;
 
     }
@@ -717,14 +716,14 @@
 
     .contato .formulario .colunaesquerda .camponome, .contato .formulario .colunaesquerda .campoemail {
 
-        width: 60%;
+        width: 76%;
 
     }
 
     .contato .formulario .colunaesquerda .mensagem {
 
-        margin-bottom: 20px;
-        width: 60%;
+        margin-bottom: 10px;
+        width: 76%;
     }
 
 
@@ -753,6 +752,7 @@
     .contato .colunaesquerda .enviar .submit {
 
         align-self: center;
+        margin-bottom: 7vh;
 
     }
 
@@ -777,6 +777,6 @@
 
 .contato h1 {
 
-    margin-bottom: 55px;
+    margin-bottom: 38px;
 
 }

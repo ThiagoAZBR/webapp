@@ -186,6 +186,9 @@ body {
     border-top-width: 0;
     border-left-width: 0;
     border-right-width: 0;
+    font-size: 2rem;
+    font-family: 'Open Sans', sans-serif;
+    
 
 }
 
@@ -198,6 +201,8 @@ body {
     border-top-width: 0;
     border-left-width: 0;
     border-right-width: 0;
+    font-size: 2rem;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -696,6 +701,12 @@ body {
 
     }
 
+    #txt_laptop_da_esquerda {
+
+        margin-left: 0;
+
+    }
+
     #div_tela_direita {
 
         grid-template-columns: 1fr 1fr;
@@ -755,7 +766,7 @@ body {
         top: 0;
         left: 0;
 
-        width: 100vw;
+        width: 100%;
         height: 100vh;
 
         background-color: white;
@@ -952,11 +963,18 @@ body {
         
     }
 
+    #txt_registrar_laptop_da_esquerda {
+
+        margin-bottom: 0;
+
+    }
+
     #img_laptop {
 
         order: 1;
         max-height: 450px;
         max-width: 380px;
+        margin-top: 2vh;
 
     }
 
@@ -1079,6 +1097,45 @@ body {
 
     }
 
+    .funcionalidades img {
+
+        min-width: 40%;
+        width: 40%;
+        min-height: 50%;
+        height: 50%;
+
+    }
+
+    #imagem1_informacao {
+
+        width: 70%;
+        height: 70%;
+
+    }
+
+    #imagem2_informacao {
+
+        width: 70%;
+        height: 70%;
+
+    }
+
+    #imagem3_informacao {
+
+        width: 70%;
+        height: 70%;
+
+    }
+
+    .contato h1 {
+
+        margin-top: 5vh;
+        margin-bottom: 22px;
+
+    }
+
+
+
 }
 
 @media (max-width: 430px)  {
@@ -1101,8 +1158,47 @@ body {
 
     #img_laptop_3 {
 
-        width: 80%;
+        width: 90%;
 
+    }
+
+    .aba_de_login {
+
+        width: 320px;
+        height: 375px;
+
+    }
+
+    .titulo_e_x_de_fechar {
+        font-size: 15px;
+        margin-left: 3vw;
+    }
+
+    #x_fechar {
+
+        height: 25px;
+        width: 25px;
+        margin-left: 75px;
+        margin-right: 18px;
+
+    }
+
+    #titulo_aba {
+
+        font-size: 2.4rem;
+
+    }
+
+    #txt_email {
+
+        font-size: 2.2rem;
+
+    }
+
+    #txt_senha {
+
+        font-size: 2.2rem;
+        
     }
 
 }
@@ -1112,6 +1208,14 @@ body {
     #img_porquinho {
 
         width: 75vw;
+
+    }
+
+    .aba_de_login {
+
+        width: 300px;
+        height: 365px;
+        margin-right: 15vw;
 
     }
 
