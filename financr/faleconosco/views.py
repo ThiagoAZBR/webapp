@@ -54,7 +54,6 @@ def app_home(request):
             valor = float(contadespesas.valor)
             x = [data,valor]
             graficodespesas.append(x)
-            print('até aqui foi')
             print(graficodespesas)
 
 
@@ -66,7 +65,6 @@ def app_home(request):
             valor = float(contareceitas.valor)
             x = [data,valor]
             graficoreceitas.append(x)
-            print('até aqui foi')
             print(graficoreceitas)
 
         #historico de receitas, despesas, transferencias
@@ -81,14 +79,8 @@ def app_home(request):
                 lista_transacoes_despesas.append(i)
             elif i.classe_transacao == 3:
                 lista_transacoes_transferencias.append(i)
-        print('lista_transacoes_receitas')                
-        print(lista_transacoes_receitas)
-        print('lista_transacoes_despesas')
-        print(lista_transacoes_despesas)
-        print('lista_transacoes_transferencias')
-        print(lista_transacoes_transferencias)
 
-        print('a função dashboard carregou toda')
+
 
         return render(request, "templates/tela_inicial_do_webapp/principia.html",
             {'contas':(contas),

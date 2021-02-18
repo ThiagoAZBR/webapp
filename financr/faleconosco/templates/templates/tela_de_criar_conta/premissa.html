@@ -38,10 +38,21 @@
 
             <form method="POST" class = 'formulario-conta'>
                 {% csrf_token %}
+                
+                    <div class="div_erros">
 
-                <div class="div_erros">
-                    {{ form.errors }}
-                </div>
+                            {% if form.errors%}
+                            <div class="div_formatacao_erros">
+                                
+                                    {{form.errors}}
+                                    <img src="https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png" alt="" height = "30px" width = "30px" id = 'txt_fechar'>
+        
+                                
+                            </div>
+                            {% endif %}
+
+                    </div>
+
 
 
                 <div class="div_titulo_nome_da_conta">
@@ -83,6 +94,7 @@
 
     </div>
 
+    <script src = "{% static 'financr/arquivos_js/js_conta/scriptconta.js' %}"></script>
 
 </body>
 </html>
