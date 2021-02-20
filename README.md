@@ -104,7 +104,7 @@ CONTATO DOS DESENVOLVEDORES
 <table>
 <thead>
 <tr>
-<th align="center"><a href="https://github.com/Leonardo612?tab=repositories"><img src="https://avatars.githubusercontent.com/u/69691083?s=460&v=4" width="115" style="max-width:100%;"><br><sub>@leonardo</sub></a></th>
+<th align="center"><a href="https://github.com/Leonardo612?tab=repositories"><img src="https://avatars.githubusercontent.com/u/69691083?s=460&v=4" width="115" style="max-width:100%;"><br><sub>@leonardokostetzer</sub></a><br><a href = 'https://www.linkedin.com/in/leonardo-kostetzer-1874621b8/'><sub>Linkedin</sub></a></th>
 </tr>
 </thead>
 </table>
