@@ -2,7 +2,6 @@
 
 <br>
 <br>
-<iframe width="640" height="360" src="https://www.loom.com/embed/ff4b651b09c64cf48f7cd76bd6e2de21" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <br>
 <br>
 
