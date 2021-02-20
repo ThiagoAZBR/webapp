@@ -1,9 +1,8 @@
 # TCC-ENTRA21-PYTHON    
 
 <br>
-<br>
 
-<iframe src='//gifs.com/embed/financr-gif-bonito-2x3EyW' frameborder='0' scrolling='no' width='1280px' height='720px' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
+![Gif-da-home](https://github.com/helionroloff/webapp/blob/Thiago/financr/faleconosco/static/financr/img/imagens_readme/gif.gif)
 
 #
 <br>
