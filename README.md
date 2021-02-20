@@ -1,5 +1,6 @@
-# TCC-ENTRA21-PYTHON  FINANCR WEBAPP    
+# FINANCR WEBAPP    
 
+<br>
 <br>
 
 ![Gif-da-home](https://github.com/helionroloff/webapp/blob/Thiago/financr/faleconosco/static/financr/img/imagens_readme/gif.gif)
@@ -75,7 +76,7 @@ INTRODUÇÃO
 <br>
 
 <h4 align = 'center'>
-CONTATO 
+CONTATO DOS DESENVOLVEDORES
 </h4>
 
 
@@ -85,7 +86,7 @@ CONTATO
 <table>
 <thead>
 <tr>
-<th align="center"><a href="https://github.com/ArthurSpillere"><img src="https://avatars.githubusercontent.com/u/69689479?s=460&u=c4872eae980aca78b59bc716f19454d1a5358335&v=4" width="115" style="max-width:100%;"><br><sub>@arthurspillere</sub></a></th>
+<th align="center"><a href="https://github.com/ArthurSpillere"><img src="https://avatars.githubusercontent.com/u/69689479?s=460&u=c4872eae980aca78b59bc716f19454d1a5358335&v=4" width="115" style="max-width:100%;"><br><sub>@arthurspillere</sub></a><br><a href = 'https://www.linkedin.com/in/arthur-spillere-cordeiro-796592148/'><sub>Linkedin</sub></a></th>
 </tr>
 </thead>
 </table>
@@ -94,7 +95,7 @@ CONTATO
 <table>
 <thead>
 <tr>
-<th align="center"><a href="https://github.com/helionroloff"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEcfythRehlcw/profile-displayphoto-shrink_200_200/0/1604596056727?e=1619049600&v=beta&t=zqslUdVqUThrLnXpj5bM3NJRPNErNcH-lJgrFR9DA6A" width="115" style="max-width:100%;"><br><sub>@helionroloff</sub></a></th>
+<th align="center"><a href="https://github.com/helionroloff"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEcfythRehlcw/profile-displayphoto-shrink_200_200/0/1604596056727?e=1619049600&v=beta&t=zqslUdVqUThrLnXpj5bM3NJRPNErNcH-lJgrFR9DA6A" width="115" style="max-width:100%;"><br><sub>@helionroloff</sub></a><br><a href = 'https://www.linkedin.com/in/helion-roloff-1222a91a4/'><sub>Linkedin</sub></a></th>
 </tr>
 </thead>
 </table>
@@ -103,7 +104,7 @@ CONTATO
 <table>
 <thead>
 <tr>
-<th align="center"><a href="https://github.com/Leonardo612?tab=repositories"><img src="hhttps://avatars.githubusercontent.com/u/69691083?s=460&v=4" width="115" style="max-width:100%;"><br><sub>@@leonardo</sub></a></th>
+<th align="center"><a href="https://github.com/Leonardo612?tab=repositories"><img src="https://avatars.githubusercontent.com/u/69691083?s=460&v=4" width="115" style="max-width:100%;"><br><sub>@leonardo</sub></a></th>
 </tr>
 </thead>
 </table>
@@ -112,7 +113,7 @@ CONTATO
 <table>
 <thead>
 <tr>
-<th align="center"><a href="https://github.com/boenomarcus"><img src="https://avatars.githubusercontent.com/u/42239994?s=460&u=6f0c9f8f1b7992fa49cce6c4b96aabd5cbe27f67&v=4" width="115" style="max-width:100%;"><br><sub>@marcusboeno</sub></a></th>
+<th align="center"><a href="https://github.com/boenomarcus"><img src="https://avatars.githubusercontent.com/u/42239994?s=460&u=6f0c9f8f1b7992fa49cce6c4b96aabd5cbe27f67&v=4" width="115" style="max-width:100%;"><br><sub>@marcusboeno</sub><br></a><a href = 'https://www.linkedin.com/in/boenomarcus/'><sub>Linkedin</sub></a></th>
 </tr>
 </thead>
 </table>
@@ -121,7 +122,7 @@ CONTATO
 <table>
 <thead>
 <tr>
-<th align="center"><a href="https://github.com/ThiagoAZBR"><img src="https://avatars.githubusercontent.com/u/60245661?s=460&u=77ca2f89bb47ae42b29c88b46a9b96e57f4d891e&v=4" width="115" style="max-width:100%;"><br><sub>@thiagoaz</sub></a></th>
+<th align="center"><a href="https://github.com/ThiagoAZBR"><img src="https://avatars.githubusercontent.com/u/60245661?s=460&u=77ca2f89bb47ae42b29c88b46a9b96e57f4d891e&v=4" width="115" style="max-width:100%;"><br><sub>@thiagoaz</sub><br></a><a href = 'https://www.linkedin.com/in/thiago-augusto-zeferino-b24b391b8/'><sub>Linkedin</sub></a></th>
 </tr>
 </thead>
 </table>
