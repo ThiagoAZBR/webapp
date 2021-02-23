@@ -1,9 +1,9 @@
-# TCC-ENTRA21-PYTHON    
+# FINANCR WEBAPP    
 
 <br>
 <br>
 
-<iframe src='//gifs.com/embed/financr-gif-bonito-2x3EyW' frameborder='0' scrolling='no' width='1280px' height='720px' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
+![Gif-da-home](https://github.com/helionroloff/webapp/blob/Thiago/financr/faleconosco/static/financr/img/imagens_readme/gif.gif)
 
 #
 <br>
@@ -76,49 +76,53 @@ INTRODUÇÃO
 <br>
 
 <h4 align = 'center'>
-CONTATO 
+CONTATO DOS DESENVOLVEDORES
 </h4>
 
 
 <br>
 <br>
 
-<div id = 'maior' style = 'display: flex;'>  
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://github.com/ArthurSpillere"><img src="https://avatars.githubusercontent.com/u/69689479?s=460&u=c4872eae980aca78b59bc716f19454d1a5358335&v=4" width="115" style="max-width:100%;"><br><sub>@arthurspillere</sub></a><br><a href = 'https://www.linkedin.com/in/arthur-spillere-cordeiro-796592148/'><sub>Linkedin</sub></a></th>
+</tr>
+</thead>
+</table>
 
 
-<div style = 'background-color: transparent; border: 1px solid white; height: 200px; width: 200px; display: flex; flex-direction: column; justify-content: center;'>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://github.com/helionroloff"><img src="https://media-exp1.licdn.com/dms/image/C4D03AQEcfythRehlcw/profile-displayphoto-shrink_200_200/0/1604596056727?e=1619049600&v=beta&t=zqslUdVqUThrLnXpj5bM3NJRPNErNcH-lJgrFR9DA6A" width="115" style="max-width:100%;"><br><sub>@helionroloff</sub></a><br><a href = 'https://www.linkedin.com/in/helion-roloff-1222a91a4/'><sub>Linkedin</sub></a></th>
+</tr>
+</thead>
+</table>
 
-<!-- <img src = 'https://avatars.githubusercontent.com/u/69689479?s=460&u=c4872eae980aca78b59bc716f19454d1a5358335&v=4' style = 'width: 150px; height: 150px; align-self: top; margin-top: 0px; margin-left: 26px; margin-bottom: 5px;'> -->
-<a href= 'https://github.com/ArthurSpillere' align = 'center' >@ArthurSpillere</a>
 
-</div>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://github.com/Leonardo612?tab=repositories"><img src="https://avatars.githubusercontent.com/u/69691083?s=460&v=4" width="115" style="max-width:100%;"><br><sub>@leonardo</sub></a></th>
+</tr>
+</thead>
+</table>
 
-<div style = 'background-color: transparent; border: 1px solid white; height: 200px; width: 200px; display: flex; flex-direction: column; justify-content: center;'>
 
-<!-- <img src = 'https://media-exp1.licdn.com/dms/image/C4D03AQEcfythRehlcw/profile-displayphoto-shrink_200_200/0/1604596056727?e=1619049600&v=beta&t=zqslUdVqUThrLnXpj5bM3NJRPNErNcH-lJgrFR9DA6A' style = 'width: 150px; height: 150px; align-self: top; margin-top: 0px; margin-left: 26px; margin-bottom: 5px;'> -->
-<a href= 'https://github.com/helionroloff' align = 'center' >@HelionRoloff</a>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://github.com/boenomarcus"><img src="https://avatars.githubusercontent.com/u/42239994?s=460&u=6f0c9f8f1b7992fa49cce6c4b96aabd5cbe27f67&v=4" width="115" style="max-width:100%;"><br><sub>@marcusboeno</sub><br></a><a href = 'https://www.linkedin.com/in/boenomarcus/'><sub>Linkedin</sub></a></th>
+</tr>
+</thead>
+</table>
 
-</div>
 
-<div style = 'background-color: transparent; border: 1px solid white; height: 200px; width: 200px; display: flex; flex-direction: column; justify-content: center;'>
-
-<!-- <img src = 'https://avatars.githubusercontent.com/u/69691083?s=460&v=4' style = 'width: 150px; height: 150px; align-self: top; margin-top: 0px; margin-left: 26px; margin-bottom: 5px;'> -->
-<a href= 'https://github.com/Leonardo612?tab=repositories' align = 'center' >@Leonardo</a>
-
-</div>
-
-<div style = 'background-color: transparent; border: 1px solid white; height: 200px; width: 200px; display: flex; flex-direction: column; justify-content: center;'>
-
-<!-- <img src = 'https://avatars.githubusercontent.com/u/42239994?s=460&u=6f0c9f8f1b7992fa49cce6c4b96aabd5cbe27f67&v=4' style = 'width: 150px; height: 150px; align-self: top; margin-top: 0px; margin-left: 26px; margin-bottom: 5px;'> -->
-<a href= 'https://github.com/boenomarcus' align = 'center' >@MarcusBoeno</a>
-
-</div>
-
-<div style = 'background-color: transparent; border: 1px solid white; height: 200px; width: 200px; display: flex; flex-direction: column; justify-content: center;'>
-
-<!-- <img src = 'https://avatars.githubusercontent.com/u/60245661?s=460&u=77ca2f89bb47ae42b29c88b46a9b96e57f4d891e&v=4' style = 'width: 150px; height: 150px; align-self: top; margin-top: 0px; margin-left: 26px; margin-bottom: 5px;'> -->
-<a href= 'https://github.com/ThiagoAZBR' align = 'center' >@ThiagoAZ</a>
-
-</div>
-
-</div>
+<table>
+<thead>
+<tr>
+<th align="center"><a href="https://github.com/ThiagoAZBR"><img src="https://avatars.githubusercontent.com/u/60245661?s=460&u=77ca2f89bb47ae42b29c88b46a9b96e57f4d891e&v=4" width="115" style="max-width:100%;"><br><sub>@thiagoaz</sub><br></a><a href = 'https://www.linkedin.com/in/thiago-augusto-zeferino-b24b391b8/'><sub>Linkedin</sub></a></th>
+</tr>
+</thead>
+</table>
