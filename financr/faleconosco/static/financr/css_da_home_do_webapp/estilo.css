@@ -99,7 +99,7 @@ html, body {
 
 .div_usuario {
 
-    width: 200px;
+    width: 140px;
     z-index: 2;
 
 }
@@ -190,9 +190,8 @@ html, body {
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: 1.8fr 1fr;
 
-    align-items: center;
     width: 100%;
     height: 86vh;
     justify-content: space-evenly;
@@ -203,9 +202,57 @@ html, body {
 
 }
 
+.tela_saldo {
 
+    align-self: flex-end;
 
+}
 
+.tela_criar {
+
+    align-self: flex-end;
+
+}
+
+.tela_graficos {
+
+    align-self: flex-end;
+
+}
+
+.tela_transferencias {
+
+    align-self: flex-end;
+
+}
+
+#titulo_transferencia,
+#titulo_conta,
+#titulo_grafico,
+#titulo_saldo {
+
+    font-size: 2rem;
+
+}
+
+#titulo_transferencia {
+
+    margin-left: 4vw;
+    font-size: 2rem;
+
+}
+
+#titulo_conta {
+
+    margin-left: 1.4vw;
+
+}
+
+#titulo_grafico {
+
+    margin-left: 1vw;
+
+}
 
 .tela_saldo {
 
@@ -318,7 +365,6 @@ html, body {
     height: auto;
     margin-bottom: -2vh;
 
-    align-content: end;
     grid-row: 1/1;
 }
 
@@ -1179,5 +1225,107 @@ html, body {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     transition: all 0.3s;
+
+}
+
+@media (max-width: 430px) {
+
+    #icone_usuario {
+
+        width: 50px;
+        height: 50px;
+
+    }
+
+    #nome_do_app {
+
+        font-size: 3rem;
+
+    }
+
+    .telas_e_expansao {
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas: 's c'
+                             'g t';
+
+    }
+
+
+    #img_criar_conta,
+    #img_grafico,
+    #img_transferencia {
+
+        max-width: 90px;
+        min-width: 65px;
+
+        max-height: 85px;
+        min-height: 60px;
+
+    }
+
+    #img_saldo {
+
+        max-width: 95px;
+        min-width: 65px;
+
+        max-height: 95px;
+        min-height: 60px;
+
+    }
+
+    .tela_saldo {
+
+        grid-area: s;
+
+    }
+
+
+    /* .tela_saldo.on {
+
+        grid-area: son;
+
+
+    } */
+
+    .tela_graficos {
+
+        grid-area: g;
+
+    }
+
+    /* .tela_graficos.on {
+
+        grid-area: gon;
+
+
+    } */
+
+    .tela_criar {
+
+        grid-area: c;
+
+    }
+
+    /* .tela_criar.on {
+
+        grid-area: con;
+
+
+    } */
+
+    .tela_transferencias {
+
+        grid-area: t;
+
+    }
+
+    /* .tela_transferencias.on {
+
+        grid-area: ton;
+
+
+    } */
 
 }
