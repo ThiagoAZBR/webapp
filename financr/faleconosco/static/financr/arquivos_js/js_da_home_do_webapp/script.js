@@ -13,6 +13,9 @@ let tela_transferencias = document.querySelector('.tela_transferencias')
 let divs_expansao = document.querySelectorAll('.telas_e_expansao div')
 
 let telas_do_app = [tela_saldo, tela_graficos, tela_criar_conta, tela_transferencias]
+
+let telas_expansionadas = document.querySelector('.telas_e_expansao')
+
 let max_telas_do_app = telas_do_app.length
 
 let maximo = divs_expansao.length
@@ -24,6 +27,11 @@ let img_saldo = document.querySelector('#img_saldo')
 let img_grafico = document.querySelector('#img_grafico')
 let img_criar_conta = document.querySelector('#img_criar_conta')
 let img_transferencia = document.querySelector('#img_transferencia')
+
+let div_titulo_saldo = document.querySelector('#titulo_saldo')
+let div_titulo_grafico = document.querySelector('#titulo_grafico')
+let div_titulo_conta = document.querySelector('#titulo_conta')
+let div_titulo_transferencia = document.querySelector('#titulo_transferencia')
 
 let fechar = document.querySelector('#txt_fechar')
 let fechar2 = document.querySelector('#txt_fechar2')
@@ -77,6 +85,11 @@ img_saldo.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
         }
     })
 
@@ -89,6 +102,11 @@ img_saldo.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            div_titulo_conta.style.display = 'none'
+            div_titulo_grafico.style.display = 'none'
+            div_titulo_saldo.style.display = 'none'
+            div_titulo_transferencia.style.display = 'none'
+            telas_expansionadas.style.gridTemplateRow = '1fr'
         }
     })
 
@@ -106,6 +124,11 @@ img_grafico.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
         }
     })
 
@@ -118,6 +141,11 @@ img_grafico.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            div_titulo_conta.style.display = 'none'
+            div_titulo_grafico.style.display = 'none'
+            div_titulo_saldo.style.display = 'none'
+            div_titulo_transferencia.style.display = 'none'
+            telas_expansionadas.style.gridTemplateRow = '1fr'
         }
     })
 
@@ -132,6 +160,11 @@ img_criar_conta.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
         }
     })
 
@@ -144,6 +177,11 @@ img_criar_conta.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            div_titulo_conta.style.display = 'none'
+            div_titulo_grafico.style.display = 'none'
+            div_titulo_saldo.style.display = 'none'
+            div_titulo_transferencia.style.display = 'none'
+            telas_expansionadas.style.gridTemplateRow = '1fr'
         }
     })
 
@@ -159,6 +197,12 @@ img_transferencia.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+
         }
     })
 
@@ -171,6 +215,11 @@ img_transferencia.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            div_titulo_conta.style.display = 'none'
+            div_titulo_grafico.style.display = 'none'
+            div_titulo_saldo.style.display = 'none'
+            div_titulo_transferencia.style.display = 'none'
+            telas_expansionadas.style.gridTemplateRow = '1fr'
         }
     })
 
@@ -186,6 +235,11 @@ fechar.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
         }
     })
 
@@ -200,6 +254,11 @@ fechar2.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
         }
     })
 
@@ -214,6 +273,11 @@ fechar3.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
         }
     })
 
@@ -228,6 +292,11 @@ fechar4.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            div_titulo_conta.style.display = 'block'
+            div_titulo_grafico.style.display = 'block'
+            div_titulo_saldo.style.display = 'block'
+            div_titulo_transferencia.style.display = 'block'
+            telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
         }
     })
 
