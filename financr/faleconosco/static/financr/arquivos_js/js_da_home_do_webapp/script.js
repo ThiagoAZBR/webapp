@@ -85,11 +85,13 @@ img_saldo.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
         }
     })
 
@@ -102,11 +104,13 @@ img_saldo.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'none'
             div_titulo_grafico.style.display = 'none'
             div_titulo_saldo.style.display = 'none'
             div_titulo_transferencia.style.display = 'none'
             telas_expansionadas.style.gridTemplateRow = '1fr'
+            }
         }
     })
 
@@ -124,11 +128,13 @@ img_grafico.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
         }
     })
 
@@ -141,11 +147,13 @@ img_grafico.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'none'
             div_titulo_grafico.style.display = 'none'
             div_titulo_saldo.style.display = 'none'
             div_titulo_transferencia.style.display = 'none'
             telas_expansionadas.style.gridTemplateRow = '1fr'
+            }
         }
     })
 
@@ -160,11 +168,13 @@ img_criar_conta.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
         }
     })
 
@@ -177,11 +187,13 @@ img_criar_conta.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'none'
             div_titulo_grafico.style.display = 'none'
             div_titulo_saldo.style.display = 'none'
             div_titulo_transferencia.style.display = 'none'
             telas_expansionadas.style.gridTemplateRow = '1fr'
+            }
         }
     })
 
@@ -197,11 +209,13 @@ img_transferencia.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
 
         }
     })
@@ -215,11 +229,13 @@ img_transferencia.addEventListener('click', () => {
                 iterador_interno2.style.width = '150px'
                 iterador_interno2.style.height = '15vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'none'
             div_titulo_grafico.style.display = 'none'
             div_titulo_saldo.style.display = 'none'
             div_titulo_transferencia.style.display = 'none'
             telas_expansionadas.style.gridTemplateRow = '1fr'
+            }
         }
     })
 
@@ -235,11 +251,13 @@ fechar.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
         }
     })
 
@@ -254,11 +272,13 @@ fechar2.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
         }
     })
 
@@ -273,11 +293,13 @@ fechar3.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
         }
     })
 
@@ -292,11 +314,13 @@ fechar4.addEventListener('click', () => {
                 iterador_interno.style.width = '18vw'
                 iterador_interno.style.height = '27vh'
             })
+            if (window.innerWidth >= '1259') {
             div_titulo_conta.style.display = 'block'
             div_titulo_grafico.style.display = 'block'
             div_titulo_saldo.style.display = 'block'
             div_titulo_transferencia.style.display = 'block'
             telas_expansionadas.style.gridTemplateRow = '2fr 1fr'
+            }
         }
     })
 

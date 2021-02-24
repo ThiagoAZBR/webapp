@@ -1071,6 +1071,12 @@ html, body {
 
     }
 
+    #titulo_transferencia, #titulo_conta, #titulo_grafico, #titulo_saldo {
+
+        display: none;
+
+    }
+
 }
 
 
