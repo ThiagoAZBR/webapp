@@ -30,7 +30,7 @@ def FunctionHomePage(request):
     if request.method == "GET":
         form = CreateUserForm()
         context = {'form':form}
-        return render(request, 'templates/home_fora_do_webapp/home_page.html', context) 
+        return render(request, 'templates/home_fora_do_webapp/index.html', context) 
 
     if request.method == 'POST':
         username = request.POST.get('username_login')
@@ -75,7 +75,7 @@ def FunctionHomePage(request):
 
         
         else:
-            return render(request, "templates/home_fora_do_webapp/home_page.html", {'form':form})
+            return render(request, "templates/home_fora_do_webapp/index.html", {'form':form})
 
     
 @login_required(login_url='home')
