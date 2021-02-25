@@ -592,12 +592,6 @@ html, body {
 
 }
 
-#txt_despesa {
-
-    /* Esse Vai Ser o Escolhido */
-
-}
-
 #txt_receita {
 
     display: none;
@@ -1074,6 +1068,12 @@ html, body {
 
         grid-column: 2/2;
         grid-row: 2/2;
+
+    }
+
+    #titulo_transferencia, #titulo_conta, #titulo_grafico, #titulo_saldo {
+
+        display: none;
 
     }
 
