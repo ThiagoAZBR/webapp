@@ -73,6 +73,29 @@ INTRODUÇÃO
 <br>
 
 #
+
+<h4 align = 'center'>
+    COMO USAR?
+</h4>
+
+<br>
+
+<h4 align = 'justify'>
+&emsp;&emsp;1. Faça Um Git Clone do Projeto.<br><br><br>
+&emsp;&emsp;2. Na pasta com o Git Clone crie uma venv:<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- Windows - python -m venv yourvenv<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- Linux/Mac - python3 -m venv yourvenv<br><br><br>
+&emsp;&emsp;3. Ative a Venv:<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- Windows: yourvenv\Scripts\activate<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- Linux/Mac: source yourvenv/bin/activate<br><br><br>
+&emsp;&emsp;4. Instale o Requirements.txt:<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- pip install -r requirements.txt <br><br><br>
+&emsp;&emsp;5. Use o comando para rodar o Servidor Local:<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- python manage.py runserver<br><br><br>
+&emsp;&emsp;EXTRA - Caso a ativação da venv não funcione, execute como administrador o powershell, e coloque o seguinte código e confirme com 'sim' se perguntar:<br><br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;- Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine<br><br><br>
+&emsp;&emsp;6. Onde estão nossos arquivos?<br><br>&emsp;&emsp;&emsp;- Arquivos Htmls principais estão na path 'webapp/financr/faleconosco/templates/templates';<br><br>
+&emsp;&emsp;&emsp;- Arquivos CSS e JavaScript na path 'webapp/financr/faleconosco/static/financr';<br><br>
+&emsp;&emsp;&emsp;- As Funções Python estão nos arquivos 'views.py' das Pastas faleconosco, contasbanco, transacao, users;<br><br>
+&emsp;&emsp;&emsp;- A organização do banco de dados estão nos arquivos 'models.py' e 'forms.py' das mesmas pastas mencionadas anteriormente.
+</h4>
+
+#
 <br>
 
 <h4 align = 'center'>
