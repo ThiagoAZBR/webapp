@@ -31,7 +31,7 @@
 
                 <div class="div_usuario">
 
-                    <img src = "{% static 'financr/img/imagens_para_home_do_webapp/settings-black.png' %}" alt = "ícone de Usuario" id = 'icone_usuario' style = "margin-top: 4vh">
+                    <img src = "{% static 'financr/img/imagens_para_home_do_webapp/Hamburger_icon.png' %}" alt = "ícone de Usuario" id = 'icone_usuario'>
 
                 </div>
 
@@ -43,9 +43,10 @@
 
             <nav style = 'list-style: none;' id = 'nav_opcoes_icone_usuario'>
 
+                <img src = 'https://img.pngio.com/index-of-v2-imgs-x-png-black-and-white-256_256.png' id = 'fechar_config'>
                 <li id = 'dados'> Usuario </li>
-                <li id = 'configuracoes'> Configurações </li>
                 <a style="text-decoration:none;" id = 'sair' href="{% url 'logout' %}"> Sair </a>
+
 
             </nav>
 
@@ -165,11 +166,6 @@
                 </div>
 
             </div>
-            <div class="div_titulo_saldo">
-                <h4 id = 'titulo_saldo'>
-                    SALDO
-                </h4>
-            </div>
             <div class = "tela_graficos">
 
                 <div id = "fundo"></div>
@@ -231,11 +227,6 @@
 
 
             </div>
-            <div class="div_titulo_grafico">
-                <h4 id = 'titulo_grafico'>
-                    GRAFICO
-                </h4>
-            </div>
 
             <div class = "tela_criar">
 
@@ -255,11 +246,6 @@
                     </h4>
                 </div>
 
-            </div>
-            <div class="div_titulo_conta">
-                <h4 id = 'titulo_conta'>
-                    CONTAS
-                </h4>
             </div>
 
             <div class = "tela_transferencias">
@@ -292,11 +278,6 @@
                 </div>
 
             </div>
-            <div class="div_titulo_transferencia">
-                <h4 id = 'titulo_transferencia'>
-                    TRANSFERÊNCIAS
-                </h4>
-            </div>
 
 
 
@@ -322,19 +303,19 @@
             const container = document.querySelector('#graficopizza')
             const data = new google.visualization.arrayToDataTable(JSON.parse(a))
             
-            let options = {
-                // set annotation for -- No Data Copy
-                annotations: {
-                // remove annotation stem and push to middle of chart
-                stem: {
-                    color: 'transparent',
-                    length: 120
-                },
-                title: 'Saldo por banco',
-                minheight:800,
-                minwidth:600,
-                }
-            };
+            if (window.innerWidth <= 430) {
+            var options = {
+                     'width':310,
+                     'height':215};
+            }
+
+            if (window.innerWidth > 430) {
+
+                var options = {
+                     'width':430,
+                     'height':255};
+
+            }
 
             if (data.getNumberOfRows() === 0) {
                 data.addRows([
@@ -350,21 +331,19 @@
             let b = ('{{graficodespesas | safe}}');
             const container = document.querySelector('#graficodespesas')
             let data = new google.visualization.arrayToDataTable(JSON.parse(b))            
-            const options = {
-                // set annotation for -- No Data Copy
-                annotations: {
-                // remove annotation stem and push to middle of chart
-                stem: {
-                    color: 'transparent',
-                    length: 120
-                },
-                title: 'Despesas Recentes',
-                color: '#edf7ff',
-                minheight:800,
-                minwidth:600,
+            if (window.innerWidth <= 430) {
+            var options = {
+                     'width':310,
+                     'height':215};
+            }
 
-                }
-            };
+            if (window.innerWidth > 430) {
+
+                var options = {
+                     'width':430,
+                     'height':255};
+
+            }
         
             if (data.getNumberOfRows() === 0) {
                 data.addRows([
@@ -379,20 +358,19 @@
             let c = ('{{graficoreceitas | safe}}');
             const container = document.querySelector('#graficoreceitas')
             const data = new google.visualization.arrayToDataTable(JSON.parse(c))            
-            const options = {
-                // set annotation for -- No Data Copy
-                annotations: {
-                // remove annotation stem and push to middle of chart
-                stem: {
-                    color: 'transparent',
-                    length: 120
-                },
-                title: 'Receitas Recentes',
-                curveType: 'function',
-                minheight:800,
-                minweight:600,
-                }
-            };
+            if (window.innerWidth <= 430) {
+            var options = {
+                     'width':310,
+                     'height':215};
+            }
+
+            if (window.innerWidth > 430) {
+
+                var options = {
+                     'width':430,
+                     'height':255};
+
+            }
             
             if (data.getNumberOfRows() === 0) {
                 data.addRows([

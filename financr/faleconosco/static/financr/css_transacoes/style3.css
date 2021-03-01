@@ -118,6 +118,13 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 
+#da_conta {
+
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+
+}
+
 #id_conta{
 
     background-color: transparent;

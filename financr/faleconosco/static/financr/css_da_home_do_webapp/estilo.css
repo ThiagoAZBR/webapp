@@ -99,7 +99,7 @@ html, body {
 
 .div_usuario {
 
-    width: 140px;
+    width: 200px;
     z-index: 2;
 
 }
@@ -108,6 +108,7 @@ html, body {
 
     height: 10.5vh;
     width: 74px;
+    margin-top: 4vh;
 
 }
 
@@ -142,6 +143,13 @@ html, body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    width: 10vw;
+
+}
+
+#fechar_config {
+
+    display: none;
 
 }
 
@@ -150,6 +158,8 @@ html, body {
     opacity: 0.7;
 
 }
+
+
 
 .opcoes_icone_usuario {
 
@@ -190,8 +200,9 @@ html, body {
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1.8fr 1fr;
+    grid-template-rows: 1fr;
 
+    align-items: center;
     width: 100%;
     height: 86vh;
     justify-content: space-evenly;
@@ -202,57 +213,9 @@ html, body {
 
 }
 
-.tela_saldo {
 
-    align-self: flex-end;
 
-}
 
-.tela_criar {
-
-    align-self: flex-end;
-
-}
-
-.tela_graficos {
-
-    align-self: flex-end;
-
-}
-
-.tela_transferencias {
-
-    align-self: flex-end;
-
-}
-
-#titulo_transferencia,
-#titulo_conta,
-#titulo_grafico,
-#titulo_saldo {
-
-    font-size: 2rem;
-
-}
-
-#titulo_transferencia {
-
-    margin-left: 4vw;
-    font-size: 2rem;
-
-}
-
-#titulo_conta {
-
-    margin-left: 1.4vw;
-
-}
-
-#titulo_grafico {
-
-    margin-left: 1vw;
-
-}
 
 .tela_saldo {
 
@@ -311,7 +274,7 @@ html, body {
     height: 80vh;
     min-height: 80vh;
     width: 55vw;
-    min-width: 55vw;
+    min-width: 65vw;
     z-index: 1;
     display: grid;
     grid-template-columns: auto;
@@ -348,7 +311,7 @@ html, body {
     padding: 5px;
     grid-row: 3/3;
     grid-column: 1/1;
-    width: 15%;
+    width: 8rem;
 
 }
 
@@ -357,7 +320,7 @@ html, body {
     display: grid;
     z-index: 1;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     align-items: center;
     max-width: 100%;
     width: auto;
@@ -592,6 +555,12 @@ html, body {
 
 }
 
+#txt_despesa {
+
+    /* Esse Vai Ser o Escolhido */
+
+}
+
 #txt_receita {
 
     display: none;
@@ -698,7 +667,7 @@ html, body {
     background-color: black;
     color: white;
     padding: 5px;
-    width: 12%;
+    width: 8rem;
 
 }
 
@@ -837,7 +806,7 @@ html, body {
     padding: 5px;
     padding-top: 8px;
     padding-bottom: 8px;
-    width: 50%;
+    width: 8rem;
 
 }
 
@@ -959,7 +928,7 @@ html, body {
     padding: 5px;
     padding-top: 8px;
     padding-bottom: 8px;
-    width: 50%;
+    width: 8rem;
 
 }
 
@@ -984,8 +953,8 @@ html, body {
 
     .tela_criar.on .div_tipos_conta img {
 
-        min-width: 100px;
-        min-height: 100px;
+        min-width: 60px;
+        min-height: 50px;
 
     }
 
@@ -994,15 +963,15 @@ html, body {
     #img_grafico,
     #img_transferencia {
 
-        min-width: 100px;
-        min-height: 100px;
+        min-width: 60px;
+        min-height: 50px;
 
     }
 
     .tela_transferencias.on .div_tipos_transacao img {
 
-        min-width: 100px;
-        min-height: 100px;
+        min-width: 60px;
+        min-height: 50px;
 
     }
 
@@ -1071,12 +1040,6 @@ html, body {
 
     }
 
-    #titulo_transferencia, #titulo_conta, #titulo_grafico, #titulo_saldo {
-
-        display: none;
-
-    }
-
 }
 
 
@@ -1102,7 +1065,6 @@ html, body {
     .tela_saldo.on .div_formatacao_dados {
 
         margin-left: 0vw;
-        margin-bottom: -9vh;
         font-size: 1.2rem;
         margin-right: 2vw;
 
@@ -1168,15 +1130,37 @@ html, body {
 
 @media (max-width: 900px) {
 
-    .telas_e_expansao div {
+    .tela_graficos.on #graficodespesas,
+    .tela_graficos.on #graficopizza,
+    .tela_graficos.on #graficoreceitas {
 
-        min-height: 20vh;
+        margin-bottom: 1vh;
+        margin-top: -2vh;
+
+    }
+
+    .tela_saldo.on .div_formatacao_dados {
+
+        width: 72vw;
+
+    }
+
+
+    .tela_saldo.on .div_formatacao_dados {
+
+        font-size: 1rem;
+
+    }
+
+    .tela_graficos.on .div_imgs_circulos {
+
+        margin-bottom: 0;
 
     }
 
     #img_grafico {
 
-        width: 95%;
+        width: auto;
         max-width: 95%;
         height: 77%;
         max-height: 77%;
@@ -1186,7 +1170,7 @@ html, body {
     #img_transferencia {
 
         max-width: 100%;
-        width: 100%;
+        width: auto;
         margin-left: 0;
 
     }
@@ -1194,14 +1178,213 @@ html, body {
     #img_criar_conta {
 
         max-width: 90%;
-        width: 90%;
+        width: auto;
 
     }
 
     #img_saldo {
 
-        width: 100%;
+        width: auto;
         padding: 0;
+
+    }
+
+}
+
+@media (max-width: 430px){
+
+    .opcoes_icone_usuario.on nav #fechar_config {
+
+        display: block;
+    
+    }
+
+    #img_criar_conta, #img_saldo, #img_grafico, #img_transferencia {
+
+        height: 16vh;
+        min-height: auto;
+        width: 21vw;
+        max-width: 25vw;
+
+    }
+
+    .formatacao_cabecalho {
+
+        justify-content: space-around;
+
+    }
+
+    .cabecalho {
+
+        width: 92%;
+
+    }
+
+    .div_usuario {
+
+        width: auto;
+
+    }
+
+    #nome_do_app {
+
+        font-size: 3rem;
+        margin-top: 12vh;
+
+    }
+
+    #icone_usuario {
+
+        margin-top: 6vh;
+        height: 9vh;
+        width: 12vw;
+
+    }
+
+    .opcoes_icone_usuario.on {
+
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        height: 100vh;
+        padding: 5px;
+        color: black;
+        background: white;
+        z-index: 10;
+        border: 0;
+        border-radius: 0%;
+
+    }
+
+    .opcoes_icone_usuario.on nav {
+
+        font-size: 2.4rem;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+
+    }
+
+    .conf_usuario.on {
+        display: block;
+        position: absolute;
+        font-size: 1.8rem;
+        font-family: 'Roboto', sans-serif;
+        top: 1vh;
+        right: 0;
+        left: 35%;
+        color: black;
+        width: 30vw;
+        text-align: center;
+        z-index: 20;
+    }
+
+    #fechar_config {
+
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        width: 7vw;
+        height: 5vh;
+
+    }
+
+    #dados {
+
+        margin-bottom: 4vh;
+
+    }
+
+    .tela_graficos.on #graficodespesas, .tela_graficos.on #graficopizza, .tela_graficos.on #graficoreceitas {
+
+        margin-bottom: 4vh;
+
+    }
+
+    .tela_saldo.on,
+    .tela_criar.on,
+    .tela_graficos.on,
+    .tela_transferencias.on {
+
+        width: 100%;
+        min-width: 100%;
+        height: 70vh;
+        min-height: 70vh;
+
+    }
+
+
+    .tela_saldo.on .div_formatacao_dados {
+
+        width: auto;
+        min-height: auto;
+
+    }
+
+    .tela_saldo.on .div_formatacao_dados ul {
+
+        padding: 0;
+
+    }
+
+    .tela_saldo.on .div_formatacao_dados select {
+
+        width: 80%;
+
+    }
+
+    .tela_criar.on .div_tipos_conta {
+
+        width: 100%;
+        min-height: 50vh;
+        height: 60vh;
+
+    }
+
+    .tela_criar.on .div_sair3 {
+
+        margin-left: 35%;
+
+    }
+
+    .tela_transferencias.on .div_tipos_transacao {
+
+        width: 100%;
+        min-height: 50vh;
+        height: 50vh;
+
+    }
+
+    .tela_transferencias.on .div_sair4 {
+
+        margin-left: 38%;
+
+    }
+    
+
+}
+
+@media (max-width: 390px) {
+
+    #img_criar_conta, #img_saldo, #img_grafico, #img_transferencia {
+
+        height: 16vh;
+        min-height: auto;
+        min-width: 22vw;
+        width: 22vw;
+        max-width: 25vw;
+
+    }
+
+    #img_saldo {
+
+        min-width: 25vw;
 
     }
 
@@ -1225,107 +1408,5 @@ html, body {
     -webkit-filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     filter: drop-shadow(15px 10px 5px rgba(0,0,0,.5));
     transition: all 0.3s;
-
-}
-
-@media (max-width: 430px) {
-
-    #icone_usuario {
-
-        width: 50px;
-        height: 50px;
-
-    }
-
-    #nome_do_app {
-
-        font-size: 3rem;
-
-    }
-
-    .telas_e_expansao {
-
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        grid-template-areas: 's c'
-                             'g t';
-
-    }
-
-
-    #img_criar_conta,
-    #img_grafico,
-    #img_transferencia {
-
-        max-width: 90px;
-        min-width: 65px;
-
-        max-height: 85px;
-        min-height: 60px;
-
-    }
-
-    #img_saldo {
-
-        max-width: 95px;
-        min-width: 65px;
-
-        max-height: 95px;
-        min-height: 60px;
-
-    }
-
-    .tela_saldo {
-
-        grid-area: s;
-
-    }
-
-
-    /* .tela_saldo.on {
-
-        grid-area: son;
-
-
-    } */
-
-    .tela_graficos {
-
-        grid-area: g;
-
-    }
-
-    /* .tela_graficos.on {
-
-        grid-area: gon;
-
-
-    } */
-
-    .tela_criar {
-
-        grid-area: c;
-
-    }
-
-    /* .tela_criar.on {
-
-        grid-area: con;
-
-
-    } */
-
-    .tela_transferencias {
-
-        grid-area: t;
-
-    }
-
-    /* .tela_transferencias.on {
-
-        grid-area: ton;
-
-
-    } */
 
 }
